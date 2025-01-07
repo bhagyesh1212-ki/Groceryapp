@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".activity.SignupActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/introoneimage"
+        android:scaleType="centerCrop"
+        android:src="@drawable/maskone" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        android:background="@drawable/layout_shadow" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_13sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/_14sdp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/backarrow" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_94sdp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/welcome"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_275sdp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/login_card"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/horizontal_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/welcome"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sdp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lorem_ipsum_dolor_sit_amet_consetetur_sadipscing_elitr_sed_diam_nonumy"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_12sdp" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_22sdp"
+            android:background="@drawable/google_button"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:contentDescription="@string/google_logo"
+                android:src="@drawable/google" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_40sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/continue_with_google"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/open_account_page"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/button">
+
+            <ImageView
+                android:layout_width="@dimen/_23sdp"
+                android:layout_height="@dimen/_23sdp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:contentDescription="@string/user"
+                android:src="@drawable/iconuserpng"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_40sdp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/create_an_account"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/horizontal_padding"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="@string/already_have_an_account"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    android:id="@+id/login_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/login"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/color_primary_dark"
+        android:visibility="gone" />
+</RelativeLayout>

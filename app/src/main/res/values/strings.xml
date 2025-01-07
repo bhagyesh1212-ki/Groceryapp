@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Grocery App</string>
+    <string name="get_started">Get Started</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="lorem_ipsum_dolor_sit_amet_consetetur_sadipscing_elitr_sed_diam_nonumy">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy</string>
+    <string name="buy_quality_dairy_products">Buy Quality Dairy Products</string>
+    <string name="welcome">Welcome</string>
+    <string name="continue_with_google">Continue with google</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="already_have_an_account">Already have an account ?</string>
+    <string name="login">Login</string>
+    <string name="user">USER</string>
+    <string name="google_logo">GOOGLE_LOGO</string>
+
+    <string name="introoneimage">INTROONEIMAGE</string>
+    <string name="welcome_back">Welcome back !</string>
+    <string name="sign_in_to_your_account">Sign in to your account</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="don_t_have_an_account">Don’t have an account ?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="back_arrow">back_arrow</string>
+    <string name="create_account">Create account</string>
+    <string name="quickly_create_account">Quickly create account</string>
+    <string name="email_img">email_img</string>
+    <string name="phone_number">Phone number</string>
+    <string name="signup">Signup</string>
+    <string name="logout">Logout</string>
+</resources>
