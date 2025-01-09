@@ -34,7 +34,6 @@ public class ViewPagerAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup collection, int position) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.intro_first, collection, false);
-
         TextView welcome_txt = layout.findViewById(R.id.welcome_txt);
         ImageView imageView2 = layout.findViewById(R.id.imageView2);
         ImageView big_cart_txt = layout.findViewById(R.id.big_cart_txt);

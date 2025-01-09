@@ -36,7 +36,7 @@ public class FirstIntroScreenActivity extends AppCompatActivity {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
         binding.viewpager.setAdapter(viewPagerAdapter);
         binding.tabLayout.setupWithViewPager(binding.viewpager, true);
-        binding.linearLayout.setOnClickListener(new View.OnClickListener() {
+        binding.getStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(FirstIntroScreenActivity.this, SignupActivity.class);

@@ -62,6 +62,7 @@
             android:layout_marginTop="@dimen/_25sdp"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/create_account"
+            android:gravity="center_vertical"
             android:textColor="@color/black"
             android:textSize="@dimen/_20ssp" />
 
@@ -72,10 +73,9 @@
             android:textColor="@color/grey"
             android:textSize="@dimen/_12ssp" />
 
-        <androidx.cardview.widget.CardView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
-            android:layout_marginHorizontal="@dimen/_1sdp"
             android:layout_marginTop="@dimen/_21sdp"
             app:cardCornerRadius="5dp">
 
@@ -97,6 +97,7 @@
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:textColorHint="@color/grey"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:background="@color/white"
                     android:fontFamily="@font/poppins_medium"
@@ -106,12 +107,11 @@
                     android:textColor="@color/grey"
                     android:textSize="@dimen/_12ssp" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </RelativeLayout>
 
-        <androidx.cardview.widget.CardView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
-            android:layout_marginHorizontal="@dimen/_1sdp"
             android:layout_marginTop="@dimen/_3sdp"
             app:cardCornerRadius="5dp">
 
@@ -132,6 +132,7 @@
                 <EditText
                     android:id="@+id/phonenum"
                     android:layout_width="match_parent"
+                    android:textColorHint="@color/grey"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:background="@color/white"
@@ -142,12 +143,11 @@
                     android:textColor="@color/grey"
                     android:textSize="@dimen/_12ssp" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </RelativeLayout>
 
-        <androidx.cardview.widget.CardView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
-            android:layout_marginHorizontal="@dimen/_1sdp"
             android:layout_marginTop="@dimen/_3sdp"
             app:cardCornerRadius="5dp">
 
@@ -172,6 +172,7 @@
                     android:layout_marginStart="@dimen/_20sdp"
                     android:background="@color/white"
                     android:fontFamily="@font/poppins_medium"
+                    android:textColorHint="@color/grey"
                     android:hint="@string/password"
                     android:importantForAutofill="no"
                     android:inputType="textPassword"
@@ -193,7 +194,7 @@
                         android:src="@drawable/hideview" />
                 </RelativeLayout>
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/signup_bottom"

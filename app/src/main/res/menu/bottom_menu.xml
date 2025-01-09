@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/home_black"
+        android:id="@+id/home"
+        tools:ignore="MenuTitle" />
+    <item android:icon="@drawable/profile_black"
+        android:id="@+id/profile"
+        tools:ignore="MenuTitle" />
+    <item android:icon="@drawable/like_white"
+        android:id="@+id/like"
+        tools:ignore="MenuTitle" />
+</menu>

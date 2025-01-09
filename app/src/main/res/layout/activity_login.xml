@@ -71,10 +71,9 @@
             android:textColor="@color/grey"
             android:textSize="@dimen/_12ssp" />
 
-        <androidx.cardview.widget.CardView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
-            android:layout_marginHorizontal="@dimen/_1sdp"
             android:layout_marginTop="@dimen/_21sdp"
             app:cardCornerRadius="5dp">
 
@@ -82,7 +81,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
                 <ImageView
                     android:layout_width="@dimen/_20sdp"
@@ -103,14 +103,14 @@
                     android:importantForAutofill="no"
                     android:inputType="textEmailAddress"
                     android:textColor="@color/grey"
+                    android:textColorHint="@color/grey"
                     android:textSize="@dimen/_12ssp" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </RelativeLayout>
 
-        <androidx.cardview.widget.CardView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
-            android:layout_marginHorizontal="@dimen/_1sdp"
             android:layout_marginTop="@dimen/_3sdp"
             app:cardCornerRadius="5dp">
 
@@ -118,7 +118,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
                 <ImageView
                     android:layout_width="@dimen/_15sdp"
@@ -140,6 +141,7 @@
                     android:importantForAutofill="no"
                     android:inputType="textPassword"
                     android:textColor="@color/grey"
+                    android:textColorHint="@color/grey"
                     android:textSize="@dimen/_12ssp" />
 
                 <RelativeLayout
@@ -157,7 +159,7 @@
                         android:src="@drawable/hideview" />
                 </RelativeLayout>
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

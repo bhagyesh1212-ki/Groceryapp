@@ -106,8 +106,8 @@
             android:background="@drawable/button">
 
             <ImageView
-                android:layout_width="@dimen/_23sdp"
-                android:layout_height="@dimen/_23sdp"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/_25sdp"
                 android:contentDescription="@string/user"

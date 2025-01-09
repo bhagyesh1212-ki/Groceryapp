@@ -79,7 +79,17 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (binding.switchview.isChecked()) {
-                    Toast.makeText(LoginActivity.this, "Your data is safe", Toast.LENGTH_SHORT).show();
+                    SharedPreferences sf = getApplicationContext().getSharedPreferences("userData", MODE_PRIVATE);
+                    boolean ischecked = getSharedPreferences("userData", MODE_PRIVATE).getBoolean("ischecked", false);
+                    if (ischecked) {
+                        String email = sf.getString("email", "");
+                        String pass = sf.getString("password", "");
+                        binding.email.setText(email);
+                        binding.password.setText(pass);
+                    } else {
+                        binding.email.setText("");
+                        binding.password.setText("");
+                    }
                 }
             }
         });
@@ -87,7 +97,9 @@ public class LoginActivity extends AppCompatActivity {
         binding.forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(LoginActivity.this, ForgotActivity.class);
+                i.putExtra("email", binding.email.getText().toString());
+                startActivity(i);
             }
         });
     }
@@ -98,6 +110,7 @@ public class LoginActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = sf.edit();
             editor.putString("email", binding.email.getText().toString());
             editor.putString("password", binding.password.getText().toString());
+            editor.putBoolean("ischecked", true);
             editor.apply();
         } else {
             SharedPreferences sf = getApplicationContext().getSharedPreferences("userData", MODE_PRIVATE);
@@ -107,6 +120,7 @@ public class LoginActivity extends AppCompatActivity {
             editor.apply();
         }
     }
+
 
     private void checkfield() {
         String email = binding.email.getText().toString();
@@ -142,18 +156,19 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         showProgressBar(false);
                         if (task.isSuccessful()) {
-                            userModel = userDao.verifyuser(email, password);
-                            if (userModel != null) {
-                                if (userModel.getEmail().equalsIgnoreCase(email) && userModel.getPassword().equalsIgnoreCase(password)) {
-                                    Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                                    startActivity(i);
-                                    finish();
-                                } else {
-                                    Toast.makeText(LoginActivity.this, "Enter valid email and password", Toast.LENGTH_SHORT).show();
-                                }
-                            } else {
-                                Toast.makeText(LoginActivity.this, "User not found, Please signup first", Toast.LENGTH_SHORT).show();
-                            }
+//                            userModel = userDao.verifyuser(email, password);
+//                            if (userModel != null)
+                            //{
+//                                if (userModel.getEmail().equalsIgnoreCase(email) && userModel.getPassword().equalsIgnoreCase(password)) {
+                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(i);
+                            finish();
+//                                } else {
+//                                    Toast.makeText(LoginActivity.this, "Enter valid email and password", Toast.LENGTH_SHORT).show();
+//                                }
+//                            } else {
+//                                Toast.makeText(LoginActivity.this, "User not found, Please signup first", Toast.LENGTH_SHORT).show();
+//                            }
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();

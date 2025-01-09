@@ -14,7 +14,7 @@
         android:layout_height="match_parent" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/get_started"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:layout_alignParentBottom="true"

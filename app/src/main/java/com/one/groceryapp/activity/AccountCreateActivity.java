@@ -138,6 +138,7 @@ public class AccountCreateActivity extends AppCompatActivity {
                             startActivity(i);
                             Toast.makeText(AccountCreateActivity.this, "Signup successfully", Toast.LENGTH_SHORT).show();
                         } else {
+                            showProgressBar(false);
                             Toast.makeText(AccountCreateActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
