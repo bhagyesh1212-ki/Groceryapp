@@ -1,28 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/_50sdp"
-    android:orientation="vertical"
-    android:layout_height="@dimen/_60sdp">
-<RelativeLayout
-    android:layout_width="wrap_content"
+    android:layout_width="@dimen/_56sdp"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    android:background="@drawable/category_bg">
-    <ImageView
-        android:id="@+id/grocery_img"
-        android:layout_width="@dimen/_18sdp"
-        android:layout_height="@dimen/_18sdp"
-        android:src="@drawable/leaf"
-        android:layout_centerInParent="true"/>
-</RelativeLayout>
-    <TextView
-        android:id="@+id/grocery_text"
+    android:layout_marginTop="@dimen/_14sdp"
+    >
+    <LinearLayout
+        android:layout_width="@dimen/_45sdp"
+        android:orientation="vertical"
+        android:layout_height="@dimen/_60sdp">
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vegetables"
-        android:textColor="@color/black"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/category_bg">
+
+        <ImageView
+            android:id="@+id/category_image"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/leaf" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/category_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/_8sdp"
-        android:textSize="@dimen/_8ssp"
-        android:fontFamily="@font/poppins_semibold"/>
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Vegetables"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/_8ssp" />
+    </LinearLayout>
 </LinearLayout>

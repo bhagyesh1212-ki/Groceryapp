@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_210sdp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/banner" />
+
+    <TextView
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/banner"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="@dimen/_34sdp"
+        android:layout_marginBottom="@dimen/_59sdp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:text="20% off on your first purchase"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15sdp" />
+
+    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+        android:id="@+id/dot1"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_6sdp"
+        android:layout_alignBottom="@+id/banner"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="@dimen/_14sdp"
+        android:layout_marginBottom="@dimen/_22sdp"
+        app:dotsColor="@color/white"
+        app:dotsSize="@dimen/_6sdp"
+        app:dotsSpacing="@dimen/_4sdp"
+        app:progressMode="true"
+        app:selectedDotColor="@color/color_primary_dark" />
+
+</RelativeLayout>

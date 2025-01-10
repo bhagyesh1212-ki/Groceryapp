@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.HomeFragment">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,61 +44,56 @@
                 android:inputType="textPassword"
                 android:textColor="@color/grey"
                 android:textColorHint="@color/grey"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="@dimen/_10ssp" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/hide_pass"
-                    android:layout_width="24dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="@dimen/_14sdp"
+                    android:layout_height="@dimen/_13sdp"
                     android:layout_alignParentEnd="true"
-                    android:layout_gravity="center_vertical"
+                    android:layout_centerInParent="true"
                     android:layout_marginEnd="@dimen/_15sdp"
                     android:importantForAccessibility="no"
                     android:src="@drawable/filter" />
             </RelativeLayout>
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_210sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/banner" />
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_height="@dimen/_25sdp">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp">
 
-            <TextView
-                android:id="@+id/categorie"
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_200sdp" />
+
+            <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                android:id="@+id/dot1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppins_semibold"
-                android:layout_centerVertical="true"
-                android:text="Categories"
-                android:textSize="@dimen/_15ssp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignRight="@+id/categorie"
-                android:layout_centerInParent="true"
-                android:layout_alignParentEnd="true"
-                android:src="@drawable/moredetailarrow" />
-
+                android:layout_alignBottom="@+id/vp"
+                android:layout_marginBottom="@dimen/_22sdp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/_13sdp"
+                app:dotsColor="@color/white"
+                app:dotsSize="@dimen/_6sdp"
+                app:dotsSpacing="@dimen/_4sdp"
+                app:progressMode="true"
+                app:selectedDotColor="@color/color_primary_dark" />
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv"
-            android:layout_marginTop="@dimen/_15sdp"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_100sdp"
-            android:orientation="horizontal" />
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_50sdp"/>
+
     </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
 </FrameLayout>

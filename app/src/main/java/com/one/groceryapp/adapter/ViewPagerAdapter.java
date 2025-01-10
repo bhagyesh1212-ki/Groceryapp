@@ -9,12 +9,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.one.groceryapp.R;
 
 public class ViewPagerAdapter extends PagerAdapter {
-    private final Context mContext;
+    Context mContext;
     public ViewPagerAdapter(Context mContext) {
         this.mContext = mContext;
     }

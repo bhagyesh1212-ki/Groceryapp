@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/background"
     android:fitsSystemWindows="true"
     tools:context=".activity.MainActivity">
@@ -46,7 +47,6 @@
             android:layout_centerInParent="true"
             android:layout_marginStart="@dimen/_75sdp"
             android:src="@drawable/like_white" />
-
 
     </RelativeLayout>
 

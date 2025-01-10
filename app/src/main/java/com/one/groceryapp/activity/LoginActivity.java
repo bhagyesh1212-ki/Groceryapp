@@ -75,21 +75,28 @@ public class LoginActivity extends AppCompatActivity {
                 savetopref();
             }
         });
+
+        SharedPreferences sf = getApplicationContext().getSharedPreferences("userData", MODE_PRIVATE);
+        Boolean ischeck =sf.getBoolean("ischecked", false);
+        if(ischeck){
+            binding.switchview.setChecked(true);
+            String email = sf.getString("email", "");
+            String pass = sf.getString("password", "");
+            binding.email.setText(email);
+            binding.password.setText(pass);
+        }else {
+                binding.switchview.setChecked(false);
+        }
+
         binding.switchview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (binding.switchview.isChecked()) {
                     SharedPreferences sf = getApplicationContext().getSharedPreferences("userData", MODE_PRIVATE);
-                    boolean ischecked = getSharedPreferences("userData", MODE_PRIVATE).getBoolean("ischecked", false);
-                    if (ischecked) {
-                        String email = sf.getString("email", "");
-                        String pass = sf.getString("password", "");
-                        binding.email.setText(email);
-                        binding.password.setText(pass);
-                    } else {
-                        binding.email.setText("");
-                        binding.password.setText("");
-                    }
+                    String email = sf.getString("email", "");
+                    String pass = sf.getString("password", "");
+                    binding.email.setText(email);
+                    binding.password.setText(pass);
                 }
             }
         });
@@ -112,15 +119,12 @@ public class LoginActivity extends AppCompatActivity {
             editor.putString("password", binding.password.getText().toString());
             editor.putBoolean("ischecked", true);
             editor.apply();
-        } else {
+        }else{
             SharedPreferences sf = getApplicationContext().getSharedPreferences("userData", MODE_PRIVATE);
             SharedPreferences.Editor editor = sf.edit();
-            editor.putString("email", "");
-            editor.putString("password", "");
-            editor.apply();
+            editor.putBoolean("ischecked", false);
         }
     }
-
 
     private void checkfield() {
         String email = binding.email.getText().toString();
