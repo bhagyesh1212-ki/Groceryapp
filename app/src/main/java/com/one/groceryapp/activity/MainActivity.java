@@ -34,23 +34,30 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         replaceFragment(new HomeFragment());
+        changeicon(R.id.home);
+
         binding.home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            replaceFragment(new HomeFragment());
+                replaceFragment(new HomeFragment());
+                changeicon(R.id.home);
             }
         });
         binding.profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 replaceFragment(new ProfileFragment());
+                changeicon(R.id.profile);
+
             }
         });
         binding.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 replaceFragment(new LikeFragment());
+                changeicon(R.id.like);
             }
         });
         binding.shop.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 Intent i = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(i);
-                finish();
             }
         });
     }
@@ -69,5 +75,11 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
+    }
+
+    private void changeicon(int iconid){
+        binding.home.setImageResource(iconid == R.id.home ? R.drawable.home_black : R.drawable.home_white);
+        binding.profile.setImageResource(iconid == R.id.profile ? R.drawable.profile_black : R.drawable.profile_white);
+        binding.like.setImageResource(iconid == R.id.like ? R.drawable.like_black : R.drawable.like_white);
     }
 }

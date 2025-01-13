@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.one.groceryapp.databinding.DemoCategoryBinding;
@@ -34,6 +35,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         CategoriesModel categoriesModel = categoriesModelList.get(position);
         holder.demoCategoryBinding.categoryImage.setImageResource(categoriesModel.getCategoryimage());
         holder.demoCategoryBinding.categoryText.setText(categoriesModel.getCategoryname());
+        holder.demoCategoryBinding.categoryBg.setCardBackgroundColor(ContextCompat.getColor(context,categoriesModel.getCategorycolor()));
     }
 
     @Override
@@ -43,6 +45,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private DemoCategoryBinding demoCategoryBinding;
+
         public ViewHolder(@NonNull DemoCategoryBinding demoCategoryBinding) {
             super(demoCategoryBinding.getRoot());
             this.demoCategoryBinding = demoCategoryBinding;

@@ -4,9 +4,21 @@ public class CategoriesModel {
     private int categoryimage;
     private String categoryname;
 
-    public CategoriesModel(String categoryname, int categoryimage) {
+    private int categorycolor;
+
+
+    public CategoriesModel(String categoryname, int categoryimage, int categorycolor) {
         this.categoryname = categoryname;
         this.categoryimage = categoryimage;
+        this.categorycolor = categorycolor;
+    }
+
+    public int getCategorycolor() {
+        return categorycolor;
+    }
+
+    public void setCategorycolor(int categorycolor) {
+        this.categorycolor = categorycolor;
     }
 
     public int getCategoryimage() {

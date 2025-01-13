@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="@dimen/_130sdp"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/_15sdp"
     android:background="@color/white"
     android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/_9sdp"
+        android:layout_marginEnd="@dimen/_9sdp"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/_6sdp"
-        android:layout_marginEnd="@dimen/_6sdp"
         android:src="@drawable/heart" />
 
     <RelativeLayout
@@ -69,7 +70,6 @@
             android:text="dozen"
             android:textColor="@color/grey"
             android:textSize="@dimen/_10ssp" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -82,6 +82,7 @@
         android:orientation="horizontal" />
 
     <LinearLayout
+        android:id="@+id/addtocart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/view"
@@ -104,4 +105,44 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_10ssp" />
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/item_count"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginVertical="@dimen/_10sdp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:src="@drawable/minus"/>
+        <TextView
+            android:id="@+id/item_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/color_primary_dark"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppins_medium"/>
+        <ImageView
+            android:id="@+id/plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/plus"/>
+    </RelativeLayout>
+
+
 </RelativeLayout>
