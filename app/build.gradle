@@ -50,11 +50,8 @@ dependencies {
     implementation("com.tbuonomo:dotsindicator:5.1.0")
     def room_version = "2.6.1"
     implementation "androidx.room:room-runtime:$room_version"
-    // If this project only uses Java source, use the Java annotationProcessor
-    // No additional plugins are necessary
     annotationProcessor "androidx.room:room-compiler:$room_version"
     implementation("com.google.android.gms:play-services-auth:21.3.0")
     implementation("com.tbuonomo:dotsindicator:5.1.0")
-
-
+    implementation ('com.github.everhad:androidratingstar:1.0.4')
 }

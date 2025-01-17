@@ -1,6 +1,8 @@
 package com.one.groceryapp.model;
 
-public class CategoriesModel {
+import java.io.Serializable;
+
+public class CategoriesModel implements Serializable {
     private int categoryimage;
     private String categoryname;
 

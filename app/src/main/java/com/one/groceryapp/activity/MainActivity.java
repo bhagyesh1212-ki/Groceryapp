@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 changeicon(R.id.home);
             }
         });
+
         binding.profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,22 +61,25 @@ public class MainActivity extends AppCompatActivity {
                 changeicon(R.id.like);
             }
         });
-        binding.shop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent i = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(i);
-            }
-        });
-    }
 
+    }
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        if(fragmentManager.getBackStackEntryCount() > 1){
+//            fragmentManager.popBackStack();
+//        }else {
+//            super.onBackPressed();
+//
+//        }
+//    }
 
     private void changeicon(int iconid){
         binding.home.setImageResource(iconid == R.id.home ? R.drawable.home_black : R.drawable.home_white);

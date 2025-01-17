@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.one.groceryapp.databinding.SubDemoCetegoryBinding;
 import com.one.groceryapp.model.CategoriesModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.ViewHolder> {
@@ -32,6 +33,7 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull SubCategoryAdapter.ViewHolder holder, int position) {
+
         CategoriesModel subCetegoryModel = subCetegoryModelList.get(position);
         holder.binding.productImage.setImageResource(subCetegoryModel.getCategoryimage());
         holder.binding.productName.setText(subCetegoryModel.getCategoryname());

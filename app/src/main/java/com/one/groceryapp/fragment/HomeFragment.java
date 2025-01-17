@@ -1,5 +1,6 @@
 package com.one.groceryapp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -10,7 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.one.groceryapp.R;
+import com.one.groceryapp.activity.FilterActivity;
+import com.one.groceryapp.activity.LoginActivity;
 import com.one.groceryapp.adapter.DemoAdapter;
 import com.one.groceryapp.adapter.ViewPagerBannerAdapter;
 import com.one.groceryapp.databinding.FragmentHomeBinding;
@@ -47,6 +51,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         adapter = new ViewPagerBannerAdapter(getContext());
         binding.vp.setAdapter(adapter);
@@ -56,7 +61,7 @@ public class HomeFragment extends Fragment {
         final Handler handler = new Handler();
         final Runnable Update = new Runnable() {
             public void run() {
-                if (currentPage == NUM_PAGES-1) {
+                if (currentPage == NUM_PAGES - 1) {
                     currentPage = 0;
                 }
                 binding.vp.setCurrentItem(currentPage++, true);
@@ -71,32 +76,56 @@ public class HomeFragment extends Fragment {
             }
         }, DELAY_MS, PERIOD_MS);
 
+        binding.search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent i = new Intent(getContext(), LoginActivity.class);
+                startActivity(i);
+            }
+        });
+        binding.filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), FilterActivity.class));
+            }
+        });
+
         demoModelArrayList = new ArrayList<>();
 
         categoriesModelArrayList = new ArrayList<>();
         categoriesModelArrayList.add(new CategoriesModel("Vegetables", R.drawable.leaf, R.color.vegetables_green));
         categoriesModelArrayList.add(new CategoriesModel("Fruits", R.drawable.apple, R.color.fruit_apple));
-        categoriesModelArrayList.add(new CategoriesModel("Beverages", R.drawable.drinks,R.color.beverage_cold_drinks_yellow));
-        categoriesModelArrayList.add(new CategoriesModel("Grocery", R.drawable.grocery,R.color.grocery_purple));
-        categoriesModelArrayList.add(new CategoriesModel("Edible oil", R.drawable.oil,R.color.oil_blue));
-        categoriesModelArrayList.add(new CategoriesModel("Household", R.drawable.household,R.color.house_hold_pink));
+        categoriesModelArrayList.add(new CategoriesModel("Beverages", R.drawable.drinks, R.color.beverage_cold_drinks_yellow));
+        categoriesModelArrayList.add(new CategoriesModel("Grocery", R.drawable.grocery, R.color.grocery_purple));
+        categoriesModelArrayList.add(new CategoriesModel("Edible oil", R.drawable.oil, R.color.oil_blue));
+        categoriesModelArrayList.add(new CategoriesModel("Household", R.drawable.household, R.color.house_hold_pink));
 
         categoriesModelArrayList.add(new CategoriesModel("Vegetables", R.drawable.leaf, R.color.vegetables_green));
         categoriesModelArrayList.add(new CategoriesModel("Fruits", R.drawable.apple, R.color.fruit_apple));
-        categoriesModelArrayList.add(new CategoriesModel("Beverages", R.drawable.drinks,R.color.beverage_cold_drinks_yellow));
-        categoriesModelArrayList.add(new CategoriesModel("Grocery", R.drawable.grocery,R.color.grocery_purple));
-        categoriesModelArrayList.add(new CategoriesModel("Edible oil", R.drawable.oil,R.color.oil_blue));
-        categoriesModelArrayList.add(new CategoriesModel("Household", R.drawable.household,R.color.house_hold_pink));
+        categoriesModelArrayList.add(new CategoriesModel("Beverages", R.drawable.drinks, R.color.beverage_cold_drinks_yellow));
+        categoriesModelArrayList.add(new CategoriesModel("Grocery", R.drawable.grocery, R.color.grocery_purple));
+        categoriesModelArrayList.add(new CategoriesModel("Edible oil", R.drawable.oil, R.color.oil_blue));
+        categoriesModelArrayList.add(new CategoriesModel("Household", R.drawable.household, R.color.house_hold_pink));
 
         demoModelArrayList.add(new DemoModel("Vegetables", categoriesModelArrayList));
 
         featureProductModelArrayList = new ArrayList<>();
-        featureProductModelArrayList.add(new FeatureProductModel("$8.00", "Fresh Peach", "dozen", R.drawable.peach,false,1));
-        featureProductModelArrayList.add(new FeatureProductModel("$7.00", "Avacoda", "2.0 lbs", R.drawable.aocado,false,1));
-        featureProductModelArrayList.add(new FeatureProductModel("$9.90", "Pineapple", "1.50 lbs", R.drawable.pineapplepieces,false,1));
-        featureProductModelArrayList.add(new FeatureProductModel("$7.05", "Black Grapes", "5.0 lbs", R.drawable.grapes,false,1));
-        featureProductModelArrayList.add(new FeatureProductModel("$2.09", "Pomegranate", "1.50 lbs", R.drawable.pomegranate,false,1));
-        featureProductModelArrayList.add(new FeatureProductModel("$3.00", "Fresh B roccoli", "1 kg", R.drawable.greenfreshbroccoli,false,1));
+        featureProductModelArrayList.add(new FeatureProductModel("$8.00", "Fresh Peach", "dozen", R.drawable.peach, false, 1, false, false, ""));
+        featureProductModelArrayList.add(new FeatureProductModel("$7.00", "Avacoda", "2.0 lbs", R.drawable.aocado, false, 1, true, false, ""));
+        featureProductModelArrayList.add(new FeatureProductModel("$9.90", "Pineapple", "1.50 lbs", R.drawable.pineapplepieces, false, 1, false, false, ""));
+        featureProductModelArrayList.add(new FeatureProductModel("$7.05", "Black Grapes", "5.0 lbs", R.drawable.grapes, false, 1, false, true, "-20%"));
+        featureProductModelArrayList.add(new FeatureProductModel("$2.09", "Pomegranate", "1.50 lbs", R.drawable.pomegranate, false, 1, true, false, ""));
+        featureProductModelArrayList.add(new FeatureProductModel("$3.00", "Fresh B roccoli", "1 kg", R.drawable.greenfreshbroccoli, false, 1, false, false, ""));
+
+        featureProductModelArrayList.add(new FeatureProductModel("$8.00", "Fresh Peach", "dozen", R.drawable.peach, false, 1, false, false, ""));
+        featureProductModelArrayList.add(new FeatureProductModel("$7.00", "Avacoda", "2.0 lbs", R.drawable.aocado, false, 1, true, false, ""));
+        featureProductModelArrayList.add(new FeatureProductModel("$9.90", "Pineapple", "1.50 lbs", R.drawable.pineapplepieces, false, 1, false, false, ""));
+        featureProductModelArrayList.add(new FeatureProductModel("$7.05", "Black Grapes", "5.0 lbs", R.drawable.grapes, false, 1, false, true, "-20%"));
+        featureProductModelArrayList.add(new FeatureProductModel("$2.09", "Pomegranate", "1.50 lbs", R.drawable.pomegranate, false, 1, true, false, ""));
+        featureProductModelArrayList.add(new FeatureProductModel("$3.00", "Fresh B roccoli", "1 kg", R.drawable.greenfreshbroccoli, false, 1, false, false, ""));
+
+
         demoModelArrayList.add(new DemoModel("Featured products", featureProductModelArrayList));
 
         binding.rcv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));

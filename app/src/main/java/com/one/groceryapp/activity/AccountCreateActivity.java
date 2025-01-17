@@ -103,6 +103,7 @@ public class AccountCreateActivity extends AppCompatActivity {
             Toast.makeText(AccountCreateActivity.this, "Password must contain at least 8 characters, including uppercase, lowercase, a number, and a special character", Toast.LENGTH_LONG).show();
         } else {
             emailauthentication();
+            finish();
         }
     }
 

@@ -20,6 +20,8 @@ import java.util.ArrayList;
 public class SubVegetableActivity extends AppCompatActivity {
 
     ActivitySubVegetableBinding binding;
+    ArrayList<CategoriesModel> list ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +34,17 @@ public class SubVegetableActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        ArrayList<CategoriesModel> list = new ArrayList<>();
-        list.add(new CategoriesModel( "Vegetable",R.drawable.leaf,R.color.grocery_purple));
-        list.add(new CategoriesModel("Fruits", R.drawable.apple, R.color.fruit_apple));
-        list.add(new CategoriesModel("Beverages", R.drawable.drinks,R.color.beverage_cold_drinks_yellow));
-        list.add(new CategoriesModel("Grocery", R.drawable.grocery,R.color.grocery_purple));
-        list.add(new CategoriesModel("Edible oil", R.drawable.oil,R.color.oil_blue));
-        list.add(new CategoriesModel("Household", R.drawable.household,R.color.house_hold_pink));
 
+
+        list = (ArrayList<CategoriesModel>) getIntent().getSerializableExtra("category");
+
+
+//        list.add(new CategoriesModel( "Vegetable",R.drawable.leaf,R.color.grocery_purple));
+//        list.add(new CategoriesModel("Fruits", R.drawable.apple, R.color.fruit_apple));
+//        list.add(new CategoriesModel("Beverages", R.drawable.drinks,R.color.beverage_cold_drinks_yellow));
+//        list.add(new CategoriesModel("Grocery", R.drawable.grocery,R.color.grocery_purple));
+//        list.add(new CategoriesModel("Edible oil", R.drawable.oil,R.color.oil_blue));
+//        list.add(new CategoriesModel("Household", R.drawable.household,R.color.house_hold_pink));
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(SubVegetableActivity.this, 3);
         binding.rcv.setLayoutManager(gridLayoutManager);
