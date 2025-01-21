@@ -5,18 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_white_first"
-    tools:context=".activity.SubVegetableActivity">
+    tools:context=".ui.activity.SubVegetableActivity">
 
     <RelativeLayout
-        android:background="@color/white"
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_60sdp">
+        android:layout_height="@dimen/_60sdp"
+        android:background="@color/white">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_18sdp">
+            android:layout_marginTop="@dimen/_18sdp"
+            tools:ignore="UselessParent">
 
             <ImageView
                 android:id="@+id/back"
@@ -26,6 +27,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/_15sdp"
+                android:importantForAccessibility="no"
                 android:src="@drawable/backarrowblack" />
 
             <TextView
@@ -33,16 +35,19 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Categories"
+                android:text="@string/categories"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_15ssp" />
+                android:textSize="@dimen/_15ssp"
+                tools:ignore="RelativeOverlap" />
 
             <ImageView
+                android:id="@+id/filter"
                 android:layout_width="@dimen/_18sdp"
                 android:layout_height="@dimen/_18sdp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/_15sdp"
+                android:importantForAccessibility="no"
                 android:src="@drawable/filter" />
         </RelativeLayout>
 
@@ -50,9 +55,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv"
-        android:layout_marginTop="@dimen/_18sdp"
-        android:paddingHorizontal="@dimen/horizontal_padding"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/header" />
+        android:layout_below="@+id/header"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:paddingHorizontal="@dimen/horizontal_padding" />
 </RelativeLayout>

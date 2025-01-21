@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -15,28 +17,31 @@
         android:theme="@style/Theme.GroceryApp"
         tools:targetApi="31">
         <activity
-            android:name=".activity.FilterActivity"
+            android:name=".ui.activity.AddToCartActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.SubFeatureProductActivity"
+            android:name=".ui.activity.FilterActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.SubVegetableActivity"
+            android:name=".ui.activity.SubFeatureProductActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ForgotActivity"
+            android:name=".ui.activity.SubVegetableActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.AccountCreateActivity"
+            android:name=".ui.activity.ForgotActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".ui.activity.AccountCreateActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.SignupActivity"
+            android:name=".ui.activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.FirstIntroScreenActivity"
+            android:name=".ui.activity.SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.FirstIntroScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,7 +50,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:exported="false" />
 
         <meta-data

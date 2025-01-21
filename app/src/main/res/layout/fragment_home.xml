@@ -4,98 +4,98 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.HomeFragment">
+    tools:context=".ui.fragment.HomeFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:paddingHorizontal="@dimen/horizontal_padding">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:background="@drawable/search_bg"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/horizontal_padding">
 
-            <ImageView
-                android:id="@+id/search"
-                android:layout_width="@dimen/_15sdp"
-                android:layout_height="@dimen/_19sdp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/_22sdp"
-                android:background="@color/background_white_first"
-                android:importantForAccessibility="no"
-                android:src="@drawable/search" />
-
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="@dimen/_180sdp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:background="@color/background_white_first"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="Search keywords.."
-                android:importantForAutofill="no"
-                android:inputType="textPassword"
-                android:textColor="@color/grey"
-                android:textColorHint="@color/grey"
-                android:textSize="@dimen/_10ssp" />
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/search_bg"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
                 <ImageView
-                    android:id="@+id/filter"
-                    android:layout_width="@dimen/_14sdp"
-                    android:layout_height="@dimen/_13sdp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:id="@+id/search"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_19sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_22sdp"
+                    android:background="@color/background_white_first"
                     android:importantForAccessibility="no"
-                    android:src="@drawable/filter" />
-            </RelativeLayout>
-        </LinearLayout>
+                    android:src="@drawable/search" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp">
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="@dimen/_180sdp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:background="@color/background_white_first"
+                    android:fontFamily="@font/poppins_medium"
+                    android:hint="@string/search_keywords"
+                    android:importantForAutofill="no"
+                    android:inputType="textPassword"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/grey"
+                    android:textSize="@dimen/_10ssp" />
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/vp"
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/filter"
+                        android:layout_width="@dimen/_14sdp"
+                        android:layout_height="@dimen/_13sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/filter" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_200sdp" />
-
-            <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
-                android:id="@+id/dot1"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/vp"
-                android:layout_marginBottom="@dimen/_22sdp"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/_13sdp"
-                app:dotsColor="@color/white"
-                app:dotsSize="@dimen/_6sdp"
-                app:dotsSpacing="@dimen/_4sdp"
-                app:progressMode="true"
-                app:selectedDotColor="@color/color_primary_dark" />
-        </RelativeLayout>
+                android:layout_marginTop="@dimen/_8sdp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/_50sdp"/>
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/vp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_200sdp" />
 
-    </LinearLayout>
+                <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                    android:id="@+id/dot1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/vp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginBottom="@dimen/_22sdp"
+                    app:dotsColor="@color/white"
+                    app:dotsSize="@dimen/_6sdp"
+                    app:dotsSpacing="@dimen/_4sdp"
+                    app:progressMode="true"
+                    app:selectedDotColor="@color/color_primary_dark" />
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_50sdp" />
+
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
 </FrameLayout>

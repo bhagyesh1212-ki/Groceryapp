@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@color/background_white_first"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.SubFeatureProductActivity">
+    android:background="@color/background_white_first"
+    tools:context=".ui.activity.SubFeatureProductActivity">
 
     <RelativeLayout
         android:id="@+id/header"
-        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_60sdp">
+        android:layout_height="@dimen/_60sdp"
+        android:background="@color/white">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_18sdp">
+            android:layout_marginTop="@dimen/_18sdp"
+            tools:ignore="UselessParent">
 
             <ImageView
                 android:id="@+id/back"
@@ -27,6 +27,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/_15sdp"
+                android:importantForAccessibility="no"
                 android:src="@drawable/backarrowblack" />
 
             <TextView
@@ -39,19 +40,21 @@
                 android:textSize="@dimen/_15ssp" />
 
             <ImageView
+                android:id="@+id/filter"
                 android:layout_width="@dimen/_18sdp"
                 android:layout_height="@dimen/_18sdp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/_15sdp"
+                android:importantForAccessibility="no"
                 android:src="@drawable/filter" />
         </RelativeLayout>
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv"
-        android:paddingHorizontal="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/header" />
+        android:layout_below="@+id/header"
+        android:paddingHorizontal="@dimen/_10sdp" />
 </RelativeLayout>

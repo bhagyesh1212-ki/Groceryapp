@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_white_first"
     android:orientation="vertical"
-    tools:context=".activity.ForgotActivity">
+    tools:context=".ui.activity.ForgotActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

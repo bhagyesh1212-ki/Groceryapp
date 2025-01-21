@@ -5,9 +5,7 @@ import java.io.Serializable;
 public class CategoriesModel implements Serializable {
     private int categoryimage;
     private String categoryname;
-
     private int categorycolor;
-
 
     public CategoriesModel(String categoryname, int categoryimage, int categorycolor) {
         this.categoryname = categoryname;
