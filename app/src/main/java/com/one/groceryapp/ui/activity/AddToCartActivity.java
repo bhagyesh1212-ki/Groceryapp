@@ -25,6 +25,7 @@ import com.one.groceryapp.model.FeatureProductModel;
 import com.one.groceryapp.ui.adapter.AddToCartAdapter;
 import com.one.groceryapp.ui.adapter.Arraylist;
 import com.one.groceryapp.ui.fragment.HomeFragment;
+import com.one.groceryapp.utils.Constants;
 
 import java.util.ArrayList;
 
@@ -32,12 +33,14 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
 
     ActivityAddToCartBinding binding;
 
-    ArrayList<FeatureProductModel> modelArrayList;
+    ArrayList<FeatureProductModel> modelArrayList = new ArrayList<>();
 
     AddToCartAdapter adapter;
     int shippingcharge;
 
     private OnCartItemDeletedListener mCartItemDeletedListener;
+
+
 
     public interface OnCartItemDeletedListener {
         void onCartItemDeleted();
@@ -60,7 +63,18 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
             mCartItemDeletedListener = (OnCartItemDeletedListener) getSupportFragmentManager().findFragmentByTag(HomeFragment.class.getSimpleName());
         }
 
-        modelArrayList = Arraylist.featureProductModelArrayList;
+//        modelArrayList = Arraylist.featureProductModelArrayList;
+
+//        Arraylist.featureProductModelArrayList = Constants.featureProductModelArrayList();
+
+        for (int i = 0; i < Constants.productModels.size(); i++) {
+            Log.e("TAGSIZE", "valueeee: "+ Constants.productModels.get(i).getAddtocart());
+            if (Constants.arrayList.get(i).getAddtocart()){
+                modelArrayList.add(Constants.productModels.get(i));
+            }
+        }
+
+        Log.e("TAGSIZE", "onCreate: "+ modelArrayList.size());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(AddToCartActivity.this, LinearLayoutManager.VERTICAL, false);
         binding.rcv.setLayoutManager(linearLayoutManager);
@@ -137,8 +151,9 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
         return itemCount * 1;
     }
     private void deleteItem(int position) {
-        modelArrayList.remove(position);
         adapter.notifyItemRemoved(position);
+        Constants.arrayList.remove(position);
+        Constants.arrayList.get(position).setAddtocart(false);
 
         if (mCartItemDeletedListener != null) {
             mCartItemDeletedListener.onCartItemDeleted();

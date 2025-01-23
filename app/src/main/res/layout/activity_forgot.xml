@@ -12,7 +12,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingHorizontal="@dimen/horizontal_padding">
+        android:paddingHorizontal="@dimen/horizontal_padding"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
-                android:text="Password Recovery"
+                android:text="@string/password_recovery"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp" />
         </LinearLayout>
@@ -50,7 +51,7 @@
                 android:layout_marginTop="@dimen/_110sdp"
                 android:fontFamily="@font/poppins_semibold"
                 android:gravity="center"
-                android:text="Forgot Password"
+                android:text="@string/forgot_password"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_18sdp" />
 

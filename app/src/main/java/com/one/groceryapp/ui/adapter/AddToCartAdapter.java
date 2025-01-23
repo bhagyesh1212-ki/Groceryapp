@@ -64,6 +64,7 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
                 holder.binding.productQuantity.setText(String.valueOf(quantity));
 
                 subprice -= productprice;
+
                 if (priceChangeListener != null) {
                     priceChangeListener.onPriceChange(subprice);
                 }

@@ -10,10 +10,8 @@ import com.one.groceryapp.model.FeatureProductModel;
 import java.util.ArrayList;
 
 public class SharedPreferencesUtils {
-
     SharedPreferences preferences;
     public final static String LibraryArrayList = "LibraryArrayList";
-
     public SharedPreferencesUtils(Context context) {
         preferences = context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE);
     }

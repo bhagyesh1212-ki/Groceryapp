@@ -83,7 +83,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
                 <ImageView
                     android:layout_width="@dimen/_15sdp"
@@ -99,6 +100,8 @@
                     android:layout_height="match_parent"
                     android:textColorHint="@color/grey"
                     android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+
                     android:background="@color/white"
                     android:fontFamily="@font/poppins_medium"
                     android:hint="@string/email_address"
@@ -119,7 +122,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
                 <ImageView
                     android:layout_width="@dimen/_15sdp"
@@ -135,6 +139,8 @@
                     android:textColorHint="@color/grey"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+
                     android:background="@color/white"
                     android:fontFamily="@font/poppins_medium"
                     android:hint="@string/phone_number"
@@ -155,7 +161,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
                 <ImageView
                     android:layout_width="@dimen/_15sdp"

@@ -1,9 +1,11 @@
 package com.one.groceryapp.ui.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.room.PrimaryKey;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -51,7 +54,6 @@ public class AccountCreateActivity extends AppCompatActivity {
         });
 
         binding.hidePass.setOnClickListener(view -> togglePasswordVisibility(binding.password, binding.hidePass));
-
         binding.loginBottom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,7 +107,7 @@ public class AccountCreateActivity extends AppCompatActivity {
             Toast.makeText(AccountCreateActivity.this, "Password must contain at least 8 characters, including uppercase, lowercase, a number, and a special character", Toast.LENGTH_LONG).show();
         } else {
             emailauthentication();
-            finish();
+//          finish();
         }
     }
 
@@ -136,14 +138,15 @@ public class AccountCreateActivity extends AppCompatActivity {
                             userModel.setEmail(email);
                             userModel.setPassword(password);
                             userModel.setPhonenumber(phonenum);
+
                             userDao.insertdata(userModel);
+
                             Intent i = new Intent(AccountCreateActivity.this, MainActivity.class);
                             startActivity(i);
                             Toast.makeText(AccountCreateActivity.this, "Signup successfully", Toast.LENGTH_SHORT).show();
                         } else {
                             showProgressBar(false);
-                            Toast.makeText(AccountCreateActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AccountCreateActivity.this, "Authentication failed.",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

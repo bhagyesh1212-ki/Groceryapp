@@ -51,7 +51,7 @@ public class SubFeatureProductActivity extends AppCompatActivity {
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(context,2);
         binding.rcv.setLayoutManager(gridLayoutManager);
-        FeatureProductAdapter featureProductAdapter = new FeatureProductAdapter(featureProductModelList,context);
+        FeatureProductAdapter featureProductAdapter = new FeatureProductAdapter(context);
 
         binding.rcv.setAdapter(featureProductAdapter);
 

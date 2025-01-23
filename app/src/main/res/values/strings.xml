@@ -66,4 +66,13 @@
     <string name="notifications">Notifications</string>
     <string name="sign_out">Sign out</string>
     <string name="new_NEW">NEW</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="save_settings">Save settings</string>
+    <string name="change_password">Change Password</string>
+    <string name="add_address">Add Address</string>
+    <string name="save_this_address">Save this address</string>
+    <string name="password_recovery">Password Recovery</string>
+    <string name="add_image">Add image</string>
+    <string name="capture_image_from_camera">Capture image from Camera</string>
+    <string name="add_image_from_gallery">Add image from Gallery</string>
 </resources>

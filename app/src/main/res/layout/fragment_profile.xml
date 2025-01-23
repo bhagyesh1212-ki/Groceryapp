@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/_50sdp"
     android:fillViewport="true"
+    android:paddingBottom="@dimen/_50sdp"
     tools:context=".ui.fragment.ProfileFragment">
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -453,4 +452,5 @@
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
+
 </androidx.core.widget.NestedScrollView>

@@ -8,6 +8,11 @@ import com.one.groceryapp.model.FeatureProductModel;
 import java.util.ArrayList;
 
 public class Constants {
+
+    public static ArrayList<FeatureProductModel> productModels=featureProductModelArrayList();
+
+    public static ArrayList<FeatureProductModel> arrayList =productModels;
+
     public static ArrayList<FeatureProductModel> featureProductModelArrayList() {
         ArrayList<FeatureProductModel> featureProductModelArrayList = new ArrayList<>();
         featureProductModelArrayList.add(new FeatureProductModel(8, "Fresh Peach", "dozen", R.drawable.peach, false, 1, false, false, "", false));
@@ -28,6 +33,7 @@ public class Constants {
         categoriesModelArrayList.add(new CategoriesModel("Household", R.drawable.household, R.color.house_hold_pink));
         return categoriesModelArrayList;
     }
+
     public static ArrayList<DemoModel> get_home_title() {
         ArrayList<DemoModel> title_home_list = new ArrayList<>();
         DemoModel data1 = new DemoModel("Categories");

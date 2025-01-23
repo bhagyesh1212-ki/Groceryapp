@@ -8,4 +8,6 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
     <style name="Theme.GroceryApp" parent="Base.Theme.GroceryApp" />
+
+
 </resources>

@@ -5,7 +5,7 @@
             <solid android:color="@color/white" />
             <stroke android:width="@dimen/_1sdp" android:color="@color/grey" />
             <corners android:radius="@dimen/_75sdp" />
-            <size android:width="@dimen/_18sdp" android:height="@dimen/_12sdp" />
+            <size android:width="@dimen/_18sdp" android:height="@dimen/_13sdp" />
         </shape>
     </item>
     <item android:state_checked="true">
@@ -13,7 +13,7 @@
             <solid android:color="@color/color_primary_dark" />
             <corners android:radius="@dimen/_75sdp" />
             <stroke android:width="@dimen/_1sdp" android:color="@color/grey" />
-            <size android:width="@dimen/_18sdp" android:height="@dimen/_12sdp" />
+            <size android:width="@dimen/_18sdp" android:height="@dimen/_13sdp" />
         </shape>
     </item>
 </selector>
