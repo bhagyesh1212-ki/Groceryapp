@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main"
     android:background="@color/background_white_first"
+    android:fitsSystemWindows="true"
     tools:context=".ui.activity.AddAddressActivity">
 
     <RelativeLayout
@@ -71,20 +72,19 @@
                     android:src="@drawable/profile_white" />
 
                 <EditText
-                    android:id="@+id/name"
+                    android:id="@+id/nameEdt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@color/white"
+                    android:background="@null"
                     android:fontFamily="@font/poppins_medium"
-                    android:hint="Name"
+                    android:hint="@string/name"
                     android:importantForAutofill="no"
-                    android:inputType="text"
+                    android:inputType="textPersonName"
                     android:textColor="@color/grey"
                     android:textColorHint="@color/grey"
-                    android:textSize="@dimen/_13ssp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="@dimen/_13ssp" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -117,7 +117,6 @@
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:background="@color/white"
-
                     android:fontFamily="@font/poppins_medium"
                     android:hint="Email address"
                     android:importantForAutofill="no"
@@ -155,10 +154,10 @@
                     android:id="@+id/phone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:maxLength="10"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:background="@color/white"
-
                     android:fontFamily="@font/poppins_medium"
                     android:hint="Phone number"
                     android:importantForAutofill="no"
@@ -193,12 +192,12 @@
                     android:src="@drawable/location" />
 
                 <EditText
+                    android:id="@+id/address"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:background="@color/white"
-
                     android:fontFamily="@font/poppins_medium"
                     android:hint="Address"
                     android:importantForAutofill="no"
@@ -233,15 +232,17 @@
                     android:src="@drawable/zipcode" />
 
                 <EditText
+                    android:id="@+id/zip"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
+                    android:maxLength="6"
                     android:background="@color/white"
                     android:fontFamily="@font/poppins_medium"
                     android:hint="Zip code"
                     android:importantForAutofill="no"
-                    android:inputType="text"
+                    android:inputType="numberDecimal"
                     android:textColor="@color/grey"
                     android:textColorHint="@color/grey"
                     android:textSize="@dimen/_13ssp"
@@ -273,6 +274,7 @@
                     android:src="@drawable/city" />
 
                 <EditText
+                    android:id="@+id/city"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_15sdp"
@@ -280,7 +282,6 @@
                     android:background="@color/white"
                     android:fontFamily="@font/poppins_medium"
                     android:hint="City"
-
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:textColor="@color/grey"
@@ -293,7 +294,6 @@
         <RelativeLayout
             android:id="@+id/country"
             android:layout_width="match_parent"
-
             android:layout_height="@dimen/_40sdp"
             android:layout_below="@+id/city_edt"
             android:layout_marginTop="@dimen/_5sdp">
@@ -313,20 +313,16 @@
                     android:contentDescription="@string/email_img"
                     android:src="@drawable/country" />
 
-                <EditText
+                <Spinner
+                    android:id="@+id/spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@color/white"
+                    android:dropDownVerticalOffset="@dimen/_42sdp"
                     android:fontFamily="@font/poppins_medium"
-                    android:hint="Country"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    android:textColor="@color/grey"
-                    android:textColorHint="@color/grey"
-                    android:textSize="@dimen/_13ssp"
-                    tools:ignore="HardcodedText" />
+                    android:spinnerMode="dropdown"
+                    android:textColor="@android:color/white" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -339,10 +335,9 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switchview"
+                android:id="@+id/switchView"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_20sdp"
-
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar"
                 android:thumb="@drawable/custom_thumb"
                 app:track="@drawable/custom_track" />

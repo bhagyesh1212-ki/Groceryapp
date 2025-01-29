@@ -44,14 +44,8 @@ public class AccountCreateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         binding = ActivityAccountCreateBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
         binding.hidePass.setOnClickListener(view -> togglePasswordVisibility(binding.password, binding.hidePass));
         binding.loginBottom.setOnClickListener(new View.OnClickListener() {
@@ -107,7 +101,6 @@ public class AccountCreateActivity extends AppCompatActivity {
             Toast.makeText(AccountCreateActivity.this, "Password must contain at least 8 characters, including uppercase, lowercase, a number, and a special character", Toast.LENGTH_LONG).show();
         } else {
             emailauthentication();
-//          finish();
         }
     }
 

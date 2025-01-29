@@ -75,4 +75,11 @@
     <string name="add_image">Add image</string>
     <string name="capture_image_from_camera">Capture image from Camera</string>
     <string name="add_image_from_gallery">Add image from Gallery</string>
+    <string name="default_111">DEFAULT</string>
+    <string name="russell_austin">Russell Austin</string>
+    <string name="_2811_crescent_day_la_port_california_united_states_77571">2811 Crescent Day. LA Port California, United States 77571</string>
+    <string name="_9089788909">9089788909</string>
+    <string name="todo">TODO</string>
+    <string name="address_location">address_location</string>
+    <string name="name">Name</string>
 </resources>

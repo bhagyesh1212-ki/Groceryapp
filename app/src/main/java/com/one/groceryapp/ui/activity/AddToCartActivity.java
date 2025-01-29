@@ -40,8 +40,6 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
 
     private OnCartItemDeletedListener mCartItemDeletedListener;
 
-
-
     public interface OnCartItemDeletedListener {
         void onCartItemDeleted();
     }
@@ -49,8 +47,6 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        EdgeToEdge.enable(this);
         binding = ActivityAddToCartBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
