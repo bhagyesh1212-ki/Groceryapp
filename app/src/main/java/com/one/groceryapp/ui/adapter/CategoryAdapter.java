@@ -36,7 +36,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         holder.demoCategoryBinding.categoryImage.setImageResource(categoriesModel.getCategoryimage());
         holder.demoCategoryBinding.categoryText.setText(categoriesModel.getCategoryname());
         holder.demoCategoryBinding.categoryBg.setCardBackgroundColor(ContextCompat.getColor(context,categoriesModel.getCategorycolor()));
-
     }
 
     @Override

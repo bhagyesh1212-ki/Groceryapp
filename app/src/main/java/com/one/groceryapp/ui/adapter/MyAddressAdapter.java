@@ -56,7 +56,7 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
         holder.binding.mobileNumber.setText(String.valueOf(addressModel.getMobile_number()));
 
         for (int i = 1; i < userDao.getDataCount(); i++) {
-            List<AddressModel> addressModels = userDao.getaddressbyid(i);
+//            List<AddressModel> addressModels = userDao.getaddressbyid(i);
             holder.binding.nameEdt.setText(addressModel.getName());
             holder.binding.phoneEdit.setText(addressModel.getMobile_number());
             holder.binding.addressEdit.setText(addressModel.getAddress());
@@ -96,37 +96,26 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
             }
         });
 
-        String nameUpdate = holder.binding.nameEdt.getText().toString();
-        String addressUpdate =holder.binding.addressEdit.getText().toString();
-        String zipUpdate = holder.binding.zipEdit.getText().toString();
-        String cityUpdate = holder.binding.cityEdit.getText().toString();
-        String phoneUpdate = holder.binding.phoneEdit.getText().toString();
-
-        Intent intent = new Intent("custom-message");
-        intent.putExtra("nameUpdate",nameUpdate);
-        intent.putExtra("addressUpdate",addressUpdate);
-        intent.putExtra("zipUpdate",zipUpdate);
-        intent.putExtra("cityUpdate",cityUpdate);
-        intent.putExtra("phoneUpdate",phoneUpdate);
-        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
-
-//        for (int i = 1; i < userDao.getDataCount(); i++) {
-//            userDao.updateaddress(name, city, zip, phone, address,i);
-//        }
+//        String nameUpdate = holder.binding.nameEdt.getText().toString();
+//        String addressUpdate =holder.binding.addressEdit.getText().toString();
+//        String zipUpdate = holder.binding.zipEdit.getText().toString();
+//        String cityUpdate = holder.binding.cityEdit.getText().toString();
+//        String phoneUpdate = holder.binding.phoneEdit.getText().toString();
+//
+//        Intent intent = new Intent("custom-message");
+//        intent.putExtra("nameUpdate",nameUpdate);
+//        intent.putExtra("addressUpdate",addressUpdate);
+//        intent.putExtra("zipUpdate",zipUpdate);
+//        intent.putExtra("cityUpdate",cityUpdate);
+//        intent.putExtra("phoneUpdate",phoneUpdate);
+//        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
 
     }
-
-
 
     @Override
     public int getItemCount() {
         return addressModelList.size();
     }
-
-    public void updateAddress(ViewHolder holder) {
-
-    }
-
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

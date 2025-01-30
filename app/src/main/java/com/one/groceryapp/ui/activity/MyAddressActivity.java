@@ -1,15 +1,9 @@
 package com.one.groceryapp.ui.activity;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.one.groceryapp.databinding.ActivityMyAddressBinding;
@@ -33,6 +27,7 @@ public class MyAddressActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMyAddressBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
 //        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
 //                new IntentFilter("custom-message"));
 
@@ -42,6 +37,10 @@ public class MyAddressActivity extends AppCompatActivity {
         });
 
         binding.back.setOnClickListener(v -> {
+            onBackPressed();
+        });
+
+        binding.saveSettingsBtn.setOnClickListener(v -> {
             onBackPressed();
         });
 
@@ -67,6 +66,7 @@ public class MyAddressActivity extends AppCompatActivity {
         binding.rcv.setAdapter(adapter);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
+        linearLayoutManager.setStackFromEnd(true);
         binding.rcv.setLayoutManager(linearLayoutManager);
     }
 
@@ -78,11 +78,13 @@ public class MyAddressActivity extends AppCompatActivity {
 //            String zipUpdate = intent.getStringExtra("zipUpdate");
 //            String cityUpdate = intent.getStringExtra("cityUpdate");
 //            String phoneUpdate = intent.getStringExtra("phoneUpdate");
+//
 //            binding.saveSettingsBtn.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
-//                        userDao.updateaddress(nameUpdate,cityUpdate,zipUpdate,phoneUpdate,addressUpdate,1);
-//                        Toast.makeText(context, "address updated", Toast.LENGTH_SHORT).show();
+//                    for (int i = 0; i < userDao.getDataCount(); i++) {
+//                        userDao.updateaddress(nameUpdate, cityUpdate, zipUpdate, phoneUpdate, addressUpdate,i);
+//                    }
 //                }
 //            });
 //        }

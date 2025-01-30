@@ -25,6 +25,8 @@ import com.one.groceryapp.roomdb.UserDao;
 import com.one.groceryapp.ui.activity.AboutMeActivity;
 import com.one.groceryapp.ui.activity.LoginActivity;
 import com.one.groceryapp.ui.activity.MyAddressActivity;
+import com.one.groceryapp.ui.activity.MyCardsActivity;
+import com.one.groceryapp.ui.activity.NotificationActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -105,6 +107,16 @@ public class ProfileFragment extends Fragment {
             Intent i = new Intent(getContext(), AboutMeActivity.class);
             i.putExtra("name", name);
             i.putExtra("email", email);
+            startActivity(i);
+        });
+
+        binding.creditcard.setOnClickListener(v -> {
+            Intent i = new Intent(getContext(), MyCardsActivity.class);
+            startActivity(i);
+        });
+
+        binding.notificationRL.setOnClickListener(v -> {
+            Intent i = new Intent(getContext(), NotificationActivity.class);
             startActivity(i);
         });
 

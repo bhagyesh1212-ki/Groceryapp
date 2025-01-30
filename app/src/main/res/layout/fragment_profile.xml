@@ -337,7 +337,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/notification"
+                android:id="@+id/notificationRL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/transansaction"
@@ -345,6 +345,7 @@
                 android:layout_marginTop="@dimen/_22sdp">
 
                 <LinearLayout
+                    android:id="@+id/notificationLL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -388,7 +389,7 @@
                 android:id="@+id/signout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/notification"
+                android:layout_below="@+id/notificationRL"
                 android:layout_marginHorizontal="@dimen/_30sdp"
                 android:layout_marginTop="@dimen/_22sdp">
 

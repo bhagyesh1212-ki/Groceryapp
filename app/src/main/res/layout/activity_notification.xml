@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_white_first"
+    tools:context=".ui.activity.NotificationActivity">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        tools:ignore="UselessParent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/horizontal_padding"
+            android:layout_marginVertical="@dimen/_22sdp"
+            tools:ignore="UselessParent">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:importantForAccessibility="no"
+                android:src="@drawable/backarrowblack" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Notifications"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15ssp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header"
+        android:layout_margin="@dimen/horizontal_padding">
+
+        <LinearLayout
+            android:id="@+id/AllowNotifcations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/horizontal_padding"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/horizontal_padding">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Allow Notifcations"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_gravity="end"
+                android:theme="@style/Theme.AppCompat.Light"
+                android:thumb="@drawable/custom_thumb"
+                app:track="@drawable/custom_track" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/lorem_ipsum_dolor_sit_amet_consetetur_sadipscing_elitr_sed_diam_nonumy"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/EmailNotifcations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/AllowNotifcations"
+            android:layout_marginBottom="@dimen/horizontal_padding"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/horizontal_padding">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Email Notifcations"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_gravity="end"
+                android:theme="@style/Theme.AppCompat.Light"
+                android:thumb="@drawable/custom_thumb"
+                app:track="@drawable/custom_track" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/lorem_ipsum_dolor_sit_amet_consetetur_sadipscing_elitr_sed_diam_nonumy"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/OrderNotifcations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/EmailNotifcations"
+            android:layout_marginBottom="@dimen/horizontal_padding"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/horizontal_padding">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Order Notifcations"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_gravity="end"
+                android:theme="@style/Theme.AppCompat.Light"
+                android:thumb="@drawable/custom_thumb"
+                app:track="@drawable/custom_track" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/lorem_ipsum_dolor_sit_amet_consetetur_sadipscing_elitr_sed_diam_nonumy"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/GeneralNotifcations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/OrderNotifcations"
+            android:layout_marginBottom="@dimen/horizontal_padding"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/horizontal_padding">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="General Notifcations"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_gravity="end"
+                android:theme="@style/Theme.AppCompat.Light"
+                android:thumb="@drawable/custom_thumb"
+                app:track="@drawable/custom_track" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/lorem_ipsum_dolor_sit_amet_consetetur_sadipscing_elitr_sed_diam_nonumy"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/save_settings_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/button"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="@string/save_settings"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

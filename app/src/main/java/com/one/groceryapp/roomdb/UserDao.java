@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.one.groceryapp.model.AddressModel;
+import com.one.groceryapp.model.CardModel;
 
 import java.util.List;
 
@@ -36,10 +37,25 @@ public interface UserDao {
     @Query("SELECT COUNT(name) FROM address_table")
     int getDataCount();
 
-//    @Query("UPDATE address_table SET name=:newname ,city=:newcity ,zip=:newzip ,mobile_number=:newphone ,address=:address WHERE id=:id")
-//    void updateaddress(String newname ,String newcity,String newzip,String newphone,String address, int id);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insercard(List<CardModel> cardModel);
 
+    @Query("SELECT * FROM cards_table")
+    List<CardModel> getallcards();
+
+    @Query("SELECT * FROM cards_table WHERE id=:id")
+    List<CardModel> getcardbyid(int id);
+
+    @Query("SELECT COUNT(cardholder) FROM cards_table")
+    int getCardDataCount();
+
+//    @Query("UPDATE cards_table SET cardnumber=:cardnumber, cardholder=:cardholder, carddate=:carddate, cardcvv=:cardcvv WHERE id=:id")
+//    void updatecard(String cardnumber, String cardholder, String carddate, String cardcvv, int id);
+//
+//    @Query("UPDATE address_table SET name=:name ,city=:city ,zip=:zip ,mobile_number=:mobile_number ,address=:address WHERE id=:id")
+//    void updateaddress(String name, String city, String zip, String mobile_number, String address, int id);
 }
+
 
 
 //    UserModel verifyuser(String email, String password);

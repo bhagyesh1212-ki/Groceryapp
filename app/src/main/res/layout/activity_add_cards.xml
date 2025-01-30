@@ -1,96 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/_15sdp"
-    android:background="@color/white">
+    android:layout_height="match_parent"
+    android:background="@color/background_white_first"
+    tools:context=".ui.activity.AddCardsActivity">
 
     <RelativeLayout
-        android:id="@+id/main_layout"
+        android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        tools:ignore="UselessParent">
 
-        <TextView
-            android:id="@+id/default12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#EBFFD7"
-            android:fontFamily="@font/poppins_medium"
-            android:padding="@dimen/_3sdp"
-            android:text="@string/default_111"
-            android:textColor="@color/color_primary_dark"
-            android:textSize="@dimen/_10ssp"
-            android:visibility="gone" />
-
-        <ImageView
-            android:id="@+id/bg"
-            android:layout_width="@dimen/_48sdp"
-            android:layout_height="@dimen/_48sdp"
-            android:layout_centerVertical="true"
-            android:layout_marginHorizontal="@dimen/horizontal_padding"
-            android:background="@drawable/category_bg"
-            android:contentDescription="@string/address_location"
-            android:padding="@dimen/_13sdp"
-            android:src="@drawable/addresslocationimage" />
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/default12"
-            android:layout_centerVertical="true"
-            android:layout_marginVertical="@dimen/horizontal_padding"
-            android:layout_toStartOf="@+id/dropUp"
-            android:layout_toEndOf="@+id/bg"
-            android:orientation="vertical">
+            android:layout_marginVertical="@dimen/_22sdp"
+            tools:ignore="UselessParent">
 
-            <TextView
-                android:id="@+id/name"
+            <ImageView
+                android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="@string/russell_austin"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_13ssp" />
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/backarrowblack" />
 
             <TextView
-                android:id="@+id/address"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:fontFamily="@font/poppins_medium"
-                android:text="@string/_2811_crescent_day_la_port_california_united_states_77571"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/_10ssp" />
-
-            <TextView
-                android:id="@+id/mobile_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="@string/_9089788909"
+                android:text="@string/add_address"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_10ssp" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/dropUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_vertical"
-            android:layout_marginHorizontal="@dimen/horizontal_padding"
-            android:contentDescription="@string/todo"
-            android:src="@drawable/dropup" />
+                android:textSize="@dimen/_15ssp" />
+        </RelativeLayout>
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_below="@+id/header"
+        android:layout_margin="@dimen/horizontal_padding"
+        android:src="@drawable/cardimage" />
 
     <RelativeLayout
         android:id="@+id/personal_detail"
         android:layout_width="match_parent"
-        android:visibility="gone"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/main_layout"
-        android:layout_margin="@dimen/horizontal_padding">
+        android:layout_below="@+id/card"
+        android:layout_marginHorizontal="@dimen/horizontal_padding">
 
         <RelativeLayout
             android:id="@+id/user_name_edt"
@@ -100,7 +65,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/my_address_edittext_bg"
+                android:background="@drawable/aboutme_edittext_bg"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -116,10 +81,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_15sdp"
+                    android:background="@color/white"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@color/background_white_first"
                     android:fontFamily="@font/poppins_medium"
-                    android:hint="Name"
+                    android:hint="Name on the card"
                     android:inputType="text"
                     android:textColor="@color/grey"
                     android:textColorHint="@color/grey"
@@ -137,7 +102,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/my_address_edittext_bg"
+                android:background="@drawable/aboutme_edittext_bg"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -146,19 +111,20 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/_22sdp"
                     android:contentDescription="@string/email_img"
-                    android:src="@drawable/location" />
+                    android:src="@drawable/card" />
 
                 <EditText
-                    android:id="@+id/address_edit"
+                    android:id="@+id/card_num_edt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@color/background_white_first"
+                    android:maxLength="16"
                     android:fontFamily="@font/poppins_medium"
-                    android:hint="Address"
+                    android:hint="Card number"
+                    android:background="@color/white"
                     android:importantForAutofill="no"
-                    android:inputType="text"
+                    android:inputType="numberDecimal"
                     android:textColor="@color/grey"
                     android:textColorHint="@color/grey"
                     android:textSize="@dimen/_10ssp" />
@@ -183,29 +149,29 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/my_address_edittext_bg"
+                    android:background="@drawable/aboutme_edittext_bg"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="@dimen/_18sdp"
-                        android:layout_height="@dimen/_18sdp"
+                        android:layout_height="@dimen/_15sdp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="@dimen/_22sdp"
                         android:contentDescription="@string/email_img"
-                        android:src="@drawable/city" />
+                        android:src="@drawable/date" />
 
                     <EditText
-                        android:id="@+id/city_edit"
+                        android:id="@+id/date_edt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:background="@color/background_white_first"
                         android:fontFamily="@font/poppins_medium"
-                        android:hint="City"
-
+                        android:background="@color/white"
+                        android:hint="Month / Year"
+                        android:maxLength="5"
                         android:importantForAutofill="no"
-                        android:inputType="text"
+                        android:inputType="date"
                         android:textColor="@color/grey"
                         android:textColorHint="@color/grey"
                         android:textSize="@dimen/_10ssp" />
@@ -223,7 +189,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/my_address_edittext_bg"
+                    android:background="@drawable/aboutme_edittext_bg"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -232,17 +198,18 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="@dimen/_22sdp"
                         android:contentDescription="@string/email_img"
-                        android:src="@drawable/zipcode" />
+                        android:src="@drawable/lock" />
 
                     <EditText
-                        android:id="@+id/zip_edit"
+                        android:id="@+id/cvv_edt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:background="@color/background_white_first"
                         android:fontFamily="@font/poppins_medium"
-                        android:hint="Zip code"
+                        android:hint="CVV"
+                        android:maxLength="3"
+                        android:background="@color/white"
                         android:importantForAutofill="no"
                         android:inputType="numberDecimal"
                         android:textColor="@color/grey"
@@ -253,90 +220,16 @@
 
         </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/country"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_below="@+id/city_zip"
-            android:layout_marginTop="@dimen/_5sdp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/my_address_edittext_bg"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/_18sdp"
-                    android:layout_height="@dimen/_18sdp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/_22sdp"
-                    android:contentDescription="@string/email_img"
-                    android:src="@drawable/country" />
-
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:dropDownVerticalOffset="@dimen/_42sdp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:popupBackground="@color/grey"
-                    android:textColor="@android:color/black" />
-
-            </LinearLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/user_phone_edt"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_below="@+id/country"
-            android:layout_marginTop="@dimen/_5sdp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/my_address_edittext_bg"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/_18sdp"
-                    android:layout_height="@dimen/_18sdp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/_22sdp"
-                    android:importantForAccessibility="no"
-                    android:src="@drawable/telephone" />
-
-                <EditText
-                    android:id="@+id/phoneEdit"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@color/background_white_first"
-                    android:fontFamily="@font/poppins_medium"
-                    android:hint="Phone number"
-                    android:importantForAutofill="no"
-                    android:inputType="numberDecimal"
-                    android:textColor="@color/grey"
-                    android:textColorHint="@color/grey"
-                    android:textSize="@dimen/_10ssp" />
-            </LinearLayout>
-        </RelativeLayout>
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/user_phone_edt"
+            android:layout_below="@+id/city_zip"
             android:layout_marginStart="@dimen/_13sdp"
             android:layout_marginTop="@dimen/_15sdp"
-            android:gravity="center"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switchview"
+                android:id="@+id/switchView"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar"
@@ -348,11 +241,32 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:fontFamily="@font/poppins_medium"
-                android:gravity="center"
-                android:text="Make default"
+                android:text="Save this card"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
         </LinearLayout>
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/add_card_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="@dimen/horizontal_padding"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:layout_marginBottom="@dimen/horizontal_padding"
+        android:background="@drawable/button"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="Add credit card"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout>
 
 </RelativeLayout>

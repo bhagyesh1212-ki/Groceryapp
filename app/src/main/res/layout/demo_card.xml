@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:layout_marginBottom="@dimen/horizontal_padding"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/_15sdp"
-    android:background="@color/white">
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:id="@+id/main_layout"
@@ -31,8 +31,8 @@
             android:layout_marginHorizontal="@dimen/horizontal_padding"
             android:background="@drawable/category_bg"
             android:contentDescription="@string/address_location"
-            android:padding="@dimen/_13sdp"
-            android:src="@drawable/addresslocationimage" />
+            android:padding="@dimen/_10sdp"
+            android:src="@drawable/master_logo" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,27 +49,75 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="@string/russell_austin"
+                android:text="Master Card"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_13ssp" />
 
-            <TextView
+            <LinearLayout
                 android:id="@+id/address"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:text="@string/_2811_crescent_day_la_port_california_united_states_77571"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/_10ssp" />
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/poppins_medium"-->
+<!--                    android:text="XXXX  XXXX  XXXX"-->
+<!--                    android:textColor="@color/grey"-->
+<!--                    android:textSize="@dimen/_10ssp" />-->
 
-            <TextView
-                android:id="@+id/mobile_number"
+                <TextView
+                    android:id="@+id/last_four_digit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="5678"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/_10ssp" />
+
+            </LinearLayout>
+            
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="@string/_9089788909"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_10ssp" />
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="Expiry : "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp" />
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="01/22"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:layout_marginStart="@dimen/_18sdp"
+                    android:text="CVV : "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp" />
+                <TextView
+                    android:id="@+id/cvv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="908"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp" />
+
+
+            </LinearLayout>
         </LinearLayout>
 
         <ImageView
@@ -87,9 +135,9 @@
     <RelativeLayout
         android:id="@+id/personal_detail"
         android:layout_width="match_parent"
+        android:layout_below="@+id/main_layout"
         android:visibility="gone"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/main_layout"
         android:layout_margin="@dimen/horizontal_padding">
 
         <RelativeLayout
@@ -117,9 +165,9 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@color/background_white_first"
+                    android:background="@drawable/my_address_edittext_bg"
                     android:fontFamily="@font/poppins_medium"
-                    android:hint="Name"
+                    android:hint="Name on the card"
                     android:inputType="text"
                     android:textColor="@color/grey"
                     android:textColorHint="@color/grey"
@@ -146,19 +194,20 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/_22sdp"
                     android:contentDescription="@string/email_img"
-                    android:src="@drawable/location" />
+                    android:src="@drawable/card" />
 
                 <EditText
-                    android:id="@+id/address_edit"
+                    android:id="@+id/card_num_edt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_15sdp"
+                    android:background="@drawable/my_address_edittext_bg"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@color/background_white_first"
+                    android:maxLength="16"
                     android:fontFamily="@font/poppins_medium"
-                    android:hint="Address"
+                    android:hint="Card number"
                     android:importantForAutofill="no"
-                    android:inputType="text"
+                    android:inputType="numberDecimal"
                     android:textColor="@color/grey"
                     android:textColorHint="@color/grey"
                     android:textSize="@dimen/_10ssp" />
@@ -188,24 +237,23 @@
 
                     <ImageView
                         android:layout_width="@dimen/_18sdp"
-                        android:layout_height="@dimen/_18sdp"
+                        android:layout_height="@dimen/_15sdp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="@dimen/_22sdp"
                         android:contentDescription="@string/email_img"
-                        android:src="@drawable/city" />
+                        android:src="@drawable/date" />
 
                     <EditText
-                        android:id="@+id/city_edit"
+                        android:id="@+id/date_edt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:background="@color/background_white_first"
                         android:fontFamily="@font/poppins_medium"
-                        android:hint="City"
-
+                        android:background="@drawable/my_address_edittext_bg"
+                        android:hint="MM/YY"
                         android:importantForAutofill="no"
-                        android:inputType="text"
+                        android:inputType="date"
                         android:textColor="@color/grey"
                         android:textColorHint="@color/grey"
                         android:textSize="@dimen/_10ssp" />
@@ -232,17 +280,18 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="@dimen/_22sdp"
                         android:contentDescription="@string/email_img"
-                        android:src="@drawable/zipcode" />
+                        android:src="@drawable/lock" />
 
                     <EditText
-                        android:id="@+id/zip_edit"
+                        android:id="@+id/cvv_edt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:background="@color/background_white_first"
                         android:fontFamily="@font/poppins_medium"
-                        android:hint="Zip code"
+                        android:hint="CVV"
+                        android:maxLength="3"
+                        android:background="@drawable/my_address_edittext_bg"
                         android:importantForAutofill="no"
                         android:inputType="numberDecimal"
                         android:textColor="@color/grey"
@@ -250,93 +299,18 @@
                         android:textSize="@dimen/_10ssp" />
                 </LinearLayout>
             </RelativeLayout>
-
         </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/country"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_below="@+id/city_zip"
-            android:layout_marginTop="@dimen/_5sdp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/my_address_edittext_bg"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/_18sdp"
-                    android:layout_height="@dimen/_18sdp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/_22sdp"
-                    android:contentDescription="@string/email_img"
-                    android:src="@drawable/country" />
-
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:dropDownVerticalOffset="@dimen/_42sdp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:popupBackground="@color/grey"
-                    android:textColor="@android:color/black" />
-
-            </LinearLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/user_phone_edt"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_below="@+id/country"
-            android:layout_marginTop="@dimen/_5sdp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/my_address_edittext_bg"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/_18sdp"
-                    android:layout_height="@dimen/_18sdp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/_22sdp"
-                    android:importantForAccessibility="no"
-                    android:src="@drawable/telephone" />
-
-                <EditText
-                    android:id="@+id/phoneEdit"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@color/background_white_first"
-                    android:fontFamily="@font/poppins_medium"
-                    android:hint="Phone number"
-                    android:importantForAutofill="no"
-                    android:inputType="numberDecimal"
-                    android:textColor="@color/grey"
-                    android:textColorHint="@color/grey"
-                    android:textSize="@dimen/_10ssp" />
-            </LinearLayout>
-        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/user_phone_edt"
+            android:layout_below="@+id/city_zip"
             android:layout_marginStart="@dimen/_13sdp"
             android:layout_marginTop="@dimen/_15sdp"
-            android:gravity="center"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switchview"
+                android:id="@+id/switchView"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar"
@@ -348,11 +322,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:fontFamily="@font/poppins_medium"
-                android:gravity="center"
                 android:text="Make default"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
         </LinearLayout>
     </RelativeLayout>
-
 </RelativeLayout>
