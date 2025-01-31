@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.one.groceryapp.databinding.DemoAddtocartBinding;
 import com.one.groceryapp.model.FeatureProductModel;
+import com.one.groceryapp.utils.Constants;
 
 import java.util.List;
 
@@ -37,7 +38,6 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
     @Override
     public void onBindViewHolder(@NonNull AddToCartAdapter.ViewHolder holder, int position) {
         FeatureProductModel addtocartModel = featureProductModelList.get(position);
-
         holder.binding.productImage.setImageResource(addtocartModel.getImageProduct());
         holder.binding.productName.setText(addtocartModel.getProductName());
         holder.binding.productPrice.setText(String.valueOf(addtocartModel.getPrice()));
@@ -71,6 +71,7 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
             }
         });
 
+
         holder.binding.plus.setOnClickListener(v -> {
             int quantity = addtocartModel.getProductNumber();
             quantity++;
@@ -84,6 +85,7 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
             }
         });
     }
+
 
     public interface OnPriceChangeListener {
         void onPriceChange(int newPrice);
