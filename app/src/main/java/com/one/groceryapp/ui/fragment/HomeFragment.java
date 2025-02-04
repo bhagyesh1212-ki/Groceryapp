@@ -1,5 +1,7 @@
 package com.one.groceryapp.ui.fragment;
 
+import static androidx.core.app.ActivityCompat.finishAffinity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,7 +18,9 @@ import com.one.groceryapp.databinding.FragmentHomeBinding;
 import com.one.groceryapp.preferences.SharedPreferencesUtils;
 import com.one.groceryapp.ui.activity.AddToCartActivity;
 import com.one.groceryapp.ui.activity.FilterActivity;
+import com.one.groceryapp.ui.activity.MainActivity;
 import com.one.groceryapp.ui.adapter.DemoAdapter;
+import com.one.groceryapp.ui.adapter.FeatureProductAdapter;
 import com.one.groceryapp.ui.adapter.ViewPagerBannerAdapter;
 import com.one.groceryapp.utils.Constants;
 
@@ -24,7 +28,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class HomeFragment extends Fragment implements AddToCartActivity.OnCartItemDeletedListener{
+public class HomeFragment extends Fragment{
 
     FragmentHomeBinding binding;
     ViewPagerBannerAdapter adapter;
@@ -70,11 +74,13 @@ public class HomeFragment extends Fragment implements AddToCartActivity.OnCartIt
         binding.rcv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         DemoAdapter demoAdapter = new DemoAdapter(Constants.get_home_title(), getContext());
         binding.rcv.setAdapter(demoAdapter);
+
         return binding.getRoot();
     }
-
-    @Override
-    public void onCartItemDeleted() {
-        Log.d("HomeFragment", "Cart item deleted, refreshing the fragment");
-    }
+//
+//    @Override
+//    public void onCartItemDeleted() {
+//        Log.d("HomeFragment", "Cart item deleted, refreshing the fragment");
+//    }
 }
+

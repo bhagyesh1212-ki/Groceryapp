@@ -2,6 +2,7 @@ package com.one.groceryapp.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
@@ -65,9 +66,9 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
         }
 
         holder.binding.switchview.setOnClickListener(v -> {
-            if(holder.binding.switchview.isChecked()){
+            if (holder.binding.switchview.isChecked()) {
                 holder.binding.default12.setVisibility(View.VISIBLE);
-            }else {
+            } else {
                 holder.binding.default12.setVisibility(View.GONE);
             }
         });

@@ -282,7 +282,7 @@
                     android:layout_marginStart="@dimen/_15sdp"
                     android:dropDownVerticalOffset="@dimen/_42sdp"
                     android:fontFamily="@font/poppins_medium"
-                    android:popupBackground="@color/grey"
+                    android:popupBackground="@color/white"
                     android:textColor="@android:color/black" />
 
             </LinearLayout>

@@ -22,6 +22,19 @@
         android:theme="@style/Theme.GroceryApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.MyOrderActivity"
+            android:exported="false"
+            android:theme="@style/Theme.GroceryApp" />
+        <activity
+            android:name=".ui.activity.TransactionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.OrderSuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.PaymentActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.AddCardsActivity"
             android:exported="false" />
         <activity

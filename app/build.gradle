@@ -32,6 +32,9 @@ android {
     viewBinding {
         enabled = true
     }
+    buildFeatures {
+        viewBinding true
+    }
 
 }
 
@@ -42,9 +45,13 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
     implementation libs.firebase.auth
+    implementation libs.navigation.fragment
+    implementation libs.navigation.ui
     testImplementation libs.junit
+    implementation project(':stateprogressbar')
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+
     implementation 'com.intuit.ssp:ssp-android:1.1.1'
     implementation 'com.intuit.sdp:sdp-android:1.1.1'
     implementation("com.tbuonomo:dotsindicator:5.1.0")
@@ -53,8 +60,9 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
     implementation("com.google.android.gms:play-services-auth:21.3.0")
     implementation("com.tbuonomo:dotsindicator:5.1.0")
-    implementation ('com.github.everhad:androidratingstar:1.0.4')
+    implementation('com.github.everhad:androidratingstar:1.0.4')
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.google.code.gson:gson:2.8.5'
+//  implementation ("com.kofigyan.stateprogressbar:stateprogressbar:1.0.0")
 
 }

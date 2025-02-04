@@ -37,7 +37,7 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull AddToCartAdapter.ViewHolder holder, int position) {
-        FeatureProductModel addtocartModel = featureProductModelList.get(position);
+        FeatureProductModel addtocartModel = Constants.productModels.get(position);
         holder.binding.productImage.setImageResource(addtocartModel.getImageProduct());
         holder.binding.productName.setText(addtocartModel.getProductName());
         holder.binding.productPrice.setText(String.valueOf(addtocartModel.getPrice()));
@@ -45,24 +45,21 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
         holder.binding.dozen.setText(addtocartModel.getQuantity());
         holder.binding.itemNumber.setText(String.valueOf(addtocartModel.getProductNumber()));
 
-        int productquantity = featureProductModelList.get(position).getProductNumber();
-        int productprice = featureProductModelList.get(position).getPrice();
+        int productquantity = addtocartModel.getProductNumber();
+        int productprice = addtocartModel.getPrice();
 
-        int itemprice = productprice * productquantity;
-        subprice += itemprice;
-
-        if (priceChangeListener != null) {
+            int itemprice = productprice * productquantity;
+            subprice += itemprice;
             priceChangeListener.onPriceChange(subprice);
-        }
 
         holder.binding.minus.setOnClickListener(v -> {
             int quantity = addtocartModel.getProductNumber();
             if (quantity >= 2) {
+
                 quantity--;
                 holder.binding.itemNumber.setText(String.valueOf(quantity));
                 addtocartModel.setProductNumber(quantity);
                 holder.binding.productQuantity.setText(String.valueOf(quantity));
-
                 subprice -= productprice;
 
                 if (priceChangeListener != null) {
@@ -78,7 +75,6 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
             holder.binding.itemNumber.setText(String.valueOf(quantity));
             addtocartModel.setProductNumber(quantity);
             holder.binding.productQuantity.setText(String.valueOf(quantity));
-
             subprice += productprice;
             if (priceChangeListener != null) {
                 priceChangeListener.onPriceChange(subprice);

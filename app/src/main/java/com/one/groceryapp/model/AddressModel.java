@@ -26,7 +26,6 @@ public class AddressModel implements Serializable {
     @ColumnInfo(name = "country")
     private String country;
 
-
     public AddressModel(String name, String email, String mobile_number, String address, String zip, String city, String country) {
         this.name = name;
         this.email = email;

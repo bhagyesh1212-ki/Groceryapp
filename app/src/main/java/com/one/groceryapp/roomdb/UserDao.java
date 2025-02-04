@@ -7,6 +7,7 @@ import androidx.room.Query;
 
 import com.one.groceryapp.model.AddressModel;
 import com.one.groceryapp.model.CardModel;
+import com.one.groceryapp.model.TransactionModel;
 
 import java.util.List;
 
@@ -34,6 +35,12 @@ public interface UserDao {
     @Query("SELECT * FROM address_table WHERE id=:id")
     List<AddressModel> getaddressbyid(int id);
 
+    @Query("SELECT * FROM address_table")
+    List<AddressModel> getaddressforfinalpayment();
+
+    @Query("SELECT * FROM cards_table")
+    List<CardModel> getcardforfinalpayment();
+
     @Query("SELECT COUNT(name) FROM address_table")
     int getDataCount();
 
@@ -49,16 +56,21 @@ public interface UserDao {
     @Query("SELECT COUNT(cardholder) FROM cards_table")
     int getCardDataCount();
 
-//    @Query("UPDATE cards_table SET cardnumber=:cardnumber, cardholder=:cardholder, carddate=:carddate, cardcvv=:cardcvv WHERE id=:id")
-//    void updatecard(String cardnumber, String cardholder, String carddate, String cardcvv, int id);
-//
-//    @Query("UPDATE address_table SET name=:name ,city=:city ,zip=:zip ,mobile_number=:mobile_number ,address=:address WHERE id=:id")
-//    void updateaddress(String name, String city, String zip, String mobile_number, String address, int id);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void inserttransaction(List<TransactionModel> transactionModelList);
+
+    @Query("SELECT * FROM transaction_table")
+    List<TransactionModel> getalltransaction();
 }
-
-
 
 //    UserModel verifyuser(String email, String password);
 //    UserModel checkuser(String email);
 //@Query("SELECT email FROM user_table")
 //String getemail();
+
+
+//    @Query("UPDATE cards_table SET cardnumber=:cardnumber, cardholder=:cardholder, carddate=:carddate, cardcvv=:cardcvv WHERE id=:id")
+//    void updatecard(String cardnumber, String cardholder, String carddate, String cardcvv, int id);
+//
+//    @Query("UPDATE address_table SET name=:name ,city=:city ,zip=:zip ,mobile_number=:mobile_number ,address=:address WHERE id=:id")
+//    void updateaddress(String name, String city, String zip, String mobile_number, String address, int id);

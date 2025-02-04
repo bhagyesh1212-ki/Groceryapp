@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.shop.setOnClickListener(v -> {
-
             Intent i = new Intent(MainActivity.this, AddToCartActivity.class);
             startActivity(i);
         });
@@ -74,5 +73,11 @@ public class MainActivity extends AppCompatActivity {
         binding.home.setImageResource(iconid == R.id.home ? R.drawable.home_black : R.drawable.home_white);
         binding.profile.setImageResource(iconid == R.id.profile ? R.drawable.profile_black : R.drawable.profile_white);
         binding.like.setImageResource(iconid == R.id.like ? R.drawable.like_black : R.drawable.like_white);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
     }
 }

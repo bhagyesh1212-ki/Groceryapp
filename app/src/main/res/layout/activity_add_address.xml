@@ -317,6 +317,7 @@
                     android:id="@+id/spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:popupBackground="@color/white"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:dropDownVerticalOffset="@dimen/_42sdp"

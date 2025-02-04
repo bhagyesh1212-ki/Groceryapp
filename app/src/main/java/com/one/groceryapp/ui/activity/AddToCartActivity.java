@@ -1,5 +1,6 @@
 package com.one.groceryapp.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -21,12 +22,13 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
     ArrayList<FeatureProductModel> modelArrayList = new ArrayList<>();
     AddToCartAdapter adapter;
     int shippingcharge;
+    int total;
 
-    private OnCartItemDeletedListener mCartItemDeletedListener;
-
-    public interface OnCartItemDeletedListener {
-        void onCartItemDeleted();
-    }
+//    private OnCartItemDeletedListener mCartItemDeletedListener;
+//
+//    public interface OnCartItemDeletedListener {
+//        void onCartItemDeleted();
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,16 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
             getOnBackPressedDispatcher().onBackPressed();
         });
 
+        binding.Checkout.setOnClickListener(v -> {
+            if(total > 0){
+                Intent i = new Intent(this,PaymentActivity.class);
+                i.putExtra("price",total);
+                startActivity(i);
+            }else {
+                Toast.makeText(this, "please add item in cart", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 //        // Set the listener for when an item is deleted from the cart
 //        if (getSupportFragmentManager().findFragmentByTag(HomeFragment.class.getSimpleName()) != null) {
 //            mCartItemDeletedListener = (OnCartItemDeletedListener) getSupportFragmentManager().findFragmentByTag(HomeFragment.class.getSimpleName());
@@ -46,7 +58,7 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
 //        Arraylist.featureProductModelArrayList = Constants.featureProductModelArrayList();
 
         for (int i = 0; i < Constants.productModels.size(); i++) {
-            if (Constants.arrayList.get(i).getAddtocart()) {
+            if (Constants.productModels.get(i).getAddtocart()) {
                 modelArrayList.add(Constants.productModels.get(i));
             }
         }
@@ -60,6 +72,12 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
 
         shippingcharge = calculateShippingCharge(itemCount);
         binding.shippingCharge.setText(String.valueOf(shippingcharge));
+
+
+
+
+
+
 
 //        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
 //            @Override
@@ -121,11 +139,11 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
 //        itemTouchHelper.attachToRecyclerView(binding.rcv);
     }
 
-    public void deleteItem(int position) {
-        adapter.notifyItemRemoved(position);
-        Constants.arrayList.remove(position);
-        Constants.arrayList.get(position).setAddtocart(false);
-    }
+//    public void deleteItem(int position) {
+//        adapter.notifyItemRemoved(position);
+//        Constants.arrayList.remove(position);
+//        Constants.arrayList.get(position).setAddtocart(false);
+//    }
 
 
     private int calculateShippingCharge(int itemCount) {
@@ -134,7 +152,7 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
 
     @Override
     public void onPriceChange(int newPrice) {
-        Log.d("AddToCartActivity", "Updated Price: " + newPrice);
+        Log.d("AddToCartActivity", "Price: " + newPrice);
         runOnUiThread(() -> {
             binding.subTotal.setText(String.valueOf(newPrice));
             Log.d("AddToCartActivity", "SubTotal TextView updated: " + newPrice);
@@ -146,7 +164,7 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
             Toast.makeText(this, "Cart is empty!", Toast.LENGTH_SHORT).show();
         } else {
             shippingcharge = calculateShippingCharge(adapter.getItemCount());
-            int total = shippingcharge + newPrice;
+            total = shippingcharge + newPrice;
             binding.shippingCharge.setText(String.valueOf(shippingcharge));
             binding.totalPay.setText(String.valueOf(total));
         }

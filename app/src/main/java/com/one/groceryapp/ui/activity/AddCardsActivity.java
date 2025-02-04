@@ -1,40 +1,19 @@
 package com.one.groceryapp.ui.activity;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.one.groceryapp.R;
 import com.one.groceryapp.databinding.ActivityAddCardsBinding;
-import com.one.groceryapp.databinding.ActivityAddToCartBinding;
-import com.one.groceryapp.databinding.ActivityMyCardsBinding;
-import com.one.groceryapp.model.CardModel;
 
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Locale;
+import java.util.Date;
 
 public class AddCardsActivity extends AppCompatActivity {
 
     ActivityAddCardsBinding binding;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +26,13 @@ public class AddCardsActivity extends AppCompatActivity {
             onBackPressed();
         });
 
-        binding.addCardBtn.setOnClickListener(v -> {
 
+//        String pattern = "MM/yy";
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+//        String date = simpleDateFormat.format(new Date());
+//        binding.dateEdt.setText(date);
+
+        binding.addCardBtn.setOnClickListener(v -> {
             String nameEdt = binding.nameEdt.getText().toString();
             String cardNumEdt = binding.cardNumEdt.getText().toString();
             String dateEdt = binding.dateEdt.getText().toString();
@@ -66,6 +50,5 @@ public class AddCardsActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 }

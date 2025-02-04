@@ -7,7 +7,6 @@ public class AddtocartModel {
     private int price;
     private int quantity;
     private String dozen;
-
     private Boolean delete;
 
     public AddtocartModel(int image, String productname, int price, int quantity, String dozen) {

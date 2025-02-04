@@ -15,6 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +29,7 @@ import com.one.groceryapp.ui.activity.LoginActivity;
 import com.one.groceryapp.ui.activity.MyAddressActivity;
 import com.one.groceryapp.ui.activity.MyCardsActivity;
 import com.one.groceryapp.ui.activity.NotificationActivity;
+import com.one.groceryapp.ui.activity.TransactionActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -99,7 +102,6 @@ public class ProfileFragment extends Fragment {
             bottomSheetDialog.show();
         });
 
-
         String name = splitDomainName(email, "@");
         binding.name.setText(name);
 
@@ -120,6 +122,11 @@ public class ProfileFragment extends Fragment {
             startActivity(i);
         });
 
+        binding.transansaction.setOnClickListener(v -> {
+            Intent i = new Intent(getContext(), TransactionActivity.class);
+            startActivity(i);
+        });
+
         binding.myaddress.setOnClickListener(v -> {
             Intent i = new Intent(getContext(), MyAddressActivity.class);
             startActivity(i);
@@ -137,7 +144,7 @@ public class ProfileFragment extends Fragment {
             Bitmap image = (Bitmap) data.getExtras().get("data");
             binding.profileImage.setImageBitmap(image);
 
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+//            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 //            image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
 //            byte[] byteArray = byteArrayOutputStream.toByteArray();
 //            String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
