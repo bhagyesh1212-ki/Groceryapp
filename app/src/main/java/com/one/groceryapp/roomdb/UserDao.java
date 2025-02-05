@@ -7,6 +7,7 @@ import androidx.room.Query;
 
 import com.one.groceryapp.model.AddressModel;
 import com.one.groceryapp.model.CardModel;
+import com.one.groceryapp.model.MyOrderModel;
 import com.one.groceryapp.model.TransactionModel;
 
 import java.util.List;
@@ -61,6 +62,16 @@ public interface UserDao {
 
     @Query("SELECT * FROM transaction_table")
     List<TransactionModel> getalltransaction();
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertmyorder(List<MyOrderModel> myOrderModelList);
+
+    @Query("SELECT * FROM myorder_table")
+    List<MyOrderModel> getallmyorder();
+
+//    @Query("SELECT price FROM myorder_table")
+//    List<MyOrderModel> getallprice();
+
 }
 
 //    UserModel verifyuser(String email, String password);

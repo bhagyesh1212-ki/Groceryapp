@@ -1,12 +1,18 @@
 package com.one.groceryapp.ui.activity;
 
-import android.content.SharedPreferences;
+import static androidx.core.content.ContextCompat.registerReceiver;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.one.groceryapp.databinding.ActivityTransactionBinding;
+import com.one.groceryapp.model.MyOrderModel;
 import com.one.groceryapp.model.TransactionModel;
 import com.one.groceryapp.roomdb.AppDatabase;
 import com.one.groceryapp.roomdb.UserDao;
@@ -19,13 +25,14 @@ import java.util.Calendar;
 public class TransactionActivity extends AppCompatActivity {
 
     ActivityTransactionBinding binding;
-
     String dateTime;
     Calendar calendar;
     SimpleDateFormat simpleDateFormat;
     AppDatabase appDatabase;
     UserDao userDao;
-    ArrayList<TransactionModel> transactionModelArrayList = new ArrayList<>();
+    int price;
+    ArrayList<MyOrderModel> myOrderModelArrayList = new ArrayList<>();
+    ArrayList<MyOrderModel> myOrderModelArrayList1 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,22 +47,16 @@ public class TransactionActivity extends AppCompatActivity {
             onBackPressed();
         });
 
-        SharedPreferences sf = getSharedPreferences("saveprice", MODE_PRIVATE);
-        int price = sf.getInt("price", 0);
+        myOrderModelArrayList = (ArrayList<MyOrderModel>) userDao.getallmyorder();
 
-        calendar = Calendar.getInstance();
-        simpleDateFormat = new SimpleDateFormat("MMM dd yyyy HH:mm a");
-
-        dateTime = simpleDateFormat.format(calendar.getTime()).toString();
-
-        if(String.valueOf(price) != null){
-            transactionModelArrayList.add(new TransactionModel(price, dateTime));
-            userDao.inserttransaction(transactionModelArrayList);
+        for (int i = 0; i < myOrderModelArrayList.size(); i++) {
+             price = myOrderModelArrayList.get(i).getPrice();
         }
 
-        transactionModelArrayList = (ArrayList<TransactionModel>) userDao.getalltransaction();
+        myOrderModelArrayList1.add(new MyOrderModel(0,price,dateTime));
+        myOrderModelArrayList1 = (ArrayList<MyOrderModel>) userDao.getallmyorder();
 
-        TransactinAdapter adapter = new TransactinAdapter(transactionModelArrayList, TransactionActivity.this);
+        TransactinAdapter adapter = new TransactinAdapter(myOrderModelArrayList1, TransactionActivity.this);
         binding.rcv.setAdapter(adapter);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);

@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.one.groceryapp.databinding.DemoTransactionBinding;
+import com.one.groceryapp.model.MyOrderModel;
 import com.one.groceryapp.model.TransactionModel;
 
 import java.text.SimpleDateFormat;
@@ -15,13 +16,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class TransactinAdapter extends RecyclerView.Adapter<TransactinAdapter.ViewHolder> {
-    ArrayList<TransactionModel> transactionModelArrayList;
+    ArrayList<MyOrderModel> myOrderModelArrayList;
     Context context;
 
-
-
-    public TransactinAdapter(ArrayList<TransactionModel> transactionModelArrayList, Context context) {
-        this.transactionModelArrayList = transactionModelArrayList;
+    public TransactinAdapter(ArrayList<MyOrderModel> myOrderModelArrayList, Context context) {
+        this.myOrderModelArrayList = myOrderModelArrayList;
         this.context = context;
     }
 
@@ -34,14 +33,14 @@ public class TransactinAdapter extends RecyclerView.Adapter<TransactinAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull TransactinAdapter.ViewHolder holder, int position) {
-        TransactionModel transactionModel = transactionModelArrayList.get(position);
-        holder.binding.price.setText(String.valueOf(transactionModel.getPrice()));
-        holder.binding.dateAndTime.setText(transactionModel.getDate());
+        MyOrderModel myOrderModel = myOrderModelArrayList.get(position);
+        holder.binding.price.setText(String.valueOf(myOrderModel.getPrice()));
+        holder.binding.dateAndTime.setText(myOrderModel.getDate());
     }
 
     @Override
     public int getItemCount() {
-        return transactionModelArrayList.size();
+        return myOrderModelArrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

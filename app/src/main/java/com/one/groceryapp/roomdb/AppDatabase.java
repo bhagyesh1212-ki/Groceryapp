@@ -13,9 +13,10 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.one.groceryapp.model.AddressModel;
 import com.one.groceryapp.model.CardModel;
 import com.one.groceryapp.model.FeatureProductModel;
+import com.one.groceryapp.model.MyOrderModel;
 import com.one.groceryapp.model.TransactionModel;
 
-@Database(entities = {UserModel.class, AddressModel.class, CardModel.class, TransactionModel.class}, version = 4)
+@Database(entities = {UserModel.class, AddressModel.class, CardModel.class, TransactionModel.class, MyOrderModel.class}, version = 5)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String databaseName = "user_database";
     public abstract UserDao userDao();
@@ -40,6 +41,14 @@ public abstract class AppDatabase extends RoomDatabase {
         }
     };
 
+    static final Migration MIGRATION_4_5 = new Migration(4,5) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("CREATE TABLE IF NOT EXISTS `myorder_table` (`date` TEXT ," + "`price` INTEGER NOT NULL," + "`item` INTEGER NOT NULL," + " `id` INTEGER NOT NULL," + "PRIMARY KEY(`id`))");
+        }
+    };
+
+
     public static AppDatabase getInstance(final Context context) {
         if (INSTANCE == null) {
             synchronized (AppDatabase.class) {
@@ -49,6 +58,7 @@ public abstract class AppDatabase extends RoomDatabase {
                             .addMigrations(MIGRATION_1_2)
                             .addMigrations(MIGRATION_2_3)
                             .addMigrations(MIGRATION_3_4)
+                            .addMigrations(MIGRATION_4_5)
                             .build();
                     Log.d("TAG", "New instance created...");
                 }

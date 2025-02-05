@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.one.groceryapp.databinding.ActivityAddToCartBinding;
 import com.one.groceryapp.model.FeatureProductModel;
 import com.one.groceryapp.ui.adapter.AddToCartAdapter;
-import com.one.groceryapp.ui.fragment.HomeFragment;
 import com.one.groceryapp.utils.Constants;
 
 import java.util.ArrayList;
@@ -41,11 +40,12 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
         });
 
         binding.Checkout.setOnClickListener(v -> {
-            if(total > 0){
-                Intent i = new Intent(this,PaymentActivity.class);
-                i.putExtra("price",total);
+            if (total > 0) {
+                Intent i = new Intent(this, PaymentActivity.class);
+                i.putExtra("price", total);
+                i.putExtra("itemquantity",shippingcharge);
                 startActivity(i);
-            }else {
+            } else {
                 Toast.makeText(this, "please add item in cart", Toast.LENGTH_SHORT).show();
             }
         });
@@ -72,11 +72,6 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
 
         shippingcharge = calculateShippingCharge(itemCount);
         binding.shippingCharge.setText(String.valueOf(shippingcharge));
-
-
-
-
-
 
 
 //        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {

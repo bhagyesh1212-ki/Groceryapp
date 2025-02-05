@@ -28,6 +28,7 @@ import com.one.groceryapp.ui.activity.AboutMeActivity;
 import com.one.groceryapp.ui.activity.LoginActivity;
 import com.one.groceryapp.ui.activity.MyAddressActivity;
 import com.one.groceryapp.ui.activity.MyCardsActivity;
+import com.one.groceryapp.ui.activity.MyOrderActivity;
 import com.one.groceryapp.ui.activity.NotificationActivity;
 import com.one.groceryapp.ui.activity.TransactionActivity;
 
@@ -36,7 +37,6 @@ import java.io.IOException;
 
 
 public class ProfileFragment extends Fragment {
-
 
     private static final int CAMERA_PIC_REQUEST = 1;
     private static final int RESULT_GALLERY = 2;
@@ -76,7 +76,6 @@ public class ProfileFragment extends Fragment {
         binding.camera.setOnClickListener(v -> {
             final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
             bottomSheetDialog.setContentView(R.layout.bottom_sheet);
-
 
             bottomSheetDialog.findViewById(R.id.camera_layout).setOnClickListener(v1 -> {
                 if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA)
@@ -124,6 +123,11 @@ public class ProfileFragment extends Fragment {
 
         binding.transansaction.setOnClickListener(v -> {
             Intent i = new Intent(getContext(), TransactionActivity.class);
+            startActivity(i);
+        });
+
+        binding.myorder.setOnClickListener(v -> {
+            Intent i = new Intent(getContext(), MyOrderActivity.class);
             startActivity(i);
         });
 

@@ -13,7 +13,6 @@ public class PaymentActivity extends AppCompatActivity {
 
     ActivityPaymentBinding binding;
     String[] descriptionData = {"DELIVERY", "ADDRESS", "PAYMENT"};
-
     int price;
 
     @Override
@@ -38,7 +37,8 @@ public class PaymentActivity extends AppCompatActivity {
         binding.vp.setAdapter(ViewPagerStateProgress);
         binding.vp.setUserInputEnabled(false);
 
-         price = getIntent().getIntExtra("price", 0);
+        price = getIntent().getIntExtra("price", 0);
+        int shippingcharge = getIntent().getIntExtra("itemquantity",0);
 
         binding.next.setOnClickListener(v -> {
             if (binding.yourStateProgressBarId.getCurrentStateNumber() == 0) {
@@ -57,6 +57,7 @@ public class PaymentActivity extends AppCompatActivity {
                 binding.next.setOnClickListener(v1 -> {
                     Intent i = new Intent(this, OrderSuccessActivity.class);
                     i.putExtra("price", price);
+                    i.putExtra("itemquantity",shippingcharge);
                     startActivity(i);
                     finish();
                 });
