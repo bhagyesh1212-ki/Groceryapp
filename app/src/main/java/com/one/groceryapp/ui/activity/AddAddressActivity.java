@@ -32,7 +32,8 @@ public class AddAddressActivity extends AppCompatActivity implements AdapterView
         setContentView(binding.getRoot());
 
         binding.back.setOnClickListener(v -> {
-            onBackPressed();
+            startActivity(new Intent(this, MyAddressActivity.class));
+            finish();
         });
 
         final Spinner spinner = binding.spinner;

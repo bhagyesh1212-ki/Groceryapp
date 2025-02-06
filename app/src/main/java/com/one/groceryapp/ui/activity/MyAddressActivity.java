@@ -2,6 +2,7 @@ package com.one.groceryapp.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,12 +29,10 @@ public class MyAddressActivity extends AppCompatActivity {
         binding = ActivityMyAddressBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-//        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
-//                new IntentFilter("custom-message"));
-
         binding.addaddress.setOnClickListener(v -> {
             Intent i = new Intent(this, AddAddressActivity.class);
             startActivity(i);
+            finish();
         });
 
         binding.back.setOnClickListener(v -> {
@@ -42,6 +41,7 @@ public class MyAddressActivity extends AppCompatActivity {
 
         binding.saveSettingsBtn.setOnClickListener(v -> {
             onBackPressed();
+            Toast.makeText(this, "save settings successfully", Toast.LENGTH_SHORT).show();
         });
 
         appDatabase = AppDatabase.getInstance(getApplicationContext());
@@ -61,7 +61,6 @@ public class MyAddressActivity extends AppCompatActivity {
         }
 
         addressModelList = userDao.getaddress();
-
         MyAddressAdapter adapter = new MyAddressAdapter(addressModelList, MyAddressActivity.this);
         binding.rcv.setAdapter(adapter);
 
@@ -69,24 +68,4 @@ public class MyAddressActivity extends AppCompatActivity {
         linearLayoutManager.setStackFromEnd(true);
         binding.rcv.setLayoutManager(linearLayoutManager);
     }
-
-//    public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
-//        @Override
-//        public void onReceive(Context context, Intent intent) {
-//            String nameUpdate = intent.getStringExtra("nameUpdate");
-//            String addressUpdate = intent.getStringExtra("addressUpdate");
-//            String zipUpdate = intent.getStringExtra("zipUpdate");
-//            String cityUpdate = intent.getStringExtra("cityUpdate");
-//            String phoneUpdate = intent.getStringExtra("phoneUpdate");
-//
-//            binding.saveSettingsBtn.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    for (int i = 0; i < userDao.getDataCount(); i++) {
-//                        userDao.updateaddress(nameUpdate, cityUpdate, zipUpdate, phoneUpdate, addressUpdate,i);
-//                    }
-//                }
-//            });
-//        }
-//    };
 }

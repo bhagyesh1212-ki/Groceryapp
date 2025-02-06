@@ -47,13 +47,12 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder
         holder.binding.date.setText(cardModel.getCarddate());
         holder.binding.cvv.setText(cardModel.getCardcvv());
 
-        for (int i = 1; i < userDao.getCardDataCount(); i++) {
+        for (int i = 0; i < userDao.getCardDataCount(); i++) {
             holder.binding.cardNumEdt.setText(cardModel.getCardnumber());
             holder.binding.cvvEdt.setText(cardModel.getCardcvv());
             holder.binding.dateEdt.setText(cardModel.getCarddate());
             holder.binding.nameEdt.setText(cardModel.getCardholder());
         }
-
 
             String holdername = holder.binding.nameEdt.getText().toString();
             String cardnumber = holder.binding.cardNumEdt.getText().toString();

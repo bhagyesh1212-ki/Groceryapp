@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.github.vipulasri.timelineview.TimelineView
+        android:id="@+id/timeline"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_40sdp"
+        app:markerSize="@dimen/_10sdp"
+        app:lineWidth="2dp"
+        app:markerInCenter="true"
+        app:startLineColor="@color/color_primary_dark"
+        app:endLineColor="@color/color_primary_dark"/>
+
+    <TextView
+        android:id="@+id/txtOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order placed"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="@dimen/horizontal_padding"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="@dimen/_12ssp"/>
+
+    <TextView
+        android:id="@+id/txtOrderDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Oct 19 2021"
+        android:gravity="end"
+        android:layout_gravity="center_vertical"
+        android:textSize="@dimen/_12ssp"
+        android:textColor="@color/grey"
+        android:fontFamily="@font/poppins_semibold"
+        android:layout_alignParentEnd="true"/>
+
+</LinearLayout>

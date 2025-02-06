@@ -2,38 +2,37 @@ package com.one.groceryapp.roomdb;
 
 import android.content.Context;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
-
 import com.one.groceryapp.model.AddressModel;
 import com.one.groceryapp.model.CardModel;
 import com.one.groceryapp.model.FeatureProductModel;
 import com.one.groceryapp.model.MyOrderModel;
 import com.one.groceryapp.model.TransactionModel;
 
-@Database(entities = {UserModel.class, AddressModel.class, CardModel.class, TransactionModel.class, MyOrderModel.class}, version = 5)
+@Database(entities = {UserModel.class, AddressModel.class, CardModel.class, TransactionModel.class, MyOrderModel.class}, version = 6)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String databaseName = "user_database";
     public abstract UserDao userDao();
     private static volatile AppDatabase INSTANCE;
-
     static final Migration MIGRATION_1_2 = new Migration(1, 2) {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
-            database.execSQL("CREATE TABLE IF NOT EXISTS `Address_table` (`zip` TEXT ," + "`country` TEXT ," + "`address` TEXT," + " `city` TEXT ," + "`name` TEXT," + "`id` INTEGER NOT NULL," + "`mobile_number` TEXT," + "`email` TEXT)");
+            database.execSQL("CREATE TABLE IF NOT EXISTS `Address_table` (`id` INTEGER NOT NULL," + "`name` TEXT," + "`email` TEXT," + "`mobile_number` TEXT," + "`zip` TEXT ," + "`country` TEXT ," + "`address` TEXT," + " `city` TEXT )");
         }
     };
+
     static final Migration MIGRATION_2_3 = new Migration(2, 3) {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
             database.execSQL("CREATE TABLE IF NOT EXISTS `Cards_table` (`id` INTEGER NOT NULL," + "`cardnumber` TEXT," + "`cardholder` TEXT  ," + "`carddate` TEXT," + " `cardcvv` TEXT ," + "PRIMARY KEY(`id`))");
         }
     };
+
     static final Migration MIGRATION_3_4 = new Migration(3,4) {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
@@ -48,7 +47,6 @@ public abstract class AppDatabase extends RoomDatabase {
         }
     };
 
-
     public static AppDatabase getInstance(final Context context) {
         if (INSTANCE == null) {
             synchronized (AppDatabase.class) {
@@ -59,6 +57,7 @@ public abstract class AppDatabase extends RoomDatabase {
                             .addMigrations(MIGRATION_2_3)
                             .addMigrations(MIGRATION_3_4)
                             .addMigrations(MIGRATION_4_5)
+                            .fallbackToDestructiveMigration()
                             .build();
                     Log.d("TAG", "New instance created...");
                 }

@@ -18,6 +18,7 @@ import com.one.groceryapp.databinding.ActivityFilterBinding;
 public class FilterActivity extends AppCompatActivity {
 
     ActivityFilterBinding binding;
+    boolean ischecked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,19 +37,35 @@ public class FilterActivity extends AppCompatActivity {
         binding.discount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                binding.discountCheck.setImageResource(R.drawable.checkmarkgreen);
+                ischecked = !ischecked;
+                if(ischecked){
+                    binding.discountCheck.setImageResource(R.drawable.checkmarkgreen);
+                }else {
+                    binding.discountCheck.setImageResource(R.drawable.checkmark);
+                }
+
             }
         });
         binding.freeShipping.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                binding.shippingCheck.setImageResource(R.drawable.checkmarkgreen);
+                ischecked = !ischecked;
+                if(ischecked){
+                    binding.shippingCheck.setImageResource(R.drawable.checkmarkgreen);
+                }else {
+                    binding.shippingCheck.setImageResource(R.drawable.checkmark);
+                }
             }
         });
         binding.delivery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                binding.deliveryCheck.setImageResource(R.drawable.checkmarkgreen);
+                ischecked = !ischecked;
+                if(ischecked){
+                    binding.deliveryCheck.setImageResource(R.drawable.checkmarkgreen);
+                }else {
+                    binding.deliveryCheck.setImageResource(R.drawable.checkmark);
+                }
             }
         });
 

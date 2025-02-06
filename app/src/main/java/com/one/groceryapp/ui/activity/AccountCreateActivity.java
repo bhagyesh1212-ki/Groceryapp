@@ -136,6 +136,7 @@ public class AccountCreateActivity extends AppCompatActivity {
 
                             Intent i = new Intent(AccountCreateActivity.this, MainActivity.class);
                             startActivity(i);
+                            finish();
                             Toast.makeText(AccountCreateActivity.this, "Signup successfully", Toast.LENGTH_SHORT).show();
                         } else {
                             showProgressBar(false);

@@ -61,8 +61,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_25sdp"
             android:fontFamily="@font/poppins_semibold"
-            android:text="@string/create_account"
             android:gravity="center_vertical"
+            android:text="@string/create_account"
             android:textColor="@color/black"
             android:textSize="@dimen/_20ssp" />
 
@@ -98,16 +98,16 @@
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColorHint="@color/grey"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
-
                     android:background="@color/white"
+
                     android:fontFamily="@font/poppins_medium"
                     android:hint="@string/email_address"
                     android:importantForAutofill="no"
                     android:inputType="textEmailAddress"
                     android:textColor="@color/grey"
+                    android:textColorHint="@color/grey"
                     android:textSize="@dimen/_10ssp" />
             </LinearLayout>
         </RelativeLayout>
@@ -136,17 +136,17 @@
                 <EditText
                     android:id="@+id/phonenum"
                     android:layout_width="match_parent"
-                    android:textColorHint="@color/grey"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
-
                     android:background="@color/white"
                     android:fontFamily="@font/poppins_medium"
                     android:hint="@string/phone_number"
                     android:importantForAutofill="no"
                     android:inputType="phone"
+                    android:maxLength="10"
                     android:textColor="@color/grey"
+                    android:textColorHint="@color/grey"
                     android:textSize="@dimen/_10ssp" />
             </LinearLayout>
         </RelativeLayout>
@@ -179,11 +179,11 @@
                     android:layout_marginStart="@dimen/_15sdp"
                     android:background="@color/white"
                     android:fontFamily="@font/poppins_medium"
-                    android:textColorHint="@color/grey"
                     android:hint="@string/password"
                     android:importantForAutofill="no"
                     android:inputType="textPassword"
                     android:textColor="@color/grey"
+                    android:textColorHint="@color/grey"
                     android:textSize="@dimen/_10ssp" />
 
                 <RelativeLayout

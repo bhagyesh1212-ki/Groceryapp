@@ -4,11 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -60,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(MainActivity.this, AddToCartActivity.class);
             startActivity(i);
         });
-
     }
+
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -73,11 +69,5 @@ public class MainActivity extends AppCompatActivity {
         binding.home.setImageResource(iconid == R.id.home ? R.drawable.home_black : R.drawable.home_white);
         binding.profile.setImageResource(iconid == R.id.profile ? R.drawable.profile_black : R.drawable.profile_white);
         binding.like.setImageResource(iconid == R.id.like ? R.drawable.like_black : R.drawable.like_white);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finishAffinity();
     }
 }

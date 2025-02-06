@@ -1,9 +1,13 @@
 package com.one.groceryapp.ui.fragment;
 
+import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
+
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -15,7 +19,6 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -32,7 +35,6 @@ import com.one.groceryapp.ui.activity.MyOrderActivity;
 import com.one.groceryapp.ui.activity.NotificationActivity;
 import com.one.groceryapp.ui.activity.TransactionActivity;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 
@@ -41,9 +43,7 @@ public class ProfileFragment extends Fragment {
     private static final int CAMERA_PIC_REQUEST = 1;
     private static final int RESULT_GALLERY = 2;
     FragmentProfileBinding binding;
-
     FirebaseAuth mAuth;
-
     AppDatabase appDatabase;
     UserDao userDao;
 
@@ -136,7 +136,19 @@ public class ProfileFragment extends Fragment {
             startActivity(i);
         });
 
+        binding.myfavorite.setOnClickListener(v -> {
+            swapFragment();
+        });
+
         return binding.getRoot();
+    }
+
+    private void swapFragment() {
+        LikeFragment newGamefragment = new LikeFragment();
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout, newGamefragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -144,31 +156,17 @@ public class ProfileFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         appDatabase = AppDatabase.getInstance(getContext());
         userDao = appDatabase.userDao();
-        if (requestCode == CAMERA_PIC_REQUEST) {
-            Bitmap image = (Bitmap) data.getExtras().get("data");
-            binding.profileImage.setImageBitmap(image);
 
-//            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-//            image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-//            byte[] byteArray = byteArrayOutputStream.toByteArray();
-//            String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
-//            userDao.insertimage(Byte.parseByte(encoded));
 
+        if (resultCode == CAMERA_PIC_REQUEST) {
+            if (requestCode != RESULT_CANCELED) {
+                Bitmap photo = (Bitmap) data.getExtras().get("data");
+                binding.profileImage.setImageBitmap(photo);
+            }
         } else if (requestCode == RESULT_GALLERY) {
-            if (data != null) {
-                Bitmap bitmap = null;
-                try {
-                    bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), data.getData());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                binding.profileImage.setImageBitmap(bitmap);
-
-//                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-//                bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-//                byte[] byteArray = byteArrayOutputStream.toByteArray();
-//                String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
-//                userDao.insertimage(Byte.parseByte(encoded));
+            if (resultCode == RESULT_OK) {
+                Uri imageUri = data.getData();
+                binding.profileImage.setImageURI(imageUri);
             }
         }
     }

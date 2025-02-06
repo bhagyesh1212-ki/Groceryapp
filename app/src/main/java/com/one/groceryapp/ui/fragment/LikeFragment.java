@@ -72,4 +72,5 @@ public class LikeFragment extends Fragment implements AddToCartAdapter.OnPriceCh
 //            binding.totalPay.setText(String.valueOf(total));
 //        }
     }
+
 }

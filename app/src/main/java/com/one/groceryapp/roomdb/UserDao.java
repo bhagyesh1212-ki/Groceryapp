@@ -36,10 +36,10 @@ public interface UserDao {
     @Query("SELECT * FROM address_table WHERE id=:id")
     List<AddressModel> getaddressbyid(int id);
 
-    @Query("SELECT * FROM address_table")
+    @Query("SELECT * FROM address_table ORDER BY id DESC LIMIT 1")
     List<AddressModel> getaddressforfinalpayment();
 
-    @Query("SELECT * FROM cards_table")
+    @Query("SELECT * FROM cards_table  ORDER BY id DESC LIMIT 1")
     List<CardModel> getcardforfinalpayment();
 
     @Query("SELECT COUNT(name) FROM address_table")

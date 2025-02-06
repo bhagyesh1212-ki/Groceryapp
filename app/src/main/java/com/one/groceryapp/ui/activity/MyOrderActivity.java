@@ -22,7 +22,6 @@ public class MyOrderActivity extends AppCompatActivity {
     Calendar calendar;
     SimpleDateFormat simpleDateFormat;
     ArrayList<MyOrderModel> orderModelArrayList = new ArrayList<>();
-
     AppDatabase appDatabase;
     UserDao userDao;
 
@@ -32,6 +31,7 @@ public class MyOrderActivity extends AppCompatActivity {
 
         binding = ActivityMyOrderBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         binding.back.setOnClickListener(v -> {
             onBackPressed();
         });
@@ -50,14 +50,11 @@ public class MyOrderActivity extends AppCompatActivity {
             orderModelArrayList.add(new MyOrderModel(shippingcharge, price, dateTime));
             userDao.insertmyorder(orderModelArrayList);
         }
-        orderModelArrayList = (ArrayList<MyOrderModel>) userDao.getallmyorder();
 
+
+
+        orderModelArrayList = (ArrayList<MyOrderModel>) userDao.getallmyorder();
         OrderAdapter adapter = new OrderAdapter(orderModelArrayList, MyOrderActivity.this);
         binding.rcv.setAdapter(adapter);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
-        linearLayoutManager.setStackFromEnd(true);
-        binding.rcv.setLayoutManager(linearLayoutManager);
-
     }
 }

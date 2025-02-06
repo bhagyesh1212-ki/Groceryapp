@@ -8,7 +8,6 @@ import java.io.Serializable;
 
 @Entity(tableName = "Address_table")
 public class AddressModel implements Serializable {
-
     @PrimaryKey(autoGenerate = true)
     private int id;
     @ColumnInfo(name = "name")
@@ -25,6 +24,8 @@ public class AddressModel implements Serializable {
     private String city;
     @ColumnInfo(name = "country")
     private String country;
+    @ColumnInfo(name = "isswitched")
+    private Boolean isswitched;
 
     public AddressModel(String name, String email, String mobile_number, String address, String zip, String city, String country) {
         this.name = name;
@@ -34,6 +35,14 @@ public class AddressModel implements Serializable {
         this.zip = zip;
         this.city = city;
         this.country = country;
+    }
+
+    public Boolean getIsswitched() {
+        return isswitched;
+    }
+
+    public void setIsswitched(Boolean isswitched) {
+        this.isswitched = isswitched;
     }
 
     public int getId() {

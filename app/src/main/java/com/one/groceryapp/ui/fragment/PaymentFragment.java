@@ -35,7 +35,7 @@ public class PaymentFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentPaymentBinding.inflate(inflater, container, false);
-        for (int i = 1; i < userDao.getCardDataCount() ; i++) {
+        for (int i = 2; i < userDao.getCardDataCount() ; i++) {
             cardModelArrayList = (ArrayList<CardModel>) userDao.getcardforfinalpayment();
 
             String name = cardModelArrayList.get(i).getCardholder();

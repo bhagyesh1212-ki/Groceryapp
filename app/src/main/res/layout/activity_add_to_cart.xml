@@ -4,8 +4,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:background="@color/background_white_first"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".ui.activity.AddToCartActivity">
 
@@ -54,99 +54,78 @@
     <RelativeLayout
         android:id="@+id/payment"
         android:layout_width="match_parent"
-        android:paddingHorizontal="@dimen/horizontal_padding"
         android:layout_height="wrap_content"
-        android:background="@color/white">
-
-        <TextView
-            android:id="@+id/total"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="@dimen/_18sdp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/subtotal"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/_10sdp" />
+        android:background="@color/white"
+        android:paddingHorizontal="@dimen/horizontal_padding">
 
         <LinearLayout
             android:id="@+id/subtotal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:layout_marginTop="@dimen/_18sdp"
-            android:orientation="horizontal"
-            tools:ignore="RelativeOverlap">
+            android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:text="@string/doller"
+                android:text="@string/subtotal"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_10sdp" />
 
             <TextView
                 android:id="@+id/sub_total"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="end"
                 android:fontFamily="@font/poppins_medium"
-                android:text="0"
+                android:text="$0"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_10sdp" />
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/total"
-            android:layout_marginTop="@dimen/_25sdp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/shipping_charges"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/_10sdp" />
-
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/txtShipping"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/subtotal"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="@dimen/_25sdp"
-            android:orientation="horizontal"
-            tools:ignore="RelativeOverlap">
+            android:layout_below="@id/subtotal"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:text="@string/doller"
+                android:text="@string/shipping_charges"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_10sdp" />
 
             <TextView
                 android:id="@+id/shipping_charge"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="end"
                 android:fontFamily="@font/poppins_medium"
-                android:text="0"
+                android:text="$0"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_10sdp" />
-
         </LinearLayout>
 
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:layout_marginTop="@dimen/_70sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_below="@+id/txtShipping"
             android:background="#EBEBEB" />
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/totalpay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/view"
-            android:layout_marginTop="@dimen/_8sdp">
+            android:layout_below="@+id/view">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -156,32 +135,17 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15ssp" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/total_pay"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:orientation="horizontal"
-                tools:ignore="RelativeOverlap">
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="end"
+                android:text="$0"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="@string/doller"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_15sdp" />
-
-                <TextView
-                    android:id="@+id/total_pay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="0"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_15sdp" />
-
-            </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/Checkout"

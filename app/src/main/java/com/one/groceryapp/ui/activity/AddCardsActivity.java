@@ -23,7 +23,8 @@ public class AddCardsActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.back.setOnClickListener(v -> {
-            onBackPressed();
+            startActivity(new Intent(this, MyCardsActivity.class));
+            finish();
         });
 
 

@@ -34,6 +34,7 @@ public class AboutMeActivity extends AppCompatActivity {
         binding.back.setOnClickListener(v -> {
             onBackPressed();
         });
+
         binding.showPassword.setOnClickListener(v -> {
             togglePasswordVisibility(binding.newPassword, binding.showPassword);
         });
@@ -48,7 +49,6 @@ public class AboutMeActivity extends AppCompatActivity {
         binding.phone.setText(phonenumber);
 
         String password = userDao.getpassword();
-
 
         binding.saveSettings.setOnClickListener(v -> {
             String password_edt = binding.currrentPassword.getText().toString();
@@ -71,7 +71,7 @@ public class AboutMeActivity extends AppCompatActivity {
                 Toast.makeText(this, "New password does not match with confirm password", Toast.LENGTH_SHORT).show();
             } else {
                 updatepassword(new_pasword_edt,password);
-                startActivity(new Intent(AboutMeActivity.this, ProfileFragment.class));
+                onBackPressed();
                 Toast.makeText(this, " Password is Successfully updated", Toast.LENGTH_SHORT).show();
             }
         });
