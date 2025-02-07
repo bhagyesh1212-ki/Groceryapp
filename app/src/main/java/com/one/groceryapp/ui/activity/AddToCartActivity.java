@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -23,6 +22,7 @@ import com.one.groceryapp.R;
 import com.one.groceryapp.databinding.ActivityAddToCartBinding;
 import com.one.groceryapp.model.FeatureProductModel;
 import com.one.groceryapp.ui.adapter.AddToCartAdapter;
+import com.one.groceryapp.ui.adapter.MyAddressAdapter;
 import com.one.groceryapp.utils.Constants;
 
 import java.util.ArrayList;
@@ -31,6 +31,7 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
 
     ActivityAddToCartBinding binding;
     ArrayList<FeatureProductModel> modelArrayList = new ArrayList<>();
+    MyAddressAdapter myAddressAdapter;
     AddToCartAdapter adapter;
     int total;
     int itemCount;
@@ -43,6 +44,7 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
 
         binding.back.setOnClickListener(v -> {
             startActivity(new Intent(this, MainActivity.class));
+            finish();
         });
 
         for (int i = 0; i < Constants.productModels.size(); i++) {
@@ -80,8 +82,7 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
         @Override
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
             int position = viewHolder.getAdapterPosition();
-            modelArrayList.remove(position);
-            adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+            adapter.deleteItem(position);
         }
 
         @Override
@@ -137,7 +138,6 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
             binding.totalPay.setText("$0");
             Toast.makeText(this, "Cart is empty!", Toast.LENGTH_SHORT).show();
         } else {
-            Log.d("TAG@@@@", "run: " + newPrice);
             binding.subTotal.setText("$" + newPrice);
             binding.shippingCharge.setText("$5");
             total = newPrice + 5;

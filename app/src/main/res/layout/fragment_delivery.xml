@@ -10,116 +10,119 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:id="@+id/first"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_15sdp"
-        android:background="@color/white"
-        android:padding="@dimen/horizontal_padding">
-
-        <TextView
-            android:id="@+id/standard"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/first"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Standard Delivery"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_13ssp" />
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:background="@color/white"
+            android:padding="@dimen/horizontal_padding">
 
-        <TextView
-            android:layout_width="@dimen/_200sdp"
+            <TextView
+                android:id="@+id/standard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/standard_delivery"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/standard"
+                android:fontFamily="@font/poppins"
+                android:text="@string/order_will_be_delivered_between_3_4_business_days_straights_to_your_doorstep"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_12ssp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/_3"
+                android:textColor="@color/color_primary_dark"
+                android:textSize="@dimen/_13ssp"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/second"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:text="Order will be delivered between 3 - 4 business days straights to your doorstep."
-            android:textColor="@color/grey"
-            android:layout_below="@+id/standard"
-            android:textSize="@dimen/_12ssp"/>
+            android:layout_below="@+id/first"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:background="@color/white"
+            android:padding="@dimen/horizontal_padding">
 
-        <TextView
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/nextday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/next_day_delivery"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nextday"
+                android:fontFamily="@font/poppins"
+                android:text="@string/order_will_be_delivered_between_3_4_business_days_straights_to_your_doorstep"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_12ssp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/_5"
+                android:textColor="@color/color_primary_dark"
+                android:textSize="@dimen/_13ssp"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/three"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="$3"
-            android:layout_alignParentEnd="true"
-            android:textSize="@dimen/_13ssp"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/color_primary_dark"
-            android:layout_centerVertical="true"/>
-    </RelativeLayout>
+            android:layout_below="@+id/second"
+            android:background="@color/white"
+            android:padding="@dimen/horizontal_padding">
 
-    <RelativeLayout
-        android:id="@+id/second"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_15sdp"
-        android:layout_below="@+id/first"
-        android:background="@color/white"
-        android:padding="@dimen/horizontal_padding">
+            <TextView
+                android:id="@+id/nominated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/nominated_delivery"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp" />
 
-        <TextView
-            android:id="@+id/nextday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Next Day Delivery"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_13ssp" />
+            <TextView
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nominated"
+                android:fontFamily="@font/poppins"
+                android:text="@string/order_will_be_delivered_between_3_4_business_days_straights_to_your_doorstep"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_12ssp" />
 
-        <TextView
-            android:layout_width="@dimen/_200sdp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:layout_below="@+id/nextday"
-            android:text="Order will be delivered between 3 - 4 business days straights to your doorstep."
-            android:textColor="@color/grey"
-            android:textSize="@dimen/_12ssp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$5"
-            android:layout_alignParentEnd="true"
-            android:textSize="@dimen/_13ssp"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/color_primary_dark"
-            android:layout_centerVertical="true"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/three"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/second"
-        android:background="@color/white"
-        android:padding="@dimen/horizontal_padding">
-
-        <TextView
-            android:id="@+id/nominated"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Nominated Delivery"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_13ssp" />
-
-        <TextView
-            android:layout_width="@dimen/_200sdp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:layout_below="@+id/nominated"
-            android:text="Order will be delivered between 3 - 4 business days straights to your doorstep."
-            android:textColor="@color/grey"
-            android:textSize="@dimen/_12ssp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$3"
-            android:layout_alignParentEnd="true"
-            android:textSize="@dimen/_13ssp"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/color_primary_dark"
-            android:layout_centerVertical="true"/>
-    </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/_3"
+                android:textColor="@color/color_primary_dark"
+                android:textSize="@dimen/_13ssp"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

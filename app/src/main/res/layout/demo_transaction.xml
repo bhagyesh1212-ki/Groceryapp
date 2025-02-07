@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
@@ -12,6 +13,7 @@
         android:layout_height="@dimen/_42sdp"
         android:layout_marginEnd="@dimen/horizontal_padding"
         android:background="@drawable/productdetailbehind_bg"
+        android:contentDescription="@string/mastercardicon"
         android:padding="@dimen/_7sdp"
         android:src="@drawable/master_logo" />
 
@@ -26,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
-            android:text="Master Card"
+            android:text="@string/master_card"
             android:textColor="@color/black"
             android:textSize="@dimen/_13ssp" />
 
@@ -35,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:text="Dec 12 2021 at 10:00 pm"
+            android:text="@string/dec_12_2021_at_10_00_pm"
             android:textColor="@color/black"
             android:textSize="@dimen/_10ssp" />
     </LinearLayout>
@@ -45,7 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="RelativeOverlap">
 
         <TextView
             android:layout_width="wrap_content"

@@ -19,7 +19,7 @@
         android:id="@+id/txtOrder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Order placed"
+        android:text="@string/order_placed"
         android:layout_gravity="center_vertical"
         android:layout_marginHorizontal="@dimen/horizontal_padding"
         android:textColor="@color/black"
@@ -30,12 +30,11 @@
         android:id="@+id/txtOrderDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Oct 19 2021"
+        android:text="@string/oct_19_2021"
         android:gravity="end"
         android:layout_gravity="center_vertical"
         android:textSize="@dimen/_12ssp"
         android:textColor="@color/grey"
-        android:fontFamily="@font/poppins_semibold"
-        android:layout_alignParentEnd="true"/>
+        android:fontFamily="@font/poppins_semibold" />
 
 </LinearLayout>

@@ -2,7 +2,6 @@ package com.one.groceryapp.ui.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.transition.AutoTransition;
@@ -16,10 +15,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.transition.Hold;
 import com.one.groceryapp.R;
 import com.one.groceryapp.databinding.DemoAddressBinding;
 import com.one.groceryapp.model.AddressModel;
@@ -36,7 +33,7 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
     Context context;
     AppDatabase appDatabase;
     UserDao userDao;
-    int selectedposition = 0;
+    private int selectedposition = 0;
 
     public MyAddressAdapter(List<AddressModel> addressModelList, Context context) {
         this.addressModelList = addressModelList;
@@ -68,15 +65,14 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
             holder.binding.zipEdit.setText(addressModel.getZip());
         }
 
-
-        holder.binding.switchview.setOnClickListener(v -> {
-            if (holder.binding.switchview.isChecked()) {
-
-                holder.binding.default12.setVisibility(View.VISIBLE);
-            } else {
-                holder.binding.default12.setVisibility(View.GONE);
-            }
-        });
+//        holder.binding.switchview.setOnClickListener(v -> {
+//            if (holder.binding.switchview.isChecked()) {
+//
+//                holder.binding.default12.setVisibility(View.VISIBLE);
+//            } else {
+//                holder.binding.default12.setVisibility(View.GONE);
+//            }
+//        });
 
         final Spinner spinner = holder.binding.spinner;
         spinner.setOnItemSelectedListener(this);
@@ -101,6 +97,46 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
                 holder.binding.dropUp.setImageResource(R.drawable.dropdown);
             }
         });
+
+        holder.binding.switchview.setOnCheckedChangeListener(null);
+        holder.binding.switchview.setChecked(position == selectedposition);
+
+        if (holder.binding.switchview.isChecked()) {
+            holder.binding.default12.setVisibility(View.VISIBLE);
+        } else {
+            holder.binding.default12.setVisibility(View.GONE);
+        }
+
+        holder.binding.switchview.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                selectedposition = holder.getAdapterPosition();
+                notifyDataSetChanged();
+                addressModel.setIsswitched(true);
+            } else {
+                if (selectedposition == holder.getAdapterPosition()) {
+                    selectedposition = -1;
+                    addressModel.setIsswitched(false);
+                }
+            }
+        });
+
+        if(addressModel.getIsswitched()) {
+            String name = addressModelList.get(selectedposition).getName();
+            String email = addressModelList.get(selectedposition).getEmail();
+            String phone = addressModelList.get(selectedposition).getMobile_number();
+            String address = addressModelList.get(selectedposition).getAddress();
+            String zip = addressModelList.get(selectedposition).getZip();
+            String city = addressModelList.get(selectedposition).getCity();
+            SharedPreferences sf = context.getSharedPreferences("saveaddress",Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sf.edit();
+            editor.putString("name", name);
+            editor.putString("email", email);
+            editor.putString("phone", phone);
+            editor.putString("address", address);
+            editor.putString("zip", zip);
+            editor.putString("city", city);
+            editor.apply();
+        }
     }
 
     @Override

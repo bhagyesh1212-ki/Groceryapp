@@ -1,8 +1,6 @@
 package com.one.groceryapp.ui.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.one.groceryapp.R;
-import com.one.groceryapp.databinding.ActivitySubFeatureProductBinding;
 import com.one.groceryapp.databinding.DemoProductBinding;
 import com.one.groceryapp.model.FeatureProductModel;
-import com.one.groceryapp.ui.activity.DetailProductActivity;
 import com.one.groceryapp.utils.Constants;
 
 import java.util.List;
@@ -45,6 +41,46 @@ public class SubFeaturedProductAdapter extends RecyclerView.Adapter<SubFeaturedP
         holder.binding.productQuantity.setText(model.getQuantity());
         holder.binding.itemNumber.setText(String.valueOf(model.getProductNumber()));
 
+        holder.binding.like.setOnClickListener(v -> {
+            if (model.getIsliked()) {
+                holder.binding.like.setImageResource(R.drawable.heart);
+                model.setIsliked(false);
+            } else {
+                holder.binding.like.setImageResource(R.drawable.heartfill);
+                model.setIsliked(true);
+            }
+        });
+
+        if (model.getAddtocart()){
+            holder.binding.addtocart.setVisibility(View.GONE);
+            holder.binding.itemCount.setVisibility(View.VISIBLE);
+        } else {
+            holder.binding.addtocart.setVisibility(View.VISIBLE);
+            holder.binding.itemCount.setVisibility(View.GONE);
+        }
+
+        holder.binding.addtocart.setOnClickListener(v -> {
+            Constants.productModels.get(position).setAddtocart(true);
+            holder.binding.addtocart.setVisibility(View.GONE);
+            holder.binding.itemCount.setVisibility(View.VISIBLE);
+            notifyItemChanged(position);
+        });
+
+        holder.binding.minus.setOnClickListener(v -> {
+            int quantity = model.getProductNumber();
+            if (quantity >= 2) {
+                quantity--;
+                holder.binding.itemNumber.setText(String.valueOf(quantity));
+                model.setProductNumber(quantity);
+            }
+        });
+
+        holder.binding.plus.setOnClickListener(v -> {
+            int quantity = model.getProductNumber();
+            quantity++;
+            holder.binding.itemNumber.setText(String.valueOf(quantity));
+            model.setProductNumber(quantity);
+        });
 
     }
 

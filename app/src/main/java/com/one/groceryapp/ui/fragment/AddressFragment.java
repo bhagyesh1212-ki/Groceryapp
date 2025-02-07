@@ -1,5 +1,7 @@
 package com.one.groceryapp.ui.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,33 +51,32 @@ public class AddressFragment extends Fragment implements AdapterView.OnItemSelec
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
 
-        for (int i = 2; i < userDao.getDataCount(); i++) {
-            addressModels = userDao.getaddressforfinalpayment();
-            String name   = addressModels.get(i).getName();
-            String email   = addressModels.get(i).getEmail();
-            String phone   = addressModels.get(i).getMobile_number();
-            String address   = addressModels.get(i).getAddress();
-            String zip   = addressModels.get(i).getZip();
-            String city   = addressModels.get(i).getCity();
-            String country   = addressModels.get(i).getCountry();
-
-            binding.nameEdt.setText(name);
-            binding.email.setText(email);
-            binding.phone.setText(phone);
-            binding.address.setText(address);
-            binding.zip.setText(zip);
-            binding.city.setText(city);
-        }
+        saveToPreference();
         return binding.getRoot();
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+    }
 
+    private void saveToPreference(){
+        SharedPreferences sf = getContext().getSharedPreferences("saveaddress",Context.MODE_PRIVATE);
+        String name = sf.getString("name","");
+        String email = sf.getString("email","");
+        String phone = sf.getString("phone","");
+        String address = sf.getString("address","");
+        String zip = sf.getString("zip","");
+        String city = sf.getString("city","");
+
+        binding.nameEdt.setText(name);
+        binding.email.setText(email);
+        binding.phone.setText(phone);
+        binding.address.setText(address);
+        binding.zip.setText(zip);
+        binding.city.setText(city);
     }
 }

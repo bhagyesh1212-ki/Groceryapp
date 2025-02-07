@@ -1,303 +1,311 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.AddressFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:id="@+id/user_name_edt"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp">
-
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/user_name_edt"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/aboutme_edittext_bg"
-            android:orientation="horizontal">
+            android:layout_height="@dimen/_40sdp">
 
-            <ImageView
-                android:layout_width="@dimen/_18sdp"
-                android:layout_height="@dimen/_18sdp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/_22sdp"
-                android:contentDescription="@string/email_img"
-                android:src="@drawable/profile_white" />
-
-            <EditText
-                android:id="@+id/nameEdt"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:background="@null"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="@string/name"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                android:textColor="@color/grey"
-                android:textColorHint="@color/grey"
-                android:textSize="@dimen/_13ssp" />
-        </LinearLayout>
-    </RelativeLayout>
+                android:background="@drawable/aboutme_edittext_bg"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
-    <RelativeLayout
-        android:id="@+id/user_email_edt"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_below="@+id/user_name_edt"
-        android:layout_marginTop="@dimen/_5sdp">
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_22sdp"
+                    android:contentDescription="@string/email_img"
+                    android:src="@drawable/profile_white" />
 
-        <LinearLayout
+                <EditText
+                    android:id="@+id/nameEdt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@null"
+                    android:fontFamily="@font/poppins_medium"
+                    android:hint="@string/name"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/grey"
+                    android:textSize="@dimen/_13ssp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/user_email_edt"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/aboutme_edittext_bg"
-            android:orientation="horizontal">
+            android:layout_height="@dimen/_40sdp"
+            android:layout_below="@+id/user_name_edt"
+            android:layout_marginTop="@dimen/_5sdp">
 
-            <ImageView
-                android:layout_width="@dimen/_18sdp"
-                android:layout_height="@dimen/_18sdp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/_22sdp"
-                android:contentDescription="@string/email_img"
-                android:src="@drawable/email" />
-
-            <EditText
-                android:id="@+id/email"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:background="@color/white"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="Email address"
-                android:importantForAutofill="no"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/grey"
-                android:textColorHint="@color/grey"
-                android:textSize="@dimen/_13ssp" />
-        </LinearLayout>
-    </RelativeLayout>
+                android:background="@drawable/aboutme_edittext_bg"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
-    <RelativeLayout
-        android:id="@+id/user_phone_edt"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_below="@+id/user_email_edt"
-        android:layout_marginTop="@dimen/_5sdp">
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_22sdp"
+                    android:contentDescription="@string/email_img"
+                    android:src="@drawable/email" />
 
-        <LinearLayout
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/poppins_medium"
+                    android:hint="@string/email_address"
+                    android:importantForAutofill="no"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/grey"
+                    android:textSize="@dimen/_13ssp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/user_phone_edt"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/aboutme_edittext_bg"
-            android:orientation="horizontal">
+            android:layout_height="@dimen/_40sdp"
+            android:layout_below="@+id/user_email_edt"
+            android:layout_marginTop="@dimen/_5sdp">
 
-            <ImageView
-                android:layout_width="@dimen/_18sdp"
-                android:layout_height="@dimen/_18sdp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/_22sdp"
-                android:importantForAccessibility="no"
-                android:src="@drawable/telephone" />
-
-            <EditText
-                android:id="@+id/phone"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:background="@color/white"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="Phone number"
-                android:importantForAutofill="no"
-                android:inputType="numberDecimal"
-                android:maxLength="10"
-                android:textColor="@color/grey"
-                android:textColorHint="@color/grey"
-                android:textSize="@dimen/_13ssp" />
-        </LinearLayout>
-    </RelativeLayout>
+                android:background="@drawable/aboutme_edittext_bg"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
-    <RelativeLayout
-        android:id="@+id/address_edt"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_below="@id/user_phone_edt"
-        android:layout_marginTop="@dimen/_5sdp">
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_22sdp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/telephone" />
 
-        <LinearLayout
+                <EditText
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/poppins_medium"
+                    android:hint="@string/phone_number"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/grey"
+                    android:textSize="@dimen/_13ssp"
+                    tools:ignore="TextFields" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/address_edt"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/aboutme_edittext_bg"
-            android:orientation="horizontal">
+            android:layout_height="@dimen/_40sdp"
+            android:layout_below="@id/user_phone_edt"
+            android:layout_marginTop="@dimen/_5sdp">
 
-            <ImageView
-                android:layout_width="@dimen/_18sdp"
-                android:layout_height="@dimen/_18sdp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/_22sdp"
-                android:contentDescription="@string/email_img"
-                android:src="@drawable/location" />
-
-            <EditText
-                android:id="@+id/address"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:background="@color/white"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="Address"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textColor="@color/grey"
-                android:textColorHint="@color/grey"
-                android:textSize="@dimen/_13ssp" />
-        </LinearLayout>
-    </RelativeLayout>
+                android:background="@drawable/aboutme_edittext_bg"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
-    <RelativeLayout
-        android:id="@+id/zipcode_edt"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_below="@id/address_edt"
-        android:layout_marginTop="@dimen/_5sdp">
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_22sdp"
+                    android:contentDescription="@string/email_img"
+                    android:src="@drawable/location" />
 
-        <LinearLayout
+                <EditText
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/poppins_medium"
+                    android:hint="@string/address"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/grey"
+                    android:textSize="@dimen/_13ssp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/zipcode_edt"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/aboutme_edittext_bg"
-            android:orientation="horizontal">
+            android:layout_height="@dimen/_40sdp"
+            android:layout_below="@id/address_edt"
+            android:layout_marginTop="@dimen/_5sdp">
 
-            <ImageView
-                android:layout_width="@dimen/_18sdp"
-                android:layout_height="@dimen/_18sdp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/_22sdp"
-                android:contentDescription="@string/email_img"
-                android:src="@drawable/zipcode" />
-
-            <EditText
-                android:id="@+id/zip"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:background="@color/white"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="Zip code"
-                android:importantForAutofill="no"
-                android:inputType="numberDecimal"
-                android:maxLength="6"
-                android:textColor="@color/grey"
-                android:textColorHint="@color/grey"
-                android:textSize="@dimen/_13ssp" />
-        </LinearLayout>
-    </RelativeLayout>
+                android:background="@drawable/aboutme_edittext_bg"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
-    <RelativeLayout
-        android:id="@+id/city_edt"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_below="@+id/zipcode_edt"
-        android:layout_marginTop="@dimen/_5sdp">
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_22sdp"
+                    android:contentDescription="@string/email_img"
+                    android:src="@drawable/zipcode" />
 
-        <LinearLayout
+                <EditText
+                    android:id="@+id/zip"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/poppins_medium"
+                    android:hint="@string/zip_code"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:maxLength="6"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/grey"
+                    android:textSize="@dimen/_13ssp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/city_edt"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/aboutme_edittext_bg"
-            android:orientation="horizontal">
+            android:layout_height="@dimen/_40sdp"
+            android:layout_below="@+id/zipcode_edt"
+            android:layout_marginTop="@dimen/_5sdp">
 
-            <ImageView
-                android:layout_width="@dimen/_18sdp"
-                android:layout_height="@dimen/_18sdp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/_22sdp"
-                android:contentDescription="@string/email_img"
-                android:src="@drawable/city" />
-
-            <EditText
-                android:id="@+id/city"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:background="@color/white"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="City"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textColor="@color/grey"
-                android:textColorHint="@color/grey"
-                android:textSize="@dimen/_13ssp" />
-        </LinearLayout>
-    </RelativeLayout>
+                android:background="@drawable/aboutme_edittext_bg"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
-    <RelativeLayout
-        android:id="@+id/country"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_below="@+id/city_edt"
-        android:layout_marginTop="@dimen/_5sdp">
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_22sdp"
+                    android:contentDescription="@string/email_img"
+                    android:src="@drawable/city" />
+
+                <EditText
+                    android:id="@+id/city"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/poppins_medium"
+                    android:hint="@string/city"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/grey"
+                    android:textSize="@dimen/_13ssp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/country"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_below="@+id/city_edt"
+            android:layout_marginTop="@dimen/_5sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/aboutme_edittext_bg"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_22sdp"
+                    android:contentDescription="@string/email_img"
+                    android:src="@drawable/country" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:dropDownVerticalOffset="@dimen/_42sdp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:popupBackground="@color/white"
+                    android:spinnerMode="dropdown"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/aboutme_edittext_bg"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="@dimen/_18sdp"
-                android:layout_height="@dimen/_18sdp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/_22sdp"
-                android:contentDescription="@string/email_img"
-                android:src="@drawable/country" />
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:dropDownVerticalOffset="@dimen/_42sdp"
-                android:fontFamily="@font/poppins_medium"
-                android:popupBackground="@color/white"
-                android:spinnerMode="dropdown"
-                android:textColor="@android:color/white" />
-        </LinearLayout>
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/country"
-        android:layout_marginStart="@dimen/_13sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:orientation="horizontal">
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switchView"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:thumb="@drawable/custom_thumb"
-           app:track="@drawable/custom_track" />
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/save_this_address"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp" />
-    </LinearLayout>
+            android:layout_below="@+id/country"
+            android:layout_marginStart="@dimen/_13sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchView"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+                android:thumb="@drawable/custom_thumb"
+                app:track="@drawable/custom_track" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/save_this_address"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
     </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>

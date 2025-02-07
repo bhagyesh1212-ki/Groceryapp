@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -139,7 +140,6 @@ public class ProfileFragment extends Fragment {
         binding.myfavorite.setOnClickListener(v -> {
             swapFragment();
         });
-
         return binding.getRoot();
     }
 
@@ -157,9 +157,8 @@ public class ProfileFragment extends Fragment {
         appDatabase = AppDatabase.getInstance(getContext());
         userDao = appDatabase.userDao();
 
-
-        if (resultCode == CAMERA_PIC_REQUEST) {
-            if (requestCode != RESULT_CANCELED) {
+        if (requestCode == CAMERA_PIC_REQUEST) {
+            if (resultCode == RESULT_OK) {
                 Bitmap photo = (Bitmap) data.getExtras().get("data");
                 binding.profileImage.setImageBitmap(photo);
             }

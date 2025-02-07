@@ -5,7 +5,6 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
-
 @Entity(tableName = "Address_table")
 public class AddressModel implements Serializable {
     @PrimaryKey(autoGenerate = true)
@@ -27,7 +26,7 @@ public class AddressModel implements Serializable {
     @ColumnInfo(name = "isswitched")
     private Boolean isswitched;
 
-    public AddressModel(String name, String email, String mobile_number, String address, String zip, String city, String country) {
+    public AddressModel(String name, String email, String mobile_number, String address, String zip, String city, String country, Boolean isswitched) {
         this.name = name;
         this.email = email;
         this.mobile_number = mobile_number;
@@ -35,6 +34,7 @@ public class AddressModel implements Serializable {
         this.zip = zip;
         this.city = city;
         this.country = country;
+        this.isswitched = isswitched;
     }
 
     public Boolean getIsswitched() {
@@ -68,11 +68,9 @@ public class AddressModel implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
     public String getMobile_number() {
         return mobile_number;
     }
-
     public void setMobile_number(String mobile_number) {
         this.mobile_number = mobile_number;
     }
@@ -104,7 +102,6 @@ public class AddressModel implements Serializable {
     public String getCountry() {
         return country;
     }
-
     public void setCountry(String country) {
         this.country = country;
     }

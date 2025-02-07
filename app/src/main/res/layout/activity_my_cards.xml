@@ -36,9 +36,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/poppins_medium"
-                android:text="My Cards"
+                android:text="@string/my_cards"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_15ssp" />
+                android:textSize="@dimen/_15ssp"
+                tools:ignore="RelativeOverlap" />
 
             <ImageView
                 android:id="@+id/addcard"
@@ -46,6 +47,7 @@
                 android:layout_height="@dimen/_20sdp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
+                android:contentDescription="@string/addcardicon"
                 android:src="@drawable/addaddress" />
         </RelativeLayout>
     </RelativeLayout>

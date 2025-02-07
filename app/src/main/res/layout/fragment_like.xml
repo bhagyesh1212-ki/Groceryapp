@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Favorites"
+                android:text="@string/favorites"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15ssp" />
         </RelativeLayout>

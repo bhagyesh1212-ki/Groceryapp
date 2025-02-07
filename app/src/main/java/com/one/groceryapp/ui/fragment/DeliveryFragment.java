@@ -27,6 +27,9 @@ public class DeliveryFragment extends Fragment {
                              Bundle savedInstanceState) {
         FragmentDeliveryBinding binding = FragmentDeliveryBinding.inflate(inflater, container, false);
 
+        binding.first.setBackgroundColor(Color.LTGRAY);
+        binding.second.setBackgroundColor(Color.WHITE);
+        binding.three.setBackgroundColor(Color.WHITE);
 
         isselected = false;
         binding.first.setOnClickListener(v -> {

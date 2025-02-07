@@ -82,5 +82,6 @@ public class HomeFragment extends Fragment{
 //    public void onCartItemDeleted() {
 //        Log.d("HomeFragment", "Cart item deleted, refreshing the fragment");
 //    }
+
 }
 

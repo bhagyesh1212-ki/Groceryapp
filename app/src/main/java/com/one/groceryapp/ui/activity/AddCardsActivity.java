@@ -27,12 +27,6 @@ public class AddCardsActivity extends AppCompatActivity {
             finish();
         });
 
-
-//        String pattern = "MM/yy";
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-//        String date = simpleDateFormat.format(new Date());
-//        binding.dateEdt.setText(date);
-
         binding.addCardBtn.setOnClickListener(v -> {
             String nameEdt = binding.nameEdt.getText().toString();
             String cardNumEdt = binding.cardNumEdt.getText().toString();

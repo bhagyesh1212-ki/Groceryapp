@@ -52,7 +52,7 @@ public class MyCardsActivity extends AppCompatActivity {
         String cvvEdt = getIntent().getStringExtra("cvvEdt");
 
         if (nameEdt != null) {
-            CardModel cardModel = new CardModel(nameEdt, cardNumEdt, dateEdt, cvvEdt);
+            CardModel cardModel = new CardModel(nameEdt, cardNumEdt, dateEdt, cvvEdt,false);
             cardModelArrayList.add(cardModel);
             userDao.insercard(cardModelArrayList);
         }

@@ -9,7 +9,7 @@
     android:orientation="vertical"
     tools:context=".ui.activity.MainActivity">
 
-    <FrameLayout
+    <RelativeLayout
         android:id="@+id/frame_layout"
         android:background="@drawable/home_bg"
         android:layout_width="match_parent"

@@ -1,6 +1,9 @@
 package com.one.groceryapp.ui.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,22 +36,20 @@ public class PaymentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         binding = FragmentPaymentBinding.inflate(inflater, container, false);
-        for (int i = 2; i < userDao.getCardDataCount() ; i++) {
-            cardModelArrayList = (ArrayList<CardModel>) userDao.getcardforfinalpayment();
-
-            String name = cardModelArrayList.get(i).getCardholder();
-            String number = cardModelArrayList.get(i).getCardnumber();
-            String date = cardModelArrayList.get(i).getCarddate();
-            String cvv = cardModelArrayList.get(i).getCardcvv();
-
-            binding.nameEdt.setText(name);
-            binding.cardNumEdt.setText(number);
-            binding.dateEdt.setText(date);
-            binding.cvvEdt.setText(cvv);
-        }
-
+        addValueFromPreference();
         return binding.getRoot();
+    }
+
+    private void addValueFromPreference() {
+        SharedPreferences sf = getContext().getSharedPreferences("saveCard",Context.MODE_PRIVATE);
+        String name = sf.getString("name", "");
+        String number = sf.getString("number", "");
+        String date = sf.getString("date", "");
+        String cvv = sf.getString("cvv", "");
+        binding.nameEdt.setText(name);
+        binding.cardNumEdt.setText(number);
+        binding.dateEdt.setText(date);
+        binding.cvvEdt.setText(cvv);
     }
 }

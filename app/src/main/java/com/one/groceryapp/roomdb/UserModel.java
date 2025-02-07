@@ -10,13 +10,10 @@ public class UserModel {
     private int id;
     @ColumnInfo(name = "email")
     private String email;
-
     @ColumnInfo(name = "password")
     private String password;
-
     @ColumnInfo(name = "phonenumber")
     private String phonenumber;
-
 
     public String getPhonenumber() {
         return phonenumber;

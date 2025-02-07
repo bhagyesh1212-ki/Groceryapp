@@ -17,12 +17,23 @@ public class CardModel {
     private String carddate;
     @ColumnInfo(name = "cardcvv")
     private String cardcvv;
+    @ColumnInfo(name = "isSwitched")
+    private boolean isSwitched;
 
-    public CardModel(String cardholder, String cardnumber, String carddate, String cardcvv) {
+    public CardModel(String cardholder, String cardnumber, String carddate, String cardcvv, boolean isSwitched) {
         this.cardholder = cardholder;
         this.cardnumber = cardnumber;
         this.carddate = carddate;
         this.cardcvv = cardcvv;
+        this.isSwitched = isSwitched;
+    }
+
+    public boolean isSwitched() {
+        return isSwitched;
+    }
+
+    public void setSwitched(boolean switched) {
+        isSwitched = switched;
     }
 
     public int getId() {

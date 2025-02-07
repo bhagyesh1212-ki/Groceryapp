@@ -1,7 +1,5 @@
 package com.one.groceryapp.roomdb;
-
 import android.content.Context;
-import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
@@ -10,11 +8,10 @@ import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.one.groceryapp.model.AddressModel;
 import com.one.groceryapp.model.CardModel;
-import com.one.groceryapp.model.FeatureProductModel;
 import com.one.groceryapp.model.MyOrderModel;
 import com.one.groceryapp.model.TransactionModel;
 
-@Database(entities = {UserModel.class, AddressModel.class, CardModel.class, TransactionModel.class, MyOrderModel.class}, version = 6)
+@Database(entities = {UserModel.class, AddressModel.class, CardModel.class, TransactionModel.class, MyOrderModel.class}, version = 8)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String databaseName = "user_database";
     public abstract UserDao userDao();
@@ -47,6 +44,20 @@ public abstract class AppDatabase extends RoomDatabase {
         }
     };
 
+    static final Migration MIGRATION_5_6 = new Migration(5,6) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE Address_table ADD COLUMN isswitched INTEGER DEFAULT 0 NOT NULL");
+        }
+    };
+
+    static final Migration MIGRATION_6_7 = new Migration(6,7) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE Cards_table ADD COLUMN isSwitched INTEGER DEFAULT 0 NOT NULL");
+        }
+    };
+
     public static AppDatabase getInstance(final Context context) {
         if (INSTANCE == null) {
             synchronized (AppDatabase.class) {
@@ -57,9 +68,9 @@ public abstract class AppDatabase extends RoomDatabase {
                             .addMigrations(MIGRATION_2_3)
                             .addMigrations(MIGRATION_3_4)
                             .addMigrations(MIGRATION_4_5)
-                            .fallbackToDestructiveMigration()
+                            .addMigrations(MIGRATION_5_6)
+                            .addMigrations(MIGRATION_6_7)
                             .build();
-                    Log.d("TAG", "New instance created...");
                 }
             }
         }

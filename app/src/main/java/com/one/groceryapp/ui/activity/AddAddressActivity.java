@@ -1,10 +1,8 @@
 package com.one.groceryapp.ui.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,6 +22,7 @@ public class AddAddressActivity extends AppCompatActivity implements AdapterView
 
     ActivityAddAddressBinding binding;
 
+    List<AddressModel> addressModelList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +47,8 @@ public class AddAddressActivity extends AppCompatActivity implements AdapterView
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
 
-        binding.addAddressBtn.setOnClickListener(v -> {
 
+        binding.addAddressBtn.setOnClickListener(v -> {
             String name = binding.nameEdt.getText().toString();
             String email = binding.email.getText().toString();
             String address = binding.address.getText().toString();

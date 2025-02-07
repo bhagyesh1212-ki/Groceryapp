@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Notifications"
+                android:text="@string/notifications"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15ssp" />
         </RelativeLayout>
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Allow Notifcations"
+                android:text="@string/allow_notifcations"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_13ssp" />
 
@@ -97,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Email Notifcations"
+                android:text="@string/email_notifcations"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_13ssp" />
 
@@ -133,7 +133,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Order Notifcations"
+                android:text="@string/order_notifcations"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_13ssp" />
 
@@ -169,7 +169,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="General Notifcations"
+                android:text="@string/general_notifcations"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_13ssp" />
 

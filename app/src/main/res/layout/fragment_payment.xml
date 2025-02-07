@@ -15,7 +15,8 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="DisableBaselineAlignment">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -28,13 +29,15 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true">
+                android:layout_centerInParent="true"
+                tools:ignore="UselessParent">
 
                 <ImageView
                     android:id="@+id/paypal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/paypalicon"
                     android:src="@drawable/paypal" />
 
                 <TextView
@@ -43,7 +46,7 @@
                     android:layout_below="@+id/paypal"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Paypal"
+                    android:text="@string/paypal"
                     android:textColor="@color/grey"
                     android:textSize="@dimen/_10ssp" />
 
@@ -63,13 +66,15 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true">
+                android:layout_centerInParent="true"
+                tools:ignore="UselessParent">
 
                 <ImageView
                     android:id="@+id/cardd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/creaditcardicon"
                     android:src="@drawable/card" />
 
                 <TextView
@@ -78,7 +83,7 @@
                     android:layout_below="@+id/cardd"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Credit Card"
+                    android:text="@string/credit_card"
                     android:textColor="@color/grey"
                     android:textSize="@dimen/_10ssp" />
 
@@ -96,13 +101,15 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true">
+                android:layout_centerInParent="true"
+                tools:ignore="UselessParent">
 
                 <ImageView
                     android:id="@+id/apple"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/applepayicon"
                     android:src="@drawable/appy" />
 
                 <TextView
@@ -111,7 +118,7 @@
                     android:layout_below="@+id/apple"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Apple pay"
+                    android:text="@string/apple_pay"
                     android:textColor="@color/grey"
                     android:textSize="@dimen/_10ssp" />
             </RelativeLayout>
@@ -125,7 +132,9 @@
         android:layout_height="@dimen/_150sdp"
         android:layout_below="@+id/linearLayout"
         android:layout_marginVertical="@dimen/_15sdp"
-        android:src="@drawable/cardimage" />
+        android:contentDescription="@string/creditcardicon"
+        android:src="@drawable/cardimage"
+        tools:ignore="ContentDescription" />
 
     <RelativeLayout
         android:id="@+id/personal_detail"
@@ -142,7 +151,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/aboutme_edittext_bg"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
@@ -160,11 +170,12 @@
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:background="@color/white"
                     android:fontFamily="@font/poppins_medium"
-                    android:hint="Name on the card"
+                    android:hint="@string/name_on_the_card"
                     android:inputType="text"
                     android:textColor="@color/grey"
                     android:textColorHint="@color/grey"
-                    android:textSize="@dimen/_10ssp" />
+                    android:textSize="@dimen/_10ssp"
+                    tools:ignore="Autofill" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -179,7 +190,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/aboutme_edittext_bg"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
@@ -197,7 +209,7 @@
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:background="@color/white"
                     android:fontFamily="@font/poppins_medium"
-                    android:hint="Card number"
+                    android:hint="@string/card_number"
                     android:importantForAutofill="no"
                     android:inputType="numberDecimal"
                     android:maxLength="16"
@@ -212,6 +224,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/address_edt"
+            android:baselineAligned="false"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -226,7 +239,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/aboutme_edittext_bg"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
 
                     <ImageView
                         android:layout_width="@dimen/_18sdp"
@@ -244,7 +258,7 @@
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:background="@color/white"
                         android:fontFamily="@font/poppins_medium"
-                        android:hint="Month / Year"
+                        android:hint="@string/month_year"
                         android:importantForAutofill="no"
                         android:inputType="date"
                         android:maxLength="5"
@@ -266,7 +280,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/aboutme_edittext_bg"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
 
                     <ImageView
                         android:layout_width="@dimen/_18sdp"
@@ -284,7 +299,7 @@
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:background="@color/white"
                         android:fontFamily="@font/poppins_medium"
-                        android:hint="CVV"
+                        android:hint="@string/cvv"
                         android:importantForAutofill="no"
                         android:inputType="numberDecimal"
                         android:maxLength="3"
@@ -317,7 +332,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Save this card"
+                android:text="@string/save_this_card"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
         </LinearLayout>

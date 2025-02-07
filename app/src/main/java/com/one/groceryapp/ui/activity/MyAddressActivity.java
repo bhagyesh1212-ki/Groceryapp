@@ -56,7 +56,7 @@ public class MyAddressActivity extends AppCompatActivity {
         String phone = getIntent().getStringExtra("phone");
 
         if (name != null) {
-            addressModelList.add(new AddressModel(name, email, phone, address, zip, city, country));
+            addressModelList.add(new AddressModel(name, email, phone, address, zip, city, country,false));
             userDao.insertAddress(addressModelList);
         }
 

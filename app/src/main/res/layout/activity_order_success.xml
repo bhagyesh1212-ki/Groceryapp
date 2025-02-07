@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Order Success"
+                android:text="@string/order_success"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15ssp" />
         </RelativeLayout>
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_90sdp"
-            android:text="Your order was succesfull !"
+            android:text="@string/your_order_was_succesfull"
             android:textSize="@dimen/_16ssp"
             android:textColor="@color/black"
             android:gravity="center_horizontal"
@@ -73,7 +73,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="You will get a response within a few minutes."
+            android:text="@string/you_will_get_a_response_within_a_few_minutes"
             android:textColor="@color/grey"
             android:textSize="@dimen/_13ssp"
             android:layout_below="@+id/text"
@@ -99,9 +99,8 @@
             android:layout_gravity="center"
             android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
-            android:text="Track order"
+            android:text="@string/track_order"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp" />
     </LinearLayout>
-
 </RelativeLayout>

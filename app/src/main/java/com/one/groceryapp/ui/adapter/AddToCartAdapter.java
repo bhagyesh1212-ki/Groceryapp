@@ -1,7 +1,6 @@
 package com.one.groceryapp.ui.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -36,22 +35,20 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull AddToCartAdapter.ViewHolder holder, int position) {
-        FeatureProductModel addtocartModel = Constants.productModels.get(position);
-
-        int productquantity = addtocartModel.getProductNumber();
-        int productprice = addtocartModel.getPrice();
+        FeatureProductModel featureProductModel = Constants.productModels.get(position);
+        int productquantity = featureProductModel.getProductNumber();
+        int productprice = featureProductModel.getPrice();
         int itemprice = productprice * productquantity;
 
-        Log.d("TAG@@@", "onBindViewHolder: " + itemprice);
         subprice += itemprice;
         priceChangeListener.onPriceChange(subprice);
 
         holder.binding.minus.setOnClickListener(v -> {
-            int quantity = addtocartModel.getProductNumber();
+            int quantity = featureProductModel.getProductNumber();
             if (quantity >= 2) {
                 quantity--;
                 holder.binding.itemNumber.setText(String.valueOf(quantity));
-                addtocartModel.setProductNumber(quantity);
+                featureProductModel.setProductNumber(quantity);
                 holder.binding.productQuantity.setText(String.valueOf(quantity));
                 subprice -= productprice;
                 if (priceChangeListener != null) {
@@ -61,26 +58,37 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
         });
 
         holder.binding.plus.setOnClickListener(v -> {
-            int quantity = addtocartModel.getProductNumber();
+            int quantity = featureProductModel.getProductNumber();
             quantity++;
             holder.binding.itemNumber.setText(String.valueOf(quantity));
-            addtocartModel.setProductNumber(quantity);
+            featureProductModel.setProductNumber(quantity);
 
             holder.binding.productQuantity.setText(String.valueOf(quantity));
             subprice += productprice;
-
             if (priceChangeListener != null) {
                 priceChangeListener.onPriceChange(subprice);
             }
         });
 
-        holder.binding.productImage.setImageResource(addtocartModel.getImageProduct());
-        holder.binding.productName.setText(addtocartModel.getProductName());
-        holder.binding.productPrice.setText(String.valueOf(addtocartModel.getPrice()));
-        holder.binding.productQuantity.setText(String.valueOf(addtocartModel.getProductNumber()));
-        holder.binding.dozen.setText(addtocartModel.getQuantity());
-        holder.binding.itemNumber.setText(String.valueOf(addtocartModel.getProductNumber()));
+        holder.binding.productImage.setImageResource(featureProductModel.getImageProduct());
+        holder.binding.productName.setText(featureProductModel.getProductName());
+        holder.binding.productPrice.setText(String.valueOf(featureProductModel.getPrice()));
+        holder.binding.productQuantity.setText(String.valueOf(featureProductModel.getProductNumber()));
+        holder.binding.dozen.setText(featureProductModel.getQuantity());
+        holder.binding.itemNumber.setText(String.valueOf(featureProductModel.getProductNumber()));
+    }
 
+    public void deleteItem(int position) {
+        FeatureProductModel featureProductModel = featureProductModelList.remove(position);
+        int removedItemPrice = featureProductModel.getPrice();
+        int removedItemQuantity = featureProductModel.getProductNumber();
+        int removedPrice = removedItemPrice * removedItemQuantity;
+        featureProductModel.setAddtocart(false);
+        subprice -= removedPrice;
+        notifyItemRemoved(position);
+        if (priceChangeListener != null) {
+            priceChangeListener.onPriceChange(subprice);
+        }
     }
 
     public interface OnPriceChangeListener {

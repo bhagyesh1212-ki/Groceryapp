@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         replaceFragment(new HomeFragment());
         changeicon(R.id.home);
 
@@ -41,9 +40,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 replaceFragment(new ProfileFragment());
                 changeicon(R.id.profile);
-
             }
         });
+
         binding.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         binding.shop.setOnClickListener(v -> {
             Intent i = new Intent(MainActivity.this, AddToCartActivity.class);
             startActivity(i);
+            finish();
         });
     }
 

@@ -39,7 +39,8 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/my_address"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_15ssp" />
+                android:textSize="@dimen/_15ssp"
+                tools:ignore="RelativeOverlap" />
 
             <ImageView
                 android:id="@+id/addaddress"
@@ -47,6 +48,7 @@
                 android:layout_height="@dimen/_20sdp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
+                android:contentDescription="@string/addaddressicon"
                 android:src="@drawable/addaddress" />
         </RelativeLayout>
     </RelativeLayout>
@@ -58,7 +60,6 @@
         android:layout_marginHorizontal="@dimen/horizontal_padding"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_weight="1" />
-
 
     <LinearLayout
         android:id="@+id/save_settings_btn"
