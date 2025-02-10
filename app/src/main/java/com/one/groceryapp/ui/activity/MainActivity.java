@@ -17,6 +17,7 @@ import com.one.groceryapp.ui.fragment.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
+    FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +25,11 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        replaceFragment(new HomeFragment());
-        changeicon(R.id.home);
+        if (savedInstanceState == null) {
+            replaceFragment(new HomeFragment());
+            changeicon(R.id.home);
+
+        }
 
         binding.home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 replaceFragment(new ProfileFragment());
                 changeicon(R.id.profile);
+
             }
         });
 
@@ -48,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 replaceFragment(new LikeFragment());
                 changeicon(R.id.like);
+
+
             }
         });
 
@@ -59,9 +66,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
@@ -69,5 +77,14 @@ public class MainActivity extends AppCompatActivity {
         binding.home.setImageResource(iconid == R.id.home ? R.drawable.home_black : R.drawable.home_white);
         binding.profile.setImageResource(iconid == R.id.profile ? R.drawable.profile_black : R.drawable.profile_white);
         binding.like.setImageResource(iconid == R.id.like ? R.drawable.like_black : R.drawable.like_white);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (fragmentManager.getBackStackEntryCount() > 1) {
+            super.onBackPressed();
+        } else {
+            finishAffinity();
+        }
     }
 }

@@ -3,16 +3,10 @@ package com.one.groceryapp.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.one.groceryapp.databinding.ActivityAddCardsBinding;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class AddCardsActivity extends AppCompatActivity {
-
     ActivityAddCardsBinding binding;
 
     @Override
@@ -35,6 +29,8 @@ public class AddCardsActivity extends AppCompatActivity {
 
             if (nameEdt.isEmpty() || cardNumEdt.isEmpty() || dateEdt.isEmpty() || cvvEdt.isEmpty()) {
                 Toast.makeText(this, "Please fill all the detail", Toast.LENGTH_SHORT).show();
+            } else if (!dateEdt.matches("^(0[1-9]|1[0-2])/[2-9]{2}$")) {
+                Toast.makeText(this, "Enter valid date", Toast.LENGTH_SHORT).show();
             } else {
                 Intent i = new Intent(this, MyCardsActivity.class);
                 i.putExtra("nameEdt", nameEdt);
@@ -47,3 +43,5 @@ public class AddCardsActivity extends AppCompatActivity {
         });
     }
 }
+
+

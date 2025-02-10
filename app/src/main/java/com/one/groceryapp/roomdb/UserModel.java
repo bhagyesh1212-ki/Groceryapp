@@ -14,7 +14,6 @@ public class UserModel {
     private String password;
     @ColumnInfo(name = "phonenumber")
     private String phonenumber;
-
     public String getPhonenumber() {
         return phonenumber;
     }

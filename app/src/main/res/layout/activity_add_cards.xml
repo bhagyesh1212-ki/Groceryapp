@@ -11,35 +11,29 @@
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?actionBarSize"
         android:background="@color/white"
         tools:ignore="UselessParent">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_22sdp"
-            tools:ignore="UselessParent">
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/backarrowblack" />
 
-            <ImageView
-                android:id="@+id/back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:importantForAccessibility="no"
-                android:src="@drawable/backarrowblack" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/add_credit_card"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15ssp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/poppins_medium"
-                android:text="@string/add_address"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_15ssp" />
-        </RelativeLayout>
     </RelativeLayout>
 
     <ImageView
@@ -48,7 +42,9 @@
         android:layout_height="@dimen/_150sdp"
         android:layout_below="@+id/header"
         android:layout_margin="@dimen/horizontal_padding"
-        android:src="@drawable/cardimage" />
+        android:contentDescription="CreditCardImage"
+        android:src="@drawable/cardimage"
+        tools:ignore="HardcodedText" />
 
     <RelativeLayout
         android:id="@+id/personal_detail"
@@ -66,7 +62,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/aboutme_edittext_bg"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
@@ -81,14 +78,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_15sdp"
-                    android:background="@color/white"
                     android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@color/white"
                     android:fontFamily="@font/poppins_medium"
                     android:hint="Name on the card"
                     android:inputType="text"
                     android:textColor="@color/grey"
                     android:textColorHint="@color/grey"
-                    android:textSize="@dimen/_10ssp" />
+                    android:textSize="@dimen/_10ssp"
+                    tools:ignore="Autofill,HardcodedText" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -103,7 +101,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/aboutme_edittext_bg"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
@@ -119,15 +118,16 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:maxLength="16"
+                    android:background="@color/white"
                     android:fontFamily="@font/poppins_medium"
                     android:hint="Card number"
-                    android:background="@color/white"
                     android:importantForAutofill="no"
                     android:inputType="numberDecimal"
+                    android:maxLength="16"
                     android:textColor="@color/grey"
                     android:textColorHint="@color/grey"
-                    android:textSize="@dimen/_10ssp" />
+                    android:textSize="@dimen/_10ssp"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -136,7 +136,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/address_edt"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="DisableBaselineAlignment">
 
             <RelativeLayout
                 android:id="@+id/city_edt"
@@ -150,7 +151,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/aboutme_edittext_bg"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
 
                     <ImageView
                         android:layout_width="@dimen/_18sdp"
@@ -166,15 +168,16 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:fontFamily="@font/poppins_medium"
                         android:background="@color/white"
-                        android:hint="Month / Year"
-                        android:maxLength="5"
+                        android:fontFamily="@font/poppins_medium"
+                        android:hint="MM/YY"
                         android:importantForAutofill="no"
                         android:inputType="date"
+                        android:maxLength="5"
                         android:textColor="@color/grey"
                         android:textColorHint="@color/grey"
-                        android:textSize="@dimen/_10ssp" />
+                        android:textSize="@dimen/_10ssp"
+                        tools:ignore="HardcodedText" />
                 </LinearLayout>
             </RelativeLayout>
 
@@ -190,7 +193,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/aboutme_edittext_bg"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
 
                     <ImageView
                         android:layout_width="@dimen/_18sdp"
@@ -206,15 +210,16 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
+                        android:background="@color/white"
                         android:fontFamily="@font/poppins_medium"
                         android:hint="CVV"
-                        android:maxLength="3"
-                        android:background="@color/white"
                         android:importantForAutofill="no"
                         android:inputType="numberDecimal"
+                        android:maxLength="3"
                         android:textColor="@color/grey"
                         android:textColorHint="@color/grey"
-                        android:textSize="@dimen/_10ssp" />
+                        android:textSize="@dimen/_10ssp"
+                        tools:ignore="HardcodedText" />
                 </LinearLayout>
             </RelativeLayout>
 
@@ -243,7 +248,8 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="Save this card"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_12sdp"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -264,7 +270,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
-            android:text="Add credit card"
+            android:text="@string/add_credit_card"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp" />
     </LinearLayout>

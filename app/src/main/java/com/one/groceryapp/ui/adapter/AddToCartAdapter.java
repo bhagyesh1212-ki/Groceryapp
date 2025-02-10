@@ -1,6 +1,7 @@
 package com.one.groceryapp.ui.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -35,7 +36,7 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull AddToCartAdapter.ViewHolder holder, int position) {
-        FeatureProductModel featureProductModel = Constants.productModels.get(position);
+        FeatureProductModel featureProductModel = featureProductModelList.get(position);
         int productquantity = featureProductModel.getProductNumber();
         int productprice = featureProductModel.getPrice();
         int itemprice = productprice * productquantity;
@@ -69,7 +70,6 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
                 priceChangeListener.onPriceChange(subprice);
             }
         });
-
         holder.binding.productImage.setImageResource(featureProductModel.getImageProduct());
         holder.binding.productName.setText(featureProductModel.getProductName());
         holder.binding.productPrice.setText(String.valueOf(featureProductModel.getPrice()));
@@ -83,12 +83,16 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
         int removedItemPrice = featureProductModel.getPrice();
         int removedItemQuantity = featureProductModel.getProductNumber();
         int removedPrice = removedItemPrice * removedItemQuantity;
+
         featureProductModel.setAddtocart(false);
+        featureProductModel.setProductNumber(1);
+
         subprice -= removedPrice;
-        notifyItemRemoved(position);
+        Log.d("TAG@@", "deleteItem: "+subprice);
         if (priceChangeListener != null) {
             priceChangeListener.onPriceChange(subprice);
         }
+        notifyItemRemoved(position);
     }
 
     public interface OnPriceChangeListener {
@@ -102,7 +106,6 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         DemoAddtocartBinding binding;
-
         public ViewHolder(@NonNull DemoAddtocartBinding binding) {
             super(binding.getRoot());
             this.binding = binding;

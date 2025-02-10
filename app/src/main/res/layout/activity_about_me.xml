@@ -12,17 +12,11 @@
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?actionBarSize"
         android:background="@color/white"
         tools:ignore="UselessParent">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_22sdp"
-            tools:ignore="UselessParent">
-
-            <ImageView
+        <ImageView
                 android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -35,12 +29,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/about_me"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15ssp" />
-        </RelativeLayout>
+
     </RelativeLayout>
 
     <RelativeLayout

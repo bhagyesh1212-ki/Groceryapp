@@ -1,5 +1,6 @@
 package com.one.groceryapp.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -8,10 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.one.groceryapp.R;
 import com.one.groceryapp.databinding.ActivityDetailProductBinding;
 import com.one.groceryapp.model.FeatureProductModel;
-import com.one.groceryapp.ui.adapter.FeatureProductAdapter;
 import com.one.groceryapp.utils.Constants;
 
-import java.util.EventListener;
 import java.util.List;
 
 public class DetailProductActivity extends AppCompatActivity {
@@ -26,7 +25,7 @@ public class DetailProductActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.back.setOnClickListener(v -> {
-            onBackPressed();
+            startActivity(new Intent(this, MainActivity.class));
         });
 
         List<FeatureProductModel> featureProductModelList = (List<FeatureProductModel>) getIntent().getSerializableExtra("featuremodel");
@@ -44,24 +43,41 @@ public class DetailProductActivity extends AppCompatActivity {
             binding.like.setImageResource(R.drawable.heart);
         }
 
-//        binding.like.setOnClickListener(v -> {
-//            if (Constants.productModels.get(position).getIsliked()) {
-//                binding.like.setImageResource(R.drawable.heart);
-//                Constants.productModels.get(position).setIsliked(false);
-//            }else{
-//                binding.like.setImageResource(R.drawable.heartfill);
-//                Constants.productModels.get(position).setIsliked(true);
-//            }
-//        });
+        binding.like.setOnClickListener(v -> {
+            if (Constants.productModels.get(position).getIsliked()) {
+                binding.like.setImageResource(R.drawable.heart);
+                Constants.productModels.get(position).setIsliked(false);
+            } else {
+                binding.like.setImageResource(R.drawable.heartfill);
+                Constants.productModels.get(position).setIsliked(true);
+            }
+        });
+
+        if (Constants.productModels.get(position).getAddtocart()) {
+            binding.addAddressBtn.setVisibility(View.GONE);
+            binding.removeFromCart.setVisibility(View.VISIBLE);
+        } else {
+            binding.addAddressBtn.setVisibility(View.VISIBLE);
+            binding.removeFromCart.setVisibility(View.GONE);
+        }
+
+        binding.addAddressBtn.setOnClickListener(v -> {
+            if (!Constants.productModels.get(position).getAddtocart()) {
+                binding.addAddressBtn.setVisibility(View.GONE);
+                binding.removeFromCart.setVisibility(View.VISIBLE);
+                Constants.productModels.get(position).setAddtocart(true);
+            }
+        });
 
         binding.minus.setOnClickListener(v -> {
             int quantityOfItem = Constants.productModels.get(position).getProductNumber();
-            if(quantityOfItem > 1){
+            if (quantityOfItem > 1) {
                 quantityOfItem--;
                 binding.quantityOfItem.setText(String.valueOf(quantityOfItem));
                 Constants.productModels.get(position).setProductNumber(quantityOfItem);
             }
         });
+
         binding.plus.setOnClickListener(v -> {
             int quantityOfItem = Constants.productModels.get(position).getProductNumber();
             quantityOfItem++;

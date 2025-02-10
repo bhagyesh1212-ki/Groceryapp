@@ -134,8 +134,10 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
     @Override
     public void onPriceChange(int newPrice) {
         if (adapter.getItemCount() == 0) {
+            binding.subTotal.setText("$0");
             binding.shippingCharge.setText("$0");
             binding.totalPay.setText("$0");
+            total = 0;
             Toast.makeText(this, "Cart is empty!", Toast.LENGTH_SHORT).show();
         } else {
             binding.subTotal.setText("$" + newPrice);

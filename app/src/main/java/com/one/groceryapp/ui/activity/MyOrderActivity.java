@@ -38,7 +38,6 @@ public class MyOrderActivity extends AppCompatActivity {
 
         appDatabase = AppDatabase.getInstance(getApplicationContext());
         userDao = appDatabase.userDao();
-
         calendar = Calendar.getInstance();
         simpleDateFormat = new SimpleDateFormat("MMMM dd yyyy");
         dateTime = simpleDateFormat.format(calendar.getTime()).toString();
@@ -50,8 +49,6 @@ public class MyOrderActivity extends AppCompatActivity {
             orderModelArrayList.add(new MyOrderModel(shippingcharge, price, dateTime));
             userDao.insertmyorder(orderModelArrayList);
         }
-
-
 
         orderModelArrayList = (ArrayList<MyOrderModel>) userDao.getallmyorder();
         OrderAdapter adapter = new OrderAdapter(orderModelArrayList, MyOrderActivity.this);

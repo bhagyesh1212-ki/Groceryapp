@@ -50,9 +50,10 @@ public class MyCardsActivity extends AppCompatActivity {
         String cardNumEdt = getIntent().getStringExtra("cardNumEdt");
         String dateEdt = getIntent().getStringExtra("dateEdt");
         String cvvEdt = getIntent().getStringExtra("cvvEdt");
+        Boolean switched = getIntent().getBooleanExtra("switch",false);
 
         if (nameEdt != null) {
-            CardModel cardModel = new CardModel(nameEdt, cardNumEdt, dateEdt, cvvEdt,false);
+            CardModel cardModel = new CardModel(nameEdt, cardNumEdt, dateEdt, cvvEdt,switched);
             cardModelArrayList.add(cardModel);
             userDao.insercard(cardModelArrayList);
         }

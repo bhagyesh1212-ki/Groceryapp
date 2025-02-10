@@ -7,6 +7,7 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +26,7 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder
     Context context;
     AppDatabase appDatabase;
     UserDao userDao;
-    private int selectedposition = 1;
+    private int selectedposition;
 
     public MyCardAdapter(List<CardModel> cardModelList, Context context) {
         this.cardModelList = cardModelList;
@@ -55,12 +56,6 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder
             holder.binding.nameEdt.setText(cardModel.getCardholder());
         }
 
-        String holdername = holder.binding.nameEdt.getText().toString();
-        String cardnumber = holder.binding.cardNumEdt.getText().toString();
-        String carddate = holder.binding.dateEdt.getText().toString();
-        String cardcvv = holder.binding.cvvEdt.getText().toString();
-
-
         holder.binding.dropUp.setOnClickListener(v -> {
             if (holder.binding.personalDetail.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(holder.binding.mainLayout, new AutoTransition());
@@ -87,13 +82,27 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder
                 selectedposition = holder.getAdapterPosition();
                 cardModel.setSwitched(true);
                 notifyDataSetChanged();
+                userDao.updateSwitch(true, selectedposition);
             } else {
-                if (selectedposition == holder.getAdapterPosition()) {
-                    selectedposition = -1;
-                    cardModel.setSwitched(false);
-                }
+                cardModel.setSwitched(false);
             }
         });
+
+        if (getItemCount() == 1) {
+            holder.binding.switchView.setChecked(true);
+            holder.binding.default12.setVisibility(View.VISIBLE);
+            String name = cardModelList.get(selectedposition).getCardholder();
+            String number = cardModelList.get(selectedposition).getCardnumber();
+            String date = cardModelList.get(selectedposition).getCarddate();
+            String cvv = cardModelList.get(selectedposition).getCardcvv();
+            SharedPreferences sf = context.getSharedPreferences("saveCard", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sf.edit();
+            editor.putString("name", name);
+            editor.putString("number", number);
+            editor.putString("date", date);
+            editor.putString("cvv", cvv);
+            editor.apply();
+        }
 
         if (cardModel.isSwitched()) {
             String name = cardModelList.get(selectedposition).getCardholder();
@@ -110,10 +119,6 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder
         }
     }
 
-    public static void updatedata(int position) {
-        CardModel cardModel = cardModelList.get(position);
-    }
-
     @Override
     public int getItemCount() {
         return cardModelList.size();
@@ -126,7 +131,10 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder
         public ViewHolder(@NonNull DemoCardBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-
         }
     }
 }
+//                if (selectedposition == holder.getAdapterPosition()) {
+//                    selectedposition = 0;
+//                    cardModel.setSwitched(false);
+//                }

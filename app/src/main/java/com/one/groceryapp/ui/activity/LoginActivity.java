@@ -68,9 +68,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 checkfield();
                 savetopref();
+
+
             }
         });
-
         SharedPreferences sf = getApplicationContext().getSharedPreferences("userData", MODE_PRIVATE);
         Boolean ischeck =sf.getBoolean("ischecked", false);
         if(ischeck){
@@ -80,21 +81,25 @@ public class LoginActivity extends AppCompatActivity {
             binding.email.setText(email);
             binding.password.setText(pass);
         }else {
-                binding.switchview.setChecked(false);
+            binding.switchview.setChecked(false);
+            String email = sf.getString("email", "");
+            String pass = sf.getString("password", "");
+            binding.email.setText(email);
+            binding.password.setText(pass);
         }
 
-        binding.switchview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (binding.switchview.isChecked()) {
-                    SharedPreferences sf = getApplicationContext().getSharedPreferences("userData", MODE_PRIVATE);
-                    String email = sf.getString("email", "");
-                    String pass = sf.getString("password", "");
-                    binding.email.setText(email);
-                    binding.password.setText(pass);
-                }
-            }
-        });
+//        binding.switchview.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (binding.switchview.isChecked()) {
+//                    SharedPreferences sf = getApplicationContext().getSharedPreferences("userData", MODE_PRIVATE);
+//                    String email = sf.getString("email", "");
+//                    String pass = sf.getString("password", "");
+//                    binding.email.setText(email);
+//                    binding.password.setText(pass);
+//                }
+//            }
+//        });
 
         binding.forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +122,10 @@ public class LoginActivity extends AppCompatActivity {
         }else{
             SharedPreferences sf = getApplicationContext().getSharedPreferences("userData", MODE_PRIVATE);
             SharedPreferences.Editor editor = sf.edit();
+            editor.putString("email", "");
+            editor.putString("password","");
             editor.putBoolean("ischecked", false);
+            editor.apply();
         }
     }
 

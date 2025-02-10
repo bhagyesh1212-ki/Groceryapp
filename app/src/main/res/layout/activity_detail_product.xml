@@ -245,7 +245,7 @@
             android:layout_centerInParent="true"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/poppins_semibold"
-            android:text="Remove from cart"
+            android:text="Product already in cart"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp" />
     </RelativeLayout>

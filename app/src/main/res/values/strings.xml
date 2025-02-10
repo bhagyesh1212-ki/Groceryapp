@@ -181,4 +181,5 @@
     <string name="creditcardicon">creditCardIcon</string>
     <string name="month_year">Month / Year</string>
     <string name="save_this_card">Save this card</string>
+    <string name="add_credit_card">Add Credit Card</string>
 </resources>

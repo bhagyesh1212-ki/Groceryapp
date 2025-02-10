@@ -21,6 +21,7 @@ public class OrderSuccessActivity extends AppCompatActivity {
         binding.back.setOnClickListener(v -> {
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
+            finish();
         });
 
         binding.track.setOnClickListener(v -> {
