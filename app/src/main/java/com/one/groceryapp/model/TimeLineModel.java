@@ -4,10 +4,20 @@ public class TimeLineModel {
 
     private String orderDeliveryStatus;
     private String date;
+    private int imageRound;
 
-    public TimeLineModel(String orderDeliveryStatus, String date) {
+    public TimeLineModel(String orderDeliveryStatus, String date, int imageRound) {
         this.orderDeliveryStatus = orderDeliveryStatus;
         this.date = date;
+        this.imageRound = imageRound;
+    }
+
+    public int getImageRound() {
+        return imageRound;
+    }
+
+    public void setImageRound(int imageRound) {
+        this.imageRound = imageRound;
     }
 
     public String getOrderDeliveryStatus() {

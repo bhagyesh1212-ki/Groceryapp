@@ -51,7 +51,7 @@ public interface UserDao {
     @Query("SELECT * FROM myorder_table")
     List<MyOrderModel> getallmyorder();
 
-    @Query("UPDATE cards_table SET isSwitched =:isSwitched WHERE id=:id")
-    void updateSwitch(Boolean isSwitched,int id);
+//    @Query("UPDATE cards_table SET isSwitched =:isSwitched WHERE id=:id")
+//    void updateSwitch(Boolean isSwitched,int id);
 
 }

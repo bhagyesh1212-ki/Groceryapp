@@ -3,31 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/_14sdp">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:orientation="vertical"
         tools:ignore="UselessParent">
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/category_bg"
                 android:layout_width="@dimen/_45sdp"
-                app:cardElevation="0dp"
-                android:elevation="0dp"
-                android:layout_marginVertical="@dimen/_1sdp"
                 android:layout_height="@dimen/_45sdp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/_1sdp"
+                android:elevation="0dp"
+                app:cardBackgroundColor="@color/grocery_purple"
                 app:cardCornerRadius="@dimen/_100sdp"
-                app:cardBackgroundColor="@color/grocery_purple">
+                app:cardElevation="0dp">
 
                 <ImageView
                     android:id="@+id/category_image"
@@ -46,11 +46,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginVertical="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
             android:text="@string/vegetables"
             android:textColor="@color/grey"
-            android:textSize="@dimen/_7ssp" />
+            android:textSize="@dimen/_10ssp" />
     </LinearLayout>
 </LinearLayout>

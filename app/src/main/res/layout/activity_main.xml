@@ -4,14 +4,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".ui.activity.MainActivity">
 
     <RelativeLayout
         android:id="@+id/frame_layout"
-        android:background="@drawable/home_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

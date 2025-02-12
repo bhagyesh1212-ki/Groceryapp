@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:paddingBottom="@dimen/_50sdp"
     tools:context=".ui.fragment.ProfileFragment">
 
     <RelativeLayout
@@ -19,7 +18,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@+id/header"
             android:background="@color/background_white_first">
 

@@ -1,12 +1,16 @@
 package com.one.groceryapp.ui.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.one.groceryapp.R;
 import com.one.groceryapp.databinding.TimelineRowBinding;
 import com.one.groceryapp.model.TimeLineModel;
 
@@ -26,7 +30,7 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.ViewHo
     @Override
     public TimeLineAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         TimelineRowBinding binding = TimelineRowBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        binding.timeline.initLine(viewType);
+//      binding.timeline.initLine(viewType);
         return new ViewHolder(binding);
     }
 
@@ -35,6 +39,13 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.ViewHo
         TimeLineModel timeLineModel = timeLineModelList.get(position);
         holder.binding.txtOrder.setText(timeLineModel.getOrderDeliveryStatus());
         holder.binding.txtOrderDate.setText(timeLineModel.getDate());
+        holder.binding.timeLineRound.setBackgroundResource(timeLineModel.getImageRound());
+        if (position == 0) {
+            holder.binding.topLine.setVisibility(View.GONE);
+        }
+        if (position == timeLineModelList.size() - 1) {
+            holder.binding.bottomLine.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -43,7 +54,6 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         TimelineRowBinding binding;
 
         public ViewHolder(@NonNull TimelineRowBinding binding) {

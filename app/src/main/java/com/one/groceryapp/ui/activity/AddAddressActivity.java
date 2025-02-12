@@ -1,6 +1,8 @@
 package com.one.groceryapp.ui.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -43,7 +45,7 @@ public class AddAddressActivity extends AppCompatActivity implements AdapterView
         categories.add("USA");
         categories.add("China");
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, categories);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
 
@@ -57,8 +59,29 @@ public class AddAddressActivity extends AppCompatActivity implements AdapterView
             String country = binding.spinner.getSelectedItem().toString();
             String phone = binding.phone.getText().toString();
 
+            if(binding.switchView.isChecked()){
+                SharedPreferences sf = getSharedPreferences("saveaddress",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sf.edit();
+                editor.putString("name", name);
+                editor.putString("email", email);
+                editor.putString("phone", phone);
+                editor.putString("address", address);
+                editor.putString("country", country);
+                editor.putString("zip", zip);
+                editor.putString("city", city);
+                editor.apply();
+            }
+
             if (name.isEmpty() || email.isEmpty() || address.isEmpty() || zip.isEmpty() || city.isEmpty() || phone.isEmpty()) {
                 Toast.makeText(this, "Please fill all the detail", Toast.LENGTH_SHORT).show();
+            } else if (!name.matches("^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}")) {
+                Toast.makeText(this, "Enter valid name", Toast.LENGTH_SHORT).show();
+            } else if (!email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
+                Toast.makeText(this, "Enter a valid email address", Toast.LENGTH_SHORT).show();
+            } else if (phone.length() != 10) {
+                Toast.makeText(this, "Enter valid phone number", Toast.LENGTH_SHORT).show();
+            } else if (zip.length() != 6) {
+                Toast.makeText(this, "Enter valid zip code", Toast.LENGTH_SHORT).show();
             } else {
                 Intent i = new Intent(AddAddressActivity.this, MyAddressActivity.class);
                 i.putExtra("name", name);
@@ -82,8 +105,5 @@ public class AddAddressActivity extends AppCompatActivity implements AdapterView
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
-
-
 }

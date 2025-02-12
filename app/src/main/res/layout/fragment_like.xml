@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/like"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/like"
     android:background="@color/background_white_first"
     tools:context=".ui.fragment.LikeFragment">
 
@@ -34,11 +34,37 @@
             android:textSize="@dimen/_15ssp" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/rlEmptyLike"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgEmptyLike"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/emptylike"
+            android:src="@drawable/empty_like" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgEmptyLike"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/your_favorites_is_empty"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_17ssp" />
+
+    </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/header"
         android:layout_margin="@dimen/horizontal_padding" />
-
 </RelativeLayout>

@@ -3,7 +3,6 @@ package com.one.groceryapp.ui.adapter;
 import android.content.Context;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +14,6 @@ import com.one.groceryapp.R;
 import com.one.groceryapp.databinding.DemoMyorderBinding;
 import com.one.groceryapp.model.MyOrderModel;
 import com.one.groceryapp.model.TimeLineModel;
-
-import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,13 +38,14 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     }
 
     private List<TimeLineModel> myOrderModelList() {
-        timeLineModelList.add(new TimeLineModel("Order placed", "Oct 19 2021"));
-        timeLineModelList.add(new TimeLineModel("Order confirmed", "Oct 20 2021"));
-        timeLineModelList.add(new TimeLineModel("Order shipped", "Oct 20 2021"));
-        timeLineModelList.add(new TimeLineModel("Out for delivery", "pending"));
-        timeLineModelList.add(new TimeLineModel("Order delivered", "pending"));
+        timeLineModelList.add(new TimeLineModel("Order placed", "Oct 19 2021", R.drawable.timelineview_bg));
+        timeLineModelList.add(new TimeLineModel("Order confirmed", "Oct 20 2021", R.drawable.timelineview_bg));
+        timeLineModelList.add(new TimeLineModel("Order shipped", "Oct 20 2021", R.drawable.timelineview_bg));
+        timeLineModelList.add(new TimeLineModel("Out for delivery", "pending", R.drawable.timelineview_grey));
+        timeLineModelList.add(new TimeLineModel("Order delivered", "pending", R.drawable.timelineview_grey));
         return timeLineModelList;
     }
+
     TimeLineAdapter adapter = new TimeLineAdapter(myOrderModelList(), context);
 
     @Override
@@ -56,8 +54,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         holder.binding.item.setText(String.valueOf(orderModel.getItem()));
         holder.binding.price.setText(String.valueOf(orderModel.getPrice()));
         holder.binding.date.setText(orderModel.getDate());
-        holder.binding.rcv.setAdapter(adapter);
 
+        holder.binding.rcv.setAdapter(adapter);
         holder.binding.dropUp.setOnClickListener(v -> {
             if (holder.binding.rcv.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(holder.binding.main, new AutoTransition());

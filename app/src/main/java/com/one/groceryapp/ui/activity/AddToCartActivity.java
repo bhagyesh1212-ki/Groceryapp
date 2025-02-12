@@ -53,12 +53,20 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
             }
         }
 
+        binding.llStartShopping.setOnClickListener(v -> {
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        });
+
+        rcvAndEmptyCartManage();
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(AddToCartActivity.this, LinearLayoutManager.VERTICAL, false);
         binding.rcv.setLayoutManager(linearLayoutManager);
         adapter = new AddToCartAdapter(modelArrayList, AddToCartActivity.this, this);
         binding.rcv.setAdapter(adapter);
 
         itemCount = binding.rcv.getAdapter().getItemCount();
+
         binding.Checkout.setOnClickListener(v -> {
             if (total > 0) {
                 Intent i = new Intent(this, PaymentActivity.class);
@@ -69,6 +77,7 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
                 Toast.makeText(this, "please add item in cart", Toast.LENGTH_SHORT).show();
             }
         });
+
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(binding.rcv);
     }
@@ -138,13 +147,34 @@ public class AddToCartActivity extends AppCompatActivity implements AddToCartAda
             binding.shippingCharge.setText("$0");
             binding.totalPay.setText("$0");
             total = 0;
-            Toast.makeText(this, "Cart is empty!", Toast.LENGTH_SHORT).show();
+            rcvAndEmptyCartManage();
         } else {
             binding.subTotal.setText("$" + newPrice);
             binding.shippingCharge.setText("$5");
             total = newPrice + 5;
             binding.totalPay.setText("$" + total);
         }
+    }
+
+    private void rcvAndEmptyCartManage() {
+        if (modelArrayList.isEmpty()) {
+            binding.rcv.setVisibility(View.GONE);
+            binding.payment.setVisibility(View.GONE);
+            binding.RlEmptyCart.setVisibility(View.VISIBLE);
+            binding.llStartShopping.setVisibility(View.VISIBLE);
+        } else {
+            binding.rcv.setVisibility(View.VISIBLE);
+            binding.RlEmptyCart.setVisibility(View.GONE);
+            binding.payment.setVisibility(View.VISIBLE);
+            binding.llStartShopping.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }
 

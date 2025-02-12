@@ -312,34 +312,34 @@
                         android:textSize="@dimen/_10ssp" />
                 </LinearLayout>
             </RelativeLayout>
-
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/city_zip"
-            android:layout_marginStart="@dimen/_13sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:orientation="horizontal">
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/city_zip"-->
+<!--            android:layout_marginStart="@dimen/_13sdp"-->
+<!--            android:layout_marginTop="@dimen/_15sdp"-->
+<!--            android:orientation="horizontal">-->
 
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switchView"
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-                android:thumb="@drawable/custom_thumb"
-                app:track="@drawable/custom_track" />
+<!--            <androidx.appcompat.widget.SwitchCompat-->
+<!--                android:id="@+id/switchView"-->
+<!--                android:layout_width="@dimen/_25sdp"-->
+<!--                android:layout_height="@dimen/_20sdp"-->
+<!--                android:theme="@style/Theme.AppCompat.Light.NoActionBar"-->
+<!--                android:thumb="@drawable/custom_thumb"-->
+<!--                app:track="@drawable/custom_track" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="@string/save_this_card"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
-        </LinearLayout>
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/_5sdp"-->
+<!--                android:fontFamily="@font/poppins_medium"-->
+<!--                android:text="@string/save_this_card"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="@dimen/_12sdp" />-->
+<!--        </LinearLayout>-->
+
     </RelativeLayout>
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

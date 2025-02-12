@@ -35,9 +35,10 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
     UserDao userDao;
     private int selectedposition = 0;
 
-    public MyAddressAdapter(List<AddressModel> addressModelList, Context context) {
+    public MyAddressAdapter(List<AddressModel> addressModelList, Context context, int selectedposition) {
         this.addressModelList = addressModelList;
         this.context = context;
+        this.selectedposition = selectedposition;
     }
 
     @NonNull
@@ -63,28 +64,18 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
             holder.binding.addressEdit.setText(addressModel.getAddress());
             holder.binding.cityEdit.setText(addressModel.getCity());
             holder.binding.zipEdit.setText(addressModel.getZip());
+            holder.binding.spinner.setText(addressModel.getCountry());
         }
 
-//        holder.binding.switchview.setOnClickListener(v -> {
-//            if (holder.binding.switchview.isChecked()) {
-//
-//                holder.binding.default12.setVisibility(View.VISIBLE);
-//            } else {
-//                holder.binding.default12.setVisibility(View.GONE);
-//            }
-//        });
-
-        final Spinner spinner = holder.binding.spinner;
-        spinner.setOnItemSelectedListener(this);
-
-        List<String> categories = new ArrayList<String>();
-        categories.add("India");
-        categories.add("USA");
-        categories.add("China");
-
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, categories);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(dataAdapter);
+//        final Spinner spinner = holder.binding.spinner;
+//        spinner.setOnItemSelectedListener(this);
+//        List<String> categories = new ArrayList<String>();
+//        categories.add("India");
+//        categories.add("USA");
+//        categories.add("China");
+//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, categories);
+//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner.setAdapter(dataAdapter);
 
         holder.binding.dropUp.setOnClickListener(v -> {
             if (holder.binding.personalDetail.getVisibility() == View.VISIBLE) {
@@ -112,6 +103,7 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
                 selectedposition = holder.getAdapterPosition();
                 notifyDataSetChanged();
                 addressModel.setIsswitched(true);
+                selectedPosition(selectedposition);
             } else {
                 if (selectedposition == holder.getAdapterPosition()) {
                     selectedposition = -1;
@@ -120,12 +112,36 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
             }
         });
 
+        if(getItemCount() == 1){
+            holder.binding.switchview.setChecked(true);
+            holder.binding.default12.setVisibility(View.VISIBLE);
+            String name = addressModelList.get(selectedposition).getName();
+            String email = addressModelList.get(selectedposition).getEmail();
+            String phone = addressModelList.get(selectedposition).getMobile_number();
+            String address = addressModelList.get(selectedposition).getAddress();
+            String zip = addressModelList.get(selectedposition).getZip();
+            String city = addressModelList.get(selectedposition).getCity();
+            String country = addressModelList.get(selectedposition).getCountry();
+            SharedPreferences sf = context.getSharedPreferences("saveaddress",Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sf.edit();
+            editor.putString("name", name);
+            editor.putString("email", email);
+            editor.putString("phone", phone);
+            editor.putString("address", address);
+            editor.putString("zip", zip);
+            editor.putString("country", country);
+            editor.putString("city", city);
+            editor.apply();
+        }
+
+
         if(addressModel.getIsswitched()) {
             String name = addressModelList.get(selectedposition).getName();
             String email = addressModelList.get(selectedposition).getEmail();
             String phone = addressModelList.get(selectedposition).getMobile_number();
             String address = addressModelList.get(selectedposition).getAddress();
             String zip = addressModelList.get(selectedposition).getZip();
+            String country = addressModelList.get(selectedposition).getCountry();
             String city = addressModelList.get(selectedposition).getCity();
             SharedPreferences sf = context.getSharedPreferences("saveaddress",Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sf.edit();
@@ -134,6 +150,7 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
             editor.putString("phone", phone);
             editor.putString("address", address);
             editor.putString("zip", zip);
+            editor.putString("country", country);
             editor.putString("city", city);
             editor.apply();
         }
@@ -154,9 +171,15 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
+    private void selectedPosition(int selectedposition) {
+        SharedPreferences sf = context.getSharedPreferences("selectedPositionAddress", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sf.edit();
+        editor.putInt("lastSelectedPositionInAddress", selectedposition);
+        editor.apply();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         DemoAddressBinding binding;
-
         public ViewHolder(@NonNull DemoAddressBinding binding) {
             super(binding.getRoot());
             this.binding = binding;

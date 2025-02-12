@@ -1,14 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/home_bg"
     tools:context=".ui.fragment.HomeFragment">
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginHorizontal="@dimen/horizontal_padding"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/search_bg"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/search"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_19sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/_22sdp"
+            android:background="@color/background_white_first"
+            android:importantForAccessibility="no"
+            android:src="@drawable/search" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:background="@color/background_white_first"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center_vertical"
+            android:hint="@string/search_keywords"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:textColor="@color/grey"
+            android:textColorHint="@color/grey"
+            android:textSize="@dimen/_13ssp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/filter"
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="@dimen/_13sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/filter" />
+        </RelativeLayout>
+    </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -16,58 +70,10 @@
             android:orientation="vertical"
             android:paddingHorizontal="@dimen/horizontal_padding">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:background="@drawable/search_bg"
-                android:orientation="horizontal"
-                tools:ignore="UselessParent">
-
-                <ImageView
-                    android:id="@+id/search"
-                    android:layout_width="@dimen/_15sdp"
-                    android:layout_height="@dimen/_19sdp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/_22sdp"
-                    android:background="@color/background_white_first"
-                    android:importantForAccessibility="no"
-                    android:src="@drawable/search" />
-
-                <EditText
-                    android:id="@+id/password"
-                    android:layout_width="@dimen/_180sdp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/_20sdp"
-                    android:background="@color/background_white_first"
-                    android:fontFamily="@font/poppins_medium"
-                    android:hint="@string/search_keywords"
-                    android:importantForAutofill="no"
-                    android:inputType="textPassword"
-                    android:textColor="@color/grey"
-                    android:textColorHint="@color/grey"
-                    android:textSize="@dimen/_10ssp" />
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/filter"
-                        android:layout_width="@dimen/_14sdp"
-                        android:layout_height="@dimen/_13sdp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerInParent="true"
-                        android:layout_marginEnd="@dimen/_15sdp"
-                        android:importantForAccessibility="no"
-                        android:src="@drawable/filter" />
-                </RelativeLayout>
-            </LinearLayout>
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp">
+                android:layout_marginVertical="@dimen/horizontal_padding">
 
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/vp"
@@ -97,4 +103,4 @@
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-</FrameLayout>
+</RelativeLayout>

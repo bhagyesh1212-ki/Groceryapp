@@ -1,6 +1,8 @@
 package com.one.groceryapp.ui.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -56,12 +58,16 @@ public class MyAddressActivity extends AppCompatActivity {
         String phone = getIntent().getStringExtra("phone");
 
         if (name != null) {
-            addressModelList.add(new AddressModel(name, email, phone, address, zip, city, country,false));
+            addressModelList.add(new AddressModel(name, email, phone, address, zip, city, country, false));
             userDao.insertAddress(addressModelList);
         }
 
+        SharedPreferences sf = getSharedPreferences("selectedPositionAddress", Context.MODE_PRIVATE);
+        int selectedpositionOfAddress = sf.getInt("lastSelectedPositionInAddress", 0);
+
+
         addressModelList = userDao.getaddress();
-        MyAddressAdapter adapter = new MyAddressAdapter(addressModelList, MyAddressActivity.this);
+        MyAddressAdapter adapter = new MyAddressAdapter(addressModelList, MyAddressActivity.this, selectedpositionOfAddress);
         binding.rcv.setAdapter(adapter);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);

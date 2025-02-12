@@ -41,17 +41,17 @@ public class AddressFragment extends Fragment implements AdapterView.OnItemSelec
                              Bundle savedInstanceState) {
 
         binding = FragmentAddressBinding.inflate(inflater, container, false);
-        final Spinner spinner = binding.spinner;
-        spinner.setOnItemSelectedListener(this);
-
-        List<String> categories = new ArrayList<String>();
-        categories.add("India");
-        categories.add("USA");
-        categories.add("China");
-
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, categories);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(dataAdapter);
+//        final Spinner spinner = binding.spinner;
+//        spinner.setOnItemSelectedListener(this);
+//
+//        List<String> categories = new ArrayList<String>();
+//        categories.add("India");
+//        categories.add("USA");
+//        categories.add("China");
+//
+//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, categories);
+//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner.setAdapter(dataAdapter);
 
         saveToPreference();
         return binding.getRoot();
@@ -75,11 +75,13 @@ public class AddressFragment extends Fragment implements AdapterView.OnItemSelec
         String address = sf.getString("address","");
         String zip = sf.getString("zip","");
         String city = sf.getString("city","");
+        String country = sf.getString("country","");
         binding.nameEdt.setText(name);
         binding.email.setText(email);
         binding.phone.setText(phone);
         binding.address.setText(address);
         binding.zip.setText(zip);
         binding.city.setText(city);
+        binding.spinner.setText(country);
     }
 }

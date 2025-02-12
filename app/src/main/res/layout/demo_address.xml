@@ -88,10 +88,10 @@
     <RelativeLayout
         android:id="@+id/personal_detail"
         android:layout_width="match_parent"
-        android:visibility="gone"
         android:layout_height="wrap_content"
         android:layout_below="@+id/main_layout"
-        android:layout_margin="@dimen/horizontal_padding">
+        android:layout_margin="@dimen/horizontal_padding"
+        android:visibility="gone">
 
         <RelativeLayout
             android:id="@+id/user_name_edt"
@@ -281,16 +281,29 @@
                     android:contentDescription="@string/email_img"
                     android:src="@drawable/country" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_15sdp"
-                    android:dropDownVerticalOffset="@dimen/_42sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@color/background_white_first"
                     android:fontFamily="@font/poppins_medium"
-                    android:popupBackground="@color/white"
-                    android:textColor="@android:color/black" />
+                    android:importantForAutofill="no"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/grey"
+                    android:textSize="@dimen/_10ssp" />
+
+<!--                <Spinner-->
+<!--                    android:id="@+id/spinner"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginStart="@dimen/_7sdp"-->
+<!--                    android:dropDownVerticalOffset="@dimen/_42sdp"-->
+<!--                    android:fontFamily="@font/poppins_medium"-->
+<!--                    android:popupBackground="@color/white"-->
+<!--                    android:textColor="@android:color/black" />-->
 
             </LinearLayout>
         </RelativeLayout>

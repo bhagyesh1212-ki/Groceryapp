@@ -273,45 +273,61 @@
                     android:contentDescription="@string/email_img"
                     android:src="@drawable/country" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_15sdp"
-                    android:dropDownVerticalOffset="@dimen/_42sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@color/white"
                     android:fontFamily="@font/poppins_medium"
-                    android:popupBackground="@color/white"
-                    android:spinnerMode="dropdown"
-                    android:textColor="@android:color/white" />
+                    android:hint="@string/country"
+                    android:focusable="false"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/grey"
+                    android:textSize="@dimen/_13ssp" />
+
+<!--                <Spinner-->
+<!--                    android:id="@+id/spinner"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginStart="@dimen/_15sdp"-->
+<!--                    android:dropDownVerticalOffset="@dimen/_42sdp"-->
+<!--                    android:fontFamily="@font/poppins_medium"-->
+<!--                    android:popupBackground="@color/white"-->
+<!--                    android:spinnerMode="dropdown"-->
+<!--                    android:textColor="@android:color/white" />-->
             </LinearLayout>
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/country"
-            android:layout_marginStart="@dimen/_13sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:orientation="horizontal">
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/country"-->
+<!--            android:layout_marginStart="@dimen/_13sdp"-->
+<!--            android:layout_marginTop="@dimen/_15sdp"-->
+<!--            android:orientation="horizontal">-->
 
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switchView"
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-                android:thumb="@drawable/custom_thumb"
-                app:track="@drawable/custom_track" />
+<!--            <androidx.appcompat.widget.SwitchCompat-->
+<!--                android:id="@+id/switchView"-->
+<!--                android:layout_width="@dimen/_25sdp"-->
+<!--                android:layout_height="@dimen/_20sdp"-->
+<!--                android:theme="@style/Theme.AppCompat.Light.NoActionBar"-->
+<!--                android:thumb="@drawable/custom_thumb"-->
+<!--                app:track="@drawable/custom_track" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="@string/save_this_address"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
-        </LinearLayout>
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/_5sdp"-->
+<!--                android:fontFamily="@font/poppins_medium"-->
+<!--                android:text="@string/save_this_address"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="@dimen/_12sdp" />-->
+<!--        </LinearLayout>-->
     </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>

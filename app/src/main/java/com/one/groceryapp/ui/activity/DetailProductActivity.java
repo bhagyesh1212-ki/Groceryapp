@@ -26,6 +26,7 @@ public class DetailProductActivity extends AppCompatActivity {
 
         binding.back.setOnClickListener(v -> {
             startActivity(new Intent(this, MainActivity.class));
+            finish();
         });
 
         List<FeatureProductModel> featureProductModelList = (List<FeatureProductModel>) getIntent().getSerializableExtra("featuremodel");
@@ -69,6 +70,11 @@ public class DetailProductActivity extends AppCompatActivity {
             }
         });
 
+        binding.removeFromCart.setOnClickListener(v -> {
+            startActivity(new Intent(this, AddToCartActivity.class));
+            finish();
+        });
+
         binding.minus.setOnClickListener(v -> {
             int quantityOfItem = Constants.productModels.get(position).getProductNumber();
             if (quantityOfItem > 1) {
@@ -83,6 +89,18 @@ public class DetailProductActivity extends AppCompatActivity {
             quantityOfItem++;
             binding.quantityOfItem.setText(String.valueOf(quantityOfItem));
             Constants.productModels.get(position).setProductNumber(quantityOfItem);
+            if (quantityOfItem > 1) {
+                Constants.productModels.get(position).setAddtocart(true);
+                binding.addAddressBtn.setVisibility(View.GONE);
+                binding.removeFromCart.setVisibility(View.VISIBLE);
+            }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }

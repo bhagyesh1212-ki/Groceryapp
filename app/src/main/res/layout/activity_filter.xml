@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:fitsSystemWindows="true"
     android:layout_height="match_parent"
     android:background="@color/background_white_first"
+    android:fitsSystemWindows="true"
     tools:context=".ui.activity.FilterActivity">
+
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -44,47 +44,47 @@
             android:src="@drawable/reload" />
     </RelativeLayout>
 
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/header"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="@dimen/_60sdp"-->
-<!--        android:background="@color/white">-->
+    <!--    <RelativeLayout-->
+    <!--        android:id="@+id/header"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="@dimen/_60sdp"-->
+    <!--        android:background="@color/white">-->
 
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="@dimen/_18sdp"-->
-<!--            tools:ignore="UselessParent">-->
+    <!--        <RelativeLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="@dimen/_18sdp"-->
+    <!--            tools:ignore="UselessParent">-->
 
-<!--            <ImageView-->
-<!--                android:id="@+id/back"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignParentStart="true"-->
-<!--                android:layout_alignParentTop="true"-->
-<!--                android:layout_centerVertical="true"-->
-<!--                android:layout_marginStart="@dimen/_15sdp"-->
-<!--                android:importantForAccessibility="no" android:src="@drawable/backarrowblack" />-->
+    <!--            <ImageView-->
+    <!--                android:id="@+id/back"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_alignParentStart="true"-->
+    <!--                android:layout_alignParentTop="true"-->
+    <!--                android:layout_centerVertical="true"-->
+    <!--                android:layout_marginStart="@dimen/_15sdp"-->
+    <!--                android:importantForAccessibility="no" android:src="@drawable/backarrowblack" />-->
 
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerHorizontal="true"-->
-<!--                android:fontFamily="@font/poppins_medium"-->
-<!--                android:text="@string/apply_filters"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="@dimen/_15ssp"-->
-<!--                tools:ignore="RelativeOverlap" />-->
+    <!--            <TextView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_centerHorizontal="true"-->
+    <!--                android:fontFamily="@font/poppins_medium"-->
+    <!--                android:text="@string/apply_filters"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:textSize="@dimen/_15ssp"-->
+    <!--                tools:ignore="RelativeOverlap" />-->
 
-<!--            <ImageView-->
-<!--                android:id="@+id/refresh"-->
-<!--                android:layout_width="@dimen/_18sdp"-->
-<!--                android:layout_height="@dimen/_18sdp"-->
-<!--                android:layout_alignParentEnd="true"-->
-<!--                android:layout_marginEnd="@dimen/_15sdp"-->
-<!--                android:importantForAccessibility="no" android:src="@drawable/reload" />-->
-<!--        </RelativeLayout>-->
-<!--    </RelativeLayout>-->
+    <!--            <ImageView-->
+    <!--                android:id="@+id/refresh"-->
+    <!--                android:layout_width="@dimen/_18sdp"-->
+    <!--                android:layout_height="@dimen/_18sdp"-->
+    <!--                android:layout_alignParentEnd="true"-->
+    <!--                android:layout_marginEnd="@dimen/_15sdp"-->
+    <!--                android:importantForAccessibility="no" android:src="@drawable/reload" />-->
+    <!--        </RelativeLayout>-->
+    <!--    </RelativeLayout>-->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -103,7 +103,7 @@
             android:paddingHorizontal="@dimen/horizontal_padding"
             android:text="@string/price_range"
             android:textColor="@color/black"
-            android:textSize="@dimen/_14ssp" />
+            android:textSize="@dimen/_13ssp" />
 
         <LinearLayout
             android:id="@+id/min_max"
@@ -118,33 +118,34 @@
                 android:id="@+id/min"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
-                android:paddingEnd="@dimen/_10sdp"
                 android:layout_marginHorizontal="@dimen/_2sdp"
-                android:textColor="@color/grey"
-                android:fontFamily="@font/poppins_medium"
                 android:layout_weight="1"
-                android:importantForAutofill="no" android:inputType="numberDecimal"
                 android:background="@drawable/min_max_bg"
+                android:fontFamily="@font/poppins_medium"
                 android:hint="Min."
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:paddingEnd="@dimen/_10sdp"
+                android:textColor="@color/grey"
                 android:textColorHint="@color/grey"
-                android:textSize="@dimen/_10ssp"
+                android:textSize="@dimen/_12ssp"
                 tools:ignore="HardcodedText,RtlSymmetry" />
 
             <EditText
                 android:id="@+id/max"
                 android:layout_width="match_parent"
-                android:paddingEnd="@dimen/_10sdp"
                 android:layout_height="@dimen/_40sdp"
-                android:importantForAutofill="no"
-                android:inputType="numberDecimal"
-                android:textColor="@color/grey"
-                android:fontFamily="@font/poppins_medium"
                 android:layout_marginHorizontal="@dimen/_2sdp"
                 android:layout_weight="1"
                 android:background="@drawable/min_max_bg"
+                android:fontFamily="@font/poppins_medium"
                 android:hint="Max."
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:paddingEnd="@dimen/_10sdp"
+                android:textColor="@color/grey"
                 android:textColorHint="@color/grey"
-                android:textSize="@dimen/_10ssp"
+                android:textSize="@dimen/_12ssp"
                 tools:ignore="HardcodedText,RtlSymmetry" />
 
         </LinearLayout>
@@ -167,7 +168,7 @@
             android:paddingHorizontal="@dimen/horizontal_padding"
             android:text="@string/star_rating"
             android:textColor="@color/black"
-            android:textSize="@dimen/_14ssp" />
+            android:textSize="@dimen/_13ssp" />
 
         <RelativeLayout
             android:id="@+id/star"
@@ -179,20 +180,18 @@
             android:background="@drawable/min_max_bg"
             android:orientation="horizontal">
 
-            <com.idlestar.ratingstar.RatingStarView
-                android:id="@+id/rating"
-                app:rsv_enableSelectRating="true"
-                app:rsv_rating="0"
-                app:rsv_starBackgroundColor="@color/white"
-                app:rsv_starForegroundColor="#FFC107"
-                app:rsv_starMargin="@dimen/_5sdp"
-                app:rsv_starNum="5"
+            <RatingBar
+                android:id="@+id/ratingbar"
+                style="?android:attr/ratingBarStyleIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                app:rsv_starThickness="0.7"
-                app:rsv_strokeColor="@color/white"
-                android:layout_width="@dimen/_150sdp"
-                android:layout_height="@dimen/_15sdp"
-                android:background="@null" />
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:isIndicator="false"
+                android:numStars="5"
+                android:progressBackgroundTint="@color/grey"
+                android:progressTint="#FFC107"
+                android:stepSize="1" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -241,7 +240,7 @@
             android:paddingHorizontal="@dimen/horizontal_padding"
             android:text="@string/others"
             android:textColor="@color/black"
-            android:textSize="@dimen/_14ssp" />
+            android:textSize="@dimen/_13ssp" />
 
         <RelativeLayout
             android:id="@+id/discount"
@@ -270,7 +269,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/discount"
                 android:textColor="@color/grey"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_12ssp"
                 tools:ignore="RelativeOverlap" />
 
             <ImageView
@@ -320,7 +319,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/free_shipping"
                 android:textColor="@color/grey"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_12ssp"
                 tools:ignore="RelativeOverlap" />
 
             <ImageView
@@ -370,7 +369,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/same_day_delivery"
                 android:textColor="@color/grey"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_12ssp"
                 tools:ignore="RelativeOverlap" />
 
             <ImageView

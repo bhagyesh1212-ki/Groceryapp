@@ -182,4 +182,14 @@
     <string name="month_year">Month / Year</string>
     <string name="save_this_card">Save this card</string>
     <string name="add_credit_card">Add Credit Card</string>
+    <string name="organic_mountain_works_as_a_seller_for_many_organic_growers_of_organic_lemons_organic_lemons_are_easy_to_spot_in_your_produce_aisle_they_are_just_like_regular_lemons_but_they_will_usually_have_a_few_more_scars_on_the_outside_of_the_lemon_skin_organic_lemons_are_considered_to_be_the_world_s_finest_lemon_for_juicing">Organic Mountain works as a seller for many organic growers of organic lemons. Organic lemons are easy to spot in your produce aisle. They are just like regular lemons, but they will usually have a few more scars on the outside of the lemon skin. Organic lemons are considered to be the world\'s finest lemon for juicing</string>
+    <string name="_89_reviews">(89 reviews)</string>
+    <string name="plusicon">plusIcon</string>
+    <string name="move_to_cart">Move to cart</string>
+    <string name="your_cart_is_empty">Your cart is empty !</string>
+    <string name="start_shopping">Start shopping</string>
+    <string name="emptylike">emptyLike</string>
+    <string name="add_favorites_items">Add Favorites Items</string>
+    <string name="your_favorites_is_empty">Your favorites is empty</string>
+    <string name="country">Country</string>
 </resources>

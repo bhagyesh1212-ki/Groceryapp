@@ -7,7 +7,6 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,15 +21,16 @@ import java.util.List;
 
 public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder> {
 
-    static List<CardModel> cardModelList;
+    List<CardModel> cardModelList;
     Context context;
     AppDatabase appDatabase;
     UserDao userDao;
     private int selectedposition;
 
-    public MyCardAdapter(List<CardModel> cardModelList, Context context) {
-        this.cardModelList = cardModelList;
+    public MyCardAdapter(Context context, List<CardModel> cardModelList, int selectedposition) {
         this.context = context;
+        this.cardModelList = cardModelList;
+        this.selectedposition = selectedposition;
     }
 
     @NonNull
@@ -82,7 +82,8 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder
                 selectedposition = holder.getAdapterPosition();
                 cardModel.setSwitched(true);
                 notifyDataSetChanged();
-                userDao.updateSwitch(true, selectedposition);
+                selectedPosition(selectedposition);
+//                userDao.updateSwitch(true, selectedposition);
             } else {
                 cardModel.setSwitched(false);
             }
@@ -117,6 +118,13 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder
             editor.putString("cvv", cvv);
             editor.apply();
         }
+    }
+
+    private void selectedPosition(int selectedposition) {
+        SharedPreferences sf = context.getSharedPreferences("selectedPosition", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sf.edit();
+        editor.putInt("lastSelectedPosition", selectedposition);
+        editor.apply();
     }
 
     @Override

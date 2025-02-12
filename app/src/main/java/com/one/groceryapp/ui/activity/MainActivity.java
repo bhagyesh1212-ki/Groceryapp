@@ -1,5 +1,6 @@
 package com.one.groceryapp.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,10 +26,22 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        fragmentManager = getSupportFragmentManager();
+
+        fragmentManager.addOnBackStackChangedListener(() -> {
+            Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.frame_layout);
+            if (currentFragment instanceof HomeFragment) {
+                changeicon(R.id.home);
+            } else if (currentFragment instanceof ProfileFragment) {
+                changeicon(R.id.profile);
+            } else if (currentFragment instanceof LikeFragment) {
+                changeicon(R.id.like);
+            }
+        });
+
         if (savedInstanceState == null) {
             replaceFragment(new HomeFragment());
             changeicon(R.id.home);
-
         }
 
         binding.home.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 replaceFragment(new ProfileFragment());
                 changeicon(R.id.profile);
-
             }
         });
 
@@ -53,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 replaceFragment(new LikeFragment());
                 changeicon(R.id.like);
-
-
             }
         });
 
@@ -79,10 +89,11 @@ public class MainActivity extends AppCompatActivity {
         binding.like.setImageResource(iconid == R.id.like ? R.drawable.like_black : R.drawable.like_white);
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onBackPressed() {
         if (fragmentManager.getBackStackEntryCount() > 1) {
-            super.onBackPressed();
+          fragmentManager.popBackStack();
         } else {
             finishAffinity();
         }

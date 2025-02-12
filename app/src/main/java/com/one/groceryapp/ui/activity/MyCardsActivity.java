@@ -1,6 +1,8 @@
 package com.one.groceryapp.ui.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -46,21 +48,25 @@ public class MyCardsActivity extends AppCompatActivity {
             Toast.makeText(this, "save settings successfully", Toast.LENGTH_SHORT).show();
         });
 
+        SharedPreferences sf = getSharedPreferences("selectedPosition", Context.MODE_PRIVATE);
+        int selectedPosition = sf.getInt("lastSelectedPosition", 0);
+
+
         String nameEdt = getIntent().getStringExtra("nameEdt");
         String cardNumEdt = getIntent().getStringExtra("cardNumEdt");
         String dateEdt = getIntent().getStringExtra("dateEdt");
         String cvvEdt = getIntent().getStringExtra("cvvEdt");
-        Boolean switched = getIntent().getBooleanExtra("switch",false);
+        boolean switched = getIntent().getBooleanExtra("switch", false);
 
         if (nameEdt != null) {
-            CardModel cardModel = new CardModel(nameEdt, cardNumEdt, dateEdt, cvvEdt,switched);
+            CardModel cardModel = new CardModel(nameEdt, cardNumEdt, dateEdt, cvvEdt, switched);
             cardModelArrayList.add(cardModel);
             userDao.insercard(cardModelArrayList);
         }
 
         cardModelArrayList = userDao.getallcards();
 
-        MyCardAdapter adapter = new MyCardAdapter(cardModelArrayList, this);
+        MyCardAdapter adapter = new MyCardAdapter(this, cardModelArrayList,selectedPosition);
         binding.rcv.setAdapter(adapter);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);

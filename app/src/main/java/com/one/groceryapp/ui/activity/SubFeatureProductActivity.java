@@ -38,4 +38,11 @@ public class SubFeatureProductActivity extends AppCompatActivity {
         com.one.groceryapp.ui.adapter.SubFeaturedProductAdapter subFeaturedProductAdapter = new com.one.groceryapp.ui.adapter.SubFeaturedProductAdapter(featureProductModelList, context);
         binding.rcv.setAdapter(subFeaturedProductAdapter);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(SubFeatureProductActivity.this, MainActivity.class));
+        finish();
+    }
 }

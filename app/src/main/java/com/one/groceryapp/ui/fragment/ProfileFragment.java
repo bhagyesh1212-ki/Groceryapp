@@ -1,17 +1,17 @@
 package com.one.groceryapp.ui.fragment;
 
-import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Log;
+import android.preference.PreferenceManager;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +37,7 @@ import com.one.groceryapp.ui.activity.MyOrderActivity;
 import com.one.groceryapp.ui.activity.NotificationActivity;
 import com.one.groceryapp.ui.activity.TransactionActivity;
 
-import java.io.IOException;
+import java.io.ByteArrayOutputStream;
 
 
 public class ProfileFragment extends Fragment {
@@ -48,7 +48,6 @@ public class ProfileFragment extends Fragment {
     FirebaseAuth mAuth;
     AppDatabase appDatabase;
     UserDao userDao;
-
     RelativeLayout bottomsheet;
 
     @Override
@@ -72,6 +71,14 @@ public class ProfileFragment extends Fragment {
                 requireActivity().finish();
             }
         });
+
+        SharedPreferences shre = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String previouslyEncodedImage = shre.getString("image_data", "");
+        if (!previouslyEncodedImage.equalsIgnoreCase("")) {
+            byte[] b = Base64.decode(previouslyEncodedImage, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(b, 0, b.length);
+            binding.profileImage.setImageBitmap(bitmap);
+        }
 
         String email = mAuth.getCurrentUser().getEmail();
         binding.email.setText(email);
@@ -106,7 +113,6 @@ public class ProfileFragment extends Fragment {
 
         String name = splitDomainName(email, "@");
         binding.name.setText(name);
-
         binding.aboutme.setOnClickListener(v -> {
             Intent i = new Intent(getContext(), AboutMeActivity.class);
             i.putExtra("name", name);
@@ -142,6 +148,7 @@ public class ProfileFragment extends Fragment {
         binding.myfavorite.setOnClickListener(v -> {
             swapFragment();
         });
+
         return binding.getRoot();
     }
 
@@ -163,13 +170,42 @@ public class ProfileFragment extends Fragment {
             if (resultCode == RESULT_OK) {
                 Bitmap photo = (Bitmap) data.getExtras().get("data");
                 binding.profileImage.setImageBitmap(photo);
+                saveImageToPreferences(photo);
+
+//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//                photo.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+//                byte[] b = baos.toByteArray();
+//
+//                String encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
+//                SharedPreferences shre = PreferenceManager.getDefaultSharedPreferences(getContext());
+//                SharedPreferences.Editor edit = shre.edit();
+//                edit.putString("image_data", encodedImage);
+//                edit.apply();
             }
         } else if (requestCode == RESULT_GALLERY) {
             if (resultCode == RESULT_OK) {
                 Uri imageUri = data.getData();
-                binding.profileImage.setImageURI(imageUri);
+                try {
+                    Bitmap bitmap = BitmapFactory.decodeStream(getContext().getContentResolver().openInputStream(imageUri));
+                    binding.profileImage.setImageBitmap(bitmap);
+                    saveImageToPreferences(bitmap);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
+    }
+
+    private void saveImageToPreferences(Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] b = baos.toByteArray();
+
+        String encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
+        SharedPreferences shre = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor edit = shre.edit();
+        edit.putString("image_data", encodedImage);
+        edit.apply();
     }
 
     public static String splitDomainName(String str, String delimeter) {

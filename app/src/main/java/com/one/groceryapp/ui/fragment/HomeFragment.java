@@ -29,7 +29,6 @@ import java.util.TimerTask;
 
 
 public class HomeFragment extends Fragment{
-
     FragmentHomeBinding binding;
     ViewPagerBannerAdapter adapter;
     int currentPage = 0;
@@ -74,7 +73,6 @@ public class HomeFragment extends Fragment{
         binding.rcv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         DemoAdapter demoAdapter = new DemoAdapter(Constants.get_home_title(), getContext());
         binding.rcv.setAdapter(demoAdapter);
-
         return binding.getRoot();
     }
 //

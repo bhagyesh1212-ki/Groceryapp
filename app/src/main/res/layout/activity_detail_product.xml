@@ -10,6 +10,7 @@
     tools:context=".ui.activity.DetailProductActivity">
 
     <RelativeLayout
+        android:id="@+id/rlDetailProductBg"
         android:layout_width="@dimen/_330sdp"
         android:layout_height="@dimen/_330sdp"
         android:layout_marginTop="-150sp"
@@ -23,6 +24,7 @@
         android:layout_height="@dimen/_15sdp"
         android:layout_marginStart="@dimen/horizontal_padding"
         android:layout_marginTop="@dimen/_22sdp"
+        android:contentDescription="@string/back_arrow"
         android:src="@drawable/backarrowblack" />
 
     <ImageView
@@ -30,14 +32,17 @@
         android:layout_width="@dimen/_250sdp"
         android:layout_height="@dimen/_250sdp"
         android:layout_above="@+id/relative"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/_25sdp"
-        android:src="@drawable/lime" />
+        android:layout_alignBottom="@+id/rlDetailProductBg"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="-130dp"
+        android:contentDescription="dtail_item_icon"
+        android:src="@drawable/lime"
+        tools:ignore="HardcodedText" />
 
     <RelativeLayout
         android:id="@+id/relative"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_350sdp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/detailproduct_bg"
         android:padding="@dimen/horizontal_padding">
@@ -64,14 +69,17 @@
                 android:fontFamily="@font/poppins_semibold"
                 android:text="@string/_0_0"
                 android:textColor="#28B446"
-                android:textSize="@dimen/_15sdp" />
+                android:textSize="@dimen/_15ssp"
+                tools:ignore="RelativeOverlap" />
 
             <ImageView
                 android:id="@+id/like"
                 android:layout_width="@dimen/_16sdp"
                 android:layout_height="@dimen/_16sdp"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/heart" />
+                android:contentDescription="like"
+                android:src="@drawable/heart"
+                tools:ignore="HardcodedText" />
         </RelativeLayout>
 
         <TextView
@@ -82,7 +90,8 @@
             android:fontFamily="@font/poppins_semibold"
             android:text="Organic Lemons"
             android:textColor="@color/black"
-            android:textSize="@dimen/_16sdp" />
+            android:textSize="@dimen/_18ssp"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/quantity"
@@ -92,7 +101,8 @@
             android:fontFamily="@font/poppins_medium"
             android:text="1.50 lbs"
             android:textColor="@color/grey"
-            android:textSize="@dimen/_12sdp" />
+            android:textSize="@dimen/_12ssp"
+            tools:ignore="HardcodedText" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -107,7 +117,8 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="4.5"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="@dimen/_12ssp"
+                tools:ignore="HardcodedText" />
 
             <com.idlestar.ratingstar.RatingStarView
                 android:id="@+id/rating"
@@ -128,7 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:text="(89 reviews)"
+                android:text="@string/_89_reviews"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp" />
         </LinearLayout>
@@ -140,7 +151,7 @@
             android:layout_below="@+id/linearLayout"
             android:layout_marginVertical="@dimen/_10sdp"
             android:fontFamily="@font/poppins"
-            android:text="Organic Mountain works as a seller for many organic growers of organic lemons. Organic lemons are easy to spot in your produce aisle. They are just like regular lemons, but they will usually have a few more scars on the outside of the lemon skin. Organic lemons are considered to be the world's finest lemon for juicing"
+            android:text="@string/organic_mountain_works_as_a_seller_for_many_organic_growers_of_organic_lemons_organic_lemons_are_easy_to_spot_in_your_produce_aisle_they_are_just_like_regular_lemons_but_they_will_usually_have_a_few_more_scars_on_the_outside_of_the_lemon_skin_organic_lemons_are_considered_to_be_the_world_s_finest_lemon_for_juicing"
             android:textColor="@color/grey"
             android:textSize="@dimen/_10ssp" />
 
@@ -159,7 +170,8 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="Quantity"
                 android:textColor="@color/grey"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="@dimen/_12ssp"
+                tools:ignore="HardcodedText" />
 
 
             <LinearLayout
@@ -183,7 +195,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_15sdp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="3"
+                    android:text="@string/_0"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_15ssp" />
 
@@ -192,62 +204,61 @@
                     android:layout_width="@dimen/_15sdp"
                     android:layout_height="@dimen/_15sdp"
                     android:layout_gravity="center"
+                    android:contentDescription="@string/plusicon"
                     android:src="@drawable/plus" />
             </LinearLayout>
-
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/add_address_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_below="@+id/number_of_item"
+            android:layout_marginTop="@dimen/horizontal_padding"
+            android:background="@drawable/button"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Add to cart"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp"
+                tools:ignore="HardcodedText" />
+
+            <ImageView
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/horizontal_padding"
+                android:contentDescription="@string/shopping_cart"
+                android:src="@drawable/shop" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/remove_from_cart"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_below="@+id/number_of_item"
+            android:layout_marginTop="@dimen/horizontal_padding"
+            android:background="@drawable/button"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/move_to_cart"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp" />
+        </RelativeLayout>
 
     </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/add_address_btn"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/horizontal_padding"
-        android:background="@drawable/button"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Add to cart"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_12sdp" />
-
-        <ImageView
-            android:layout_width="@dimen/_15sdp"
-            android:layout_height="@dimen/_15sdp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/horizontal_padding"
-            android:src="@drawable/shop" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/remove_from_cart"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/horizontal_padding"
-        android:background="@drawable/button"
-        android:orientation="horizontal"
-        android:visibility="gone">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Product already in cart"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_12sdp" />
-    </RelativeLayout>
-
 </RelativeLayout>
