@@ -40,6 +40,9 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.ViewHo
         holder.binding.txtOrder.setText(timeLineModel.getOrderDeliveryStatus());
         holder.binding.txtOrderDate.setText(timeLineModel.getDate());
         holder.binding.timeLineRound.setBackgroundResource(timeLineModel.getImageRound());
+        holder.binding.topLine.setBackgroundResource(timeLineModel.getTopLine());
+        holder.binding.bottomLine.setBackgroundResource(timeLineModel.getBottomLine());
+
         if (position == 0) {
             holder.binding.topLine.setVisibility(View.GONE);
         }

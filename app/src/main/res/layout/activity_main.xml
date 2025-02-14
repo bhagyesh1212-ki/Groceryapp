@@ -8,48 +8,54 @@
     android:orientation="vertical"
     tools:context=".ui.activity.MainActivity">
 
-    <RelativeLayout
-        android:id="@+id/frame_layout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_45sdp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white"
-        android:paddingHorizontal="@dimen/_25sdp">
+        <RelativeLayout
+            android:id="@+id/frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-        <ImageView
-            android:id="@+id/home"
-            android:layout_width="@dimen/_17sdp"
-            android:layout_height="@dimen/_17sdp"
-            android:layout_alignParentStart="true"
-            android:layout_centerInParent="true"
-            android:importantForAccessibility="no"
-            android:src="@drawable/home_white" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:background="@color/white"
+            android:paddingHorizontal="@dimen/_25sdp">
 
-        <ImageView
-            android:id="@+id/profile"
-            android:layout_width="@dimen/_17sdp"
-            android:layout_height="@dimen/_17sdp"
-            android:layout_alignStart="@+id/home"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="@dimen/_75sdp"
-            android:importantForAccessibility="no"
-            android:src="@drawable/profile_white" />
+            <ImageView
+                android:id="@+id/home"
+                android:layout_width="@dimen/_17sdp"
+                android:layout_height="@dimen/_17sdp"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:importantForAccessibility="no"
+                android:src="@drawable/home_white" />
 
-        <ImageView
-            android:id="@+id/like"
-            android:layout_width="@dimen/_17sdp"
-            android:layout_height="@dimen/_17sdp"
-            android:layout_alignStart="@+id/profile"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="@dimen/_75sdp"
-            android:importantForAccessibility="no"
-            android:src="@drawable/like_white" />
+            <ImageView
+                android:id="@+id/profile"
+                android:layout_width="@dimen/_17sdp"
+                android:layout_height="@dimen/_17sdp"
+                android:layout_alignStart="@+id/home"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/_75sdp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/profile_white" />
 
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/like"
+                android:layout_width="@dimen/_17sdp"
+                android:layout_height="@dimen/_17sdp"
+                android:layout_alignStart="@+id/profile"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/_75sdp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/like_white" />
+
+        </RelativeLayout>
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/shop"
@@ -65,6 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:contentDescription="@string/flotingactionplusicon"
             android:src="@drawable/shop" />
     </RelativeLayout>
 </RelativeLayout>

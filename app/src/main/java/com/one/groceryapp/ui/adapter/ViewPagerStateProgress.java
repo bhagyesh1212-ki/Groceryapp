@@ -1,8 +1,5 @@
 package com.one.groceryapp.ui.adapter;
 
-import android.view.MotionEvent;
-import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -21,12 +18,11 @@ public class ViewPagerStateProgress extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-
         if (position == 0) {
             return new DeliveryFragment();
-        }else if (position == 1) {
+        } else if (position == 1) {
             return new AddressFragment();
-        }else {
+        } else {
             return new PaymentFragment();
         }
     }
@@ -36,13 +32,13 @@ public class ViewPagerStateProgress extends FragmentStateAdapter {
         return 3;
     }
 
-    public boolean onInterceptTouchEvent(MotionEvent event) {
-        // Never allow swiping to switch between pages
-        return false;
-    }
+//    public boolean onInterceptTouchEvent(MotionEvent event) {
+//        // Never allow swiping to switch between pages
+//        return false;
+//    }
+//    public boolean onTouchEvent(MotionEvent event) {
+//        // Never allow swiping to switch between pages
+//        return false;
+//    }
 
-    public boolean onTouchEvent(MotionEvent event) {
-        // Never allow swiping to switch between pages
-        return false;
-    }
 }

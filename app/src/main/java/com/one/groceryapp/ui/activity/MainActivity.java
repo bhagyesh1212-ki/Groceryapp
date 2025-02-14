@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (fragmentManager.getBackStackEntryCount() > 1) {
-          fragmentManager.popBackStack();
+            fragmentManager.popBackStack();
         } else {
             finishAffinity();
         }

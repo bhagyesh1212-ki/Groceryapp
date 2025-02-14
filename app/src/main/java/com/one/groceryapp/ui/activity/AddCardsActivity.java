@@ -8,9 +8,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.one.groceryapp.databinding.ActivityAddCardsBinding;
 
 public class AddCardsActivity extends AppCompatActivity {
@@ -48,6 +46,7 @@ public class AddCardsActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
             }
+
         });
 
         binding.addCardBtn.setOnClickListener(v -> {
@@ -56,7 +55,7 @@ public class AddCardsActivity extends AppCompatActivity {
             String dateEdt = binding.dateEdt.getText().toString();
             String cvvEdt = binding.cvvEdt.getText().toString();
 
-            if(binding.switchView.isChecked()){
+            if (binding.switchView.isChecked()) {
                 SharedPreferences sf = getSharedPreferences("saveCard", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sf.edit();
                 editor.putString("name", nameEdt);
@@ -68,13 +67,11 @@ public class AddCardsActivity extends AppCompatActivity {
 
             if (nameEdt.isEmpty() || cardNumEdt.isEmpty() || dateEdt.isEmpty() || cvvEdt.isEmpty()) {
                 Toast.makeText(this, "Please fill all the detail", Toast.LENGTH_SHORT).show();
-            } else if (!nameEdt.matches("^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}")) {
-                Toast.makeText(this, "Enter valid holder name", Toast.LENGTH_SHORT).show();
             } else if (cardNumEdt.length() != 16) {
                 Toast.makeText(this, "Enter valid cardnumber", Toast.LENGTH_SHORT).show();
             } else if (cvvEdt.length() != 3) {
                 Toast.makeText(this, "Enter valid cvv", Toast.LENGTH_SHORT).show();
-            } else if (!dateEdt.matches("^(0[1-9]|1[0-2])/[2][5-9]|[3-9][1-9]$")) {
+            } else if (!dateEdt.matches("^(0[1-9]|1[0-2])/(2[5-9]|[3-9][0-9])$")) {
                 Toast.makeText(this, "Enter valid date", Toast.LENGTH_SHORT).show();
             } else {
                 Intent i = new Intent(this, MyCardsActivity.class);

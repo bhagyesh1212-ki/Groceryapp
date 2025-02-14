@@ -83,7 +83,6 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder
                 cardModel.setSwitched(true);
                 notifyDataSetChanged();
                 selectedPosition(selectedposition);
-//                userDao.updateSwitch(true, selectedposition);
             } else {
                 cardModel.setSwitched(false);
             }
@@ -142,7 +141,3 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder
         }
     }
 }
-//                if (selectedposition == holder.getAdapterPosition()) {
-//                    selectedposition = 0;
-//                    cardModel.setSwitched(false);
-//                }

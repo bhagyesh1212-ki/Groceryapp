@@ -192,4 +192,5 @@
     <string name="add_favorites_items">Add Favorites Items</string>
     <string name="your_favorites_is_empty">Your favorites is empty</string>
     <string name="country">Country</string>
+    <string name="flotingactionplusicon">flotingActionPlusIcon</string>
 </resources>

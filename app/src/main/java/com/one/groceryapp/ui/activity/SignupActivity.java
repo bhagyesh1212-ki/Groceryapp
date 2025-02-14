@@ -33,7 +33,6 @@ import com.one.groceryapp.roomdb.UserModel;
 import java.util.Objects;
 
 public class SignupActivity extends AppCompatActivity {
-
     ActivitySignupBinding binding;
     GoogleSignInClient googleSignInClient;
     FirebaseAuth mAuth;
@@ -59,6 +58,7 @@ public class SignupActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
         binding.openAccountPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +66,7 @@ public class SignupActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
         // Initialize sign in options the client-id is copied form google-services.json file
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("942777164615-gikps80obdb95tgp394bkoqes5vl89ak.apps.googleusercontent.com")
@@ -93,6 +94,7 @@ public class SignupActivity extends AppCompatActivity {
             binding.progressCircular.setVisibility(View.GONE);
         }
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -132,6 +134,7 @@ public class SignupActivity extends AppCompatActivity {
             }
         }
     }
+
     private void displayToast(String s) {
         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
     }

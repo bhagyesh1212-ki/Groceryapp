@@ -38,11 +38,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     }
 
     private List<TimeLineModel> myOrderModelList() {
-        timeLineModelList.add(new TimeLineModel("Order placed", "Oct 19 2021", R.drawable.timelineview_bg));
-        timeLineModelList.add(new TimeLineModel("Order confirmed", "Oct 20 2021", R.drawable.timelineview_bg));
-        timeLineModelList.add(new TimeLineModel("Order shipped", "Oct 20 2021", R.drawable.timelineview_bg));
-        timeLineModelList.add(new TimeLineModel("Out for delivery", "pending", R.drawable.timelineview_grey));
-        timeLineModelList.add(new TimeLineModel("Order delivered", "pending", R.drawable.timelineview_grey));
+        timeLineModelList.add(new TimeLineModel("Order placed", "Oct 19 2021", R.drawable.timelineview_bg,R.color.color_primary_dark,R.color.color_primary_dark));
+        timeLineModelList.add(new TimeLineModel("Order confirmed", "Oct 20 2021", R.drawable.timelineview_bg,R.color.color_primary_dark,R.color.color_primary_dark));
+        timeLineModelList.add(new TimeLineModel("Order shipped", "Oct 20 2021", R.drawable.timelineview_bg,R.color.grey,R.color.color_primary_dark));
+        timeLineModelList.add(new TimeLineModel("Out for delivery", "pending", R.drawable.timelineview_grey,R.color.grey,R.color.grey));
+        timeLineModelList.add(new TimeLineModel("Order delivered", "pending", R.drawable.timelineview_grey,R.color.grey,R.color.grey));
         return timeLineModelList;
     }
 

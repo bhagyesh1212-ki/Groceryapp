@@ -59,6 +59,7 @@
                 android:textSize="@dimen/_13ssp" />
 
             <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/allowNotificationSwitch"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_15sdp"
                 android:layout_gravity="end"
@@ -95,6 +96,7 @@
                 android:textSize="@dimen/_13ssp" />
 
             <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/EmailNotificationSwitch"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_15sdp"
                 android:layout_gravity="end"
@@ -131,6 +133,7 @@
                 android:textSize="@dimen/_13ssp" />
 
             <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/OrderNotificationSwitch"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_15sdp"
                 android:layout_gravity="end"
@@ -167,6 +170,7 @@
                 android:textSize="@dimen/_13ssp" />
 
             <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/GeneralNotificationSwitch"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_15sdp"
                 android:layout_gravity="end"

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/first"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/horizontal_padding"
+    android:background="@color/white"
+    android:padding="@dimen/horizontal_padding">
+
+    <TextView
+        android:id="@+id/txtDelivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/standard_delivery"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13ssp" />
+
+    <TextView
+        android:id="@+id/deliveryDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtDelivery"
+        android:layout_marginEnd="@dimen/horizontal_padding"
+        android:layout_toStartOf="@+id/txtDeliveryCharge"
+        android:fontFamily="@font/poppins"
+        android:text="@string/order_will_be_delivered_between_3_4_business_days_straights_to_your_doorstep"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/_12ssp" />
+
+    <TextView
+        android:id="@+id/txtDeliveryCharge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/_3"
+        android:textColor="@color/color_primary_dark"
+        android:textSize="@dimen/_13ssp"
+        tools:ignore="RelativeOverlap" />
+</RelativeLayout>
+

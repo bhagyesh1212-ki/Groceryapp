@@ -58,7 +58,6 @@
             android:text="@string/your_favorites_is_empty"
             android:textColor="@color/black"
             android:textSize="@dimen/_17ssp" />
-
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
