@@ -39,6 +39,7 @@ public class SubFeaturedProductAdapter extends RecyclerView.Adapter<SubFeaturedP
         holder.binding.productName.setText(model.getProductName());
         holder.binding.productQuantity.setText(model.getQuantity());
         holder.binding.itemNumber.setText(String.valueOf(model.getProductNumber()));
+        holder.binding.bgProduct.setBackgroundResource(model.getProductColor());
 
         if (model.getIsliked()) {
             holder.binding.like.setImageResource(R.drawable.heartfill);
@@ -73,10 +74,16 @@ public class SubFeaturedProductAdapter extends RecyclerView.Adapter<SubFeaturedP
 
         holder.binding.minus.setOnClickListener(v -> {
             int quantity = model.getProductNumber();
-            if (quantity >= 2) {
+            if (quantity >= 1) {
                 quantity--;
                 holder.binding.itemNumber.setText(String.valueOf(quantity));
                 model.setProductNumber(quantity);
+                if(quantity == 0){
+                    Constants.productModels.get(position).setAddtocart(false);
+                    holder.binding.addtocart.setVisibility(View.VISIBLE);
+                    holder.binding.itemCount.setVisibility(View.GONE);
+                    notifyItemChanged(position);
+                }
             }
         });
 
@@ -84,7 +91,7 @@ public class SubFeaturedProductAdapter extends RecyclerView.Adapter<SubFeaturedP
             int quantity = model.getProductNumber();
             quantity++;
             holder.binding.itemNumber.setText(String.valueOf(quantity));
-            model.setProductNumber(quantity);
+            featureProductModelList.get(position).setProductNumber(quantity);
         });
     }
 

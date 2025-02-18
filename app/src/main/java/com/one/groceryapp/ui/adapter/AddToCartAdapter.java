@@ -3,6 +3,7 @@ package com.one.groceryapp.ui.adapter;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -46,7 +47,7 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
 
         holder.binding.minus.setOnClickListener(v -> {
             int quantity = featureProductModel.getProductNumber();
-            if (quantity >= 2) {
+            if (quantity >= 1) {
                 quantity--;
                 holder.binding.itemNumber.setText(String.valueOf(quantity));
                 featureProductModel.setProductNumber(quantity);
@@ -54,6 +55,11 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
                 subprice -= productprice;
                 if (priceChangeListener != null) {
                     priceChangeListener.onPriceChange(subprice);
+                }
+                if(quantity == 0){
+                    Constants.productModels.get(position).setAddtocart(false);
+                    deleteItem(position);
+                    notifyItemChanged(position);
                 }
             }
         });
@@ -70,12 +76,14 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
                 priceChangeListener.onPriceChange(subprice);
             }
         });
+
         holder.binding.productImage.setImageResource(featureProductModel.getImageProduct());
         holder.binding.productName.setText(featureProductModel.getProductName());
         holder.binding.productPrice.setText(String.valueOf(featureProductModel.getPrice()));
         holder.binding.productQuantity.setText(String.valueOf(featureProductModel.getProductNumber()));
         holder.binding.dozen.setText(featureProductModel.getQuantity());
         holder.binding.itemNumber.setText(String.valueOf(featureProductModel.getProductNumber()));
+        holder.binding.bgProduct.setBackgroundResource(featureProductModel.getProductColor());
     }
 
     public void deleteItem(int position) {
@@ -88,7 +96,7 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
         featureProductModel.setProductNumber(1);
 
         subprice -= removedPrice;
-        Log.d("TAG@@", "deleteItem: "+subprice);
+        Log.d("TAG@@", "deleteItem: " + subprice);
         if (priceChangeListener != null) {
             priceChangeListener.onPriceChange(subprice);
         }
@@ -106,6 +114,7 @@ public class AddToCartAdapter extends RecyclerView.Adapter<AddToCartAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         DemoAddtocartBinding binding;
+
         public ViewHolder(@NonNull DemoAddtocartBinding binding) {
             super(binding.getRoot());
             this.binding = binding;

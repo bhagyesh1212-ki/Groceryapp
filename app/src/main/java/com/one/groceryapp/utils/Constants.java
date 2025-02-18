@@ -15,12 +15,12 @@ public class Constants {
 
     public static ArrayList<FeatureProductModel> featureProductModelArrayList() {
         ArrayList<FeatureProductModel> featureProductModelArrayList = new ArrayList<>();
-        featureProductModelArrayList.add(new FeatureProductModel(8, "Fresh Peach", "dozen", R.drawable.peach, false, 1, false, false, "", false));
-        featureProductModelArrayList.add(new FeatureProductModel(7, "Avacoda", "2.0 lbs", R.drawable.aocado, false, 1, true, false, "", false));
-        featureProductModelArrayList.add(new FeatureProductModel(9, "Pineapple", "1.50 lbs", R.drawable.pineapplepieces, false, 1, false, false, "", false));
-        featureProductModelArrayList.add(new FeatureProductModel(7, "Black Grapes", "5.0 lbs", R.drawable.grapes, false, 1, false, true, "-20%", false));
-        featureProductModelArrayList.add(new FeatureProductModel(2, "Pomegranate", "1.50 lbs", R.drawable.pomegranate, false, 1, true, false, "", false));
-        featureProductModelArrayList.add(new FeatureProductModel(3, "Fresh B roccoli", "1 kg", R.drawable.greenfreshbroccoli, false, 1, false, false, "", false));
+        featureProductModelArrayList.add(new FeatureProductModel(8, "Fresh Peach", "dozen", R.drawable.peach, false, 1, false, false, "", false,R.drawable.apple_bg));
+        featureProductModelArrayList.add(new FeatureProductModel(7, "Avacoda", "2.0 lbs", R.drawable.aocado, false, 1, true, false, "", false,R.drawable.avacoda_bg));
+        featureProductModelArrayList.add(new FeatureProductModel(9, "Pineapple", "1.50 lbs", R.drawable.pineapplepieces, false, 1, false, false, "", false,R.drawable.pineapple_bg));
+        featureProductModelArrayList.add(new FeatureProductModel(7, "Black Grapes", "5.0 lbs", R.drawable.grapes, false, 1, false, true, "-20%", false,R.drawable.graphs_bg));
+        featureProductModelArrayList.add(new FeatureProductModel(2, "Pomegranate", "1.50 lbs", R.drawable.pomegranate, false, 1, true, false, "", false,R.drawable.pomegranate_bg));
+        featureProductModelArrayList.add(new FeatureProductModel(3, "Fresh B roccoli", "1 kg", R.drawable.greenfreshbroccoli, false, 1, false, false, "", false,R.drawable.broccoli_bg));
         return featureProductModelArrayList;
     }
     public static ArrayList<CategoriesModel> categoriesModelArrayList() {

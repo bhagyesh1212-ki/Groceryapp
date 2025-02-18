@@ -137,16 +137,24 @@
             android:src="@drawable/dropup" />
     </RelativeLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv"
+    <net.cachapa.expandablelayout.ExpandableLayout
+        android:id="@+id/expandable_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:el_duration="1000"
         android:layout_below="@+id/main_layout"
-        android:layout_marginTop="@dimen/horizontal_padding"
-        android:orientation="vertical"
-        android:paddingVertical="@dimen/horizontal_padding"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        app:el_expanded="true"
+        app:el_parallax="0.5">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/horizontal_padding"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/horizontal_padding"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </net.cachapa.expandablelayout.ExpandableLayout>
 </RelativeLayout>
 

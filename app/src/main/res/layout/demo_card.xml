@@ -125,146 +125,25 @@
             android:src="@drawable/dropup" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/personal_detail"
+    <net.cachapa.expandablelayout.ExpandableLayout
+        android:id="@+id/expandable_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/main_layout"
-        android:layout_margin="@dimen/horizontal_padding"
-        android:visibility="gone">
+        app:el_duration="1000"
+        app:el_expanded="true"
+        app:el_parallax="0.5">
 
         <RelativeLayout
-            android:id="@+id/user_name_edt"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/my_address_edittext_bg"
-                android:orientation="horizontal"
-                tools:ignore="UselessParent">
-
-                <ImageView
-                    android:layout_width="@dimen/_18sdp"
-                    android:layout_height="@dimen/_18sdp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/_22sdp"
-                    android:contentDescription="@string/email_img"
-                    android:src="@drawable/profile_white" />
-
-                <EditText
-                    android:id="@+id/name_edt"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@drawable/my_address_edittext_bg"
-                    android:fontFamily="@font/poppins_medium"
-                    android:hint="@string/name_on_the_card"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    android:textColor="@color/grey"
-                    android:textColorHint="@color/grey"
-                    android:textSize="@dimen/_10ssp" />
-            </LinearLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/address_edt"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_below="@id/user_name_edt"
-            android:layout_marginTop="@dimen/_5sdp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/my_address_edittext_bg"
-                android:orientation="horizontal"
-                tools:ignore="UselessParent">
-
-                <ImageView
-                    android:layout_width="@dimen/_18sdp"
-                    android:layout_height="@dimen/_18sdp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/_22sdp"
-                    android:contentDescription="@string/email_img"
-                    android:src="@drawable/card" />
-
-                <EditText
-                    android:id="@+id/card_num_edt"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@drawable/my_address_edittext_bg"
-                    android:fontFamily="@font/poppins_medium"
-                    android:hint="@string/card_number"
-                    android:importantForAutofill="no"
-                    android:inputType="numberDecimal"
-                    android:maxLength="16"
-                    android:textColor="@color/grey"
-                    android:textColorHint="@color/grey"
-                    android:textSize="@dimen/_10ssp" />
-            </LinearLayout>
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/city_zip"
+            android:id="@+id/personal_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/address_edt"
-            android:orientation="horizontal"
-            tools:ignore="DisableBaselineAlignment">
+            android:layout_margin="@dimen/horizontal_padding">
 
             <RelativeLayout
-                android:id="@+id/city_edt"
+                android:id="@+id/user_name_edt"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_2sdp"
-                android:layout_weight="1">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/my_address_edittext_bg"
-                    android:orientation="horizontal"
-                    tools:ignore="UselessParent">
-
-                    <ImageView
-                        android:layout_width="@dimen/_18sdp"
-                        android:layout_height="@dimen/_15sdp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="@dimen/_22sdp"
-                        android:contentDescription="@string/email_img"
-                        android:src="@drawable/date" />
-
-                    <EditText
-                        android:id="@+id/date_edt"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/_15sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:background="@drawable/my_address_edittext_bg"
-                        android:fontFamily="@font/poppins_medium"
-                        android:hint="@string/mm_yy"
-                        android:importantForAutofill="no"
-                        android:inputType="date"
-                        android:textColor="@color/grey"
-                        android:textColorHint="@color/grey"
-                        android:textSize="@dimen/_10ssp" />
-                </LinearLayout>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/zipcode_edt"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginStart="@dimen/_2sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_weight="1">
+                android:layout_height="@dimen/_40sdp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -279,51 +158,184 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="@dimen/_22sdp"
                         android:contentDescription="@string/email_img"
-                        android:src="@drawable/lock" />
+                        android:src="@drawable/profile_white" />
 
                     <EditText
-                        android:id="@+id/cvv_edt"
+                        android:id="@+id/name_edt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:background="@drawable/my_address_edittext_bg"
                         android:fontFamily="@font/poppins_medium"
-                        android:hint="@string/cvv"
+                        android:hint="@string/name_on_the_card"
                         android:importantForAutofill="no"
-                        android:inputType="numberDecimal"
-                        android:maxLength="3"
+                        android:focusable="false"
+                        android:inputType="text"
                         android:textColor="@color/grey"
                         android:textColorHint="@color/grey"
                         android:textSize="@dimen/_10ssp" />
                 </LinearLayout>
             </RelativeLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/city_zip"
-            android:layout_marginStart="@dimen/_13sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:orientation="horizontal">
+            <RelativeLayout
+                android:id="@+id/address_edt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_below="@id/user_name_edt"
+                android:layout_marginTop="@dimen/_5sdp">
 
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switchView"
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-                android:thumb="@drawable/custom_thumb"
-                app:track="@drawable/custom_track" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/my_address_edittext_bg"
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
 
-            <TextView
+                    <ImageView
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/_22sdp"
+                        android:contentDescription="@string/email_img"
+                        android:src="@drawable/card" />
+
+                    <EditText
+                        android:id="@+id/card_num_edt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:background="@drawable/my_address_edittext_bg"
+                        android:fontFamily="@font/poppins_medium"
+                        android:hint="@string/card_number"
+                        android:focusable="false"
+                        android:importantForAutofill="no"
+                        android:inputType="numberDecimal"
+                        android:maxLength="16"
+                        android:textColor="@color/grey"
+                        android:textColorHint="@color/grey"
+                        android:textSize="@dimen/_10ssp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/city_zip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/address_edt"
+                android:orientation="horizontal"
+                tools:ignore="DisableBaselineAlignment">
+
+                <RelativeLayout
+                    android:id="@+id/city_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_2sdp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/my_address_edittext_bg"
+                        android:orientation="horizontal"
+                        tools:ignore="UselessParent">
+
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/_22sdp"
+                            android:contentDescription="@string/email_img"
+                            android:src="@drawable/date" />
+
+                        <EditText
+                            android:id="@+id/date_edt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:background="@drawable/my_address_edittext_bg"
+                            android:fontFamily="@font/poppins_medium"
+                            android:hint="@string/mm_yy"
+                            android:importantForAutofill="no"
+                            android:focusable="false"
+                            android:inputType="date"
+                            android:textColor="@color/grey"
+                            android:textColorHint="@color/grey"
+                            android:textSize="@dimen/_10ssp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/zipcode_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginStart="@dimen/_2sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/my_address_edittext_bg"
+                        android:orientation="horizontal"
+                        tools:ignore="UselessParent">
+
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/_22sdp"
+                            android:contentDescription="@string/email_img"
+                            android:src="@drawable/lock" />
+
+                        <EditText
+                            android:id="@+id/cvv_edt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:background="@drawable/my_address_edittext_bg"
+                            android:fontFamily="@font/poppins_medium"
+                            android:hint="@string/cvv"
+                            android:importantForAutofill="no"
+                            android:inputType="numberDecimal"
+                            android:focusable="false"
+                            android:maxLength="3"
+                            android:textColor="@color/grey"
+                            android:textColorHint="@color/grey"
+                            android:textSize="@dimen/_10ssp" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="@string/make_default"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
-        </LinearLayout>
-    </RelativeLayout>
+                android:layout_below="@+id/city_zip"
+                android:layout_marginStart="@dimen/_13sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchView"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+                    android:thumb="@drawable/custom_thumb"
+                    app:track="@drawable/custom_track" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/make_default"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </net.cachapa.expandablelayout.ExpandableLayout>
 </RelativeLayout>

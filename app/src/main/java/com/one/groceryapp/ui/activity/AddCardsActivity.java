@@ -1,5 +1,6 @@
 package com.one.groceryapp.ui.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,12 +8,17 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.one.groceryapp.databinding.ActivityAddCardsBinding;
 
 public class AddCardsActivity extends AppCompatActivity {
     ActivityAddCardsBinding binding;
+    private long pressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +28,13 @@ public class AddCardsActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.back.setOnClickListener(v -> {
-            startActivity(new Intent(this, MyCardsActivity.class));
-            finish();
+            if (pressedTime + 2000 > System.currentTimeMillis()) {
+                startActivity(new Intent(this, MyCardsActivity.class));
+                finish();
+            } else {
+                hideKeyboard(AddCardsActivity.this);
+            }
+            pressedTime = System.currentTimeMillis();
         });
 
         binding.dateEdt.addTextChangedListener(new TextWatcher() {
@@ -46,7 +57,6 @@ public class AddCardsActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
             }
-
         });
 
         binding.addCardBtn.setOnClickListener(v -> {
@@ -83,6 +93,17 @@ public class AddCardsActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
 

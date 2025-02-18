@@ -17,4 +17,12 @@
     <color name="oil_blue">#DCF4F5</color>
     <color name="house_hold_pink">#FFE8F2</color>
     <color name="red">#EF574B</color>
+
+    <color name="apple_bg_color">#FFCEC1</color>
+    <color name="avacoda_bg_color">#FCFFD9</color>
+    <color name="pineapple_bg_color">#FFE6C2</color>
+    <color name="graphs_bg_color">#FEE1ED</color>
+    <color name="Pomegranate_bg_color">#FFE3E2</color>
+    <color name="Broccoli_bg_color">#D2FFD0</color>
+
 </resources>

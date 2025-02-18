@@ -214,7 +214,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:hint="CVV"
                         android:importantForAutofill="no"
-                        android:inputType="numberPassword"
+                        android:inputType="numberDecimal"
                         android:maxLength="3"
                         android:textColor="@color/grey"
                         android:textColorHint="@color/grey"

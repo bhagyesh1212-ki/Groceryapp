@@ -15,6 +15,8 @@ import com.one.groceryapp.roomdb.AppDatabase;
 import com.one.groceryapp.roomdb.UserDao;
 import com.one.groceryapp.ui.adapter.MyCardAdapter;
 
+import net.cachapa.expandablelayout.ExpandableLayout;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,8 @@ public class MyCardsActivity extends AppCompatActivity {
     List<CardModel> cardModelArrayList = new ArrayList<>();
     AppDatabase appDatabase;
     UserDao userDao;
+
+    MyCardAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +55,6 @@ public class MyCardsActivity extends AppCompatActivity {
         SharedPreferences sf = getSharedPreferences("selectedPosition", Context.MODE_PRIVATE);
         int selectedPosition = sf.getInt("lastSelectedPosition", 0);
 
-
         String nameEdt = getIntent().getStringExtra("nameEdt");
         String cardNumEdt = getIntent().getStringExtra("cardNumEdt");
         String dateEdt = getIntent().getStringExtra("dateEdt");
@@ -66,11 +69,12 @@ public class MyCardsActivity extends AppCompatActivity {
 
         cardModelArrayList = userDao.getallcards();
 
-        MyCardAdapter adapter = new MyCardAdapter(this, cardModelArrayList,selectedPosition);
+         adapter = new MyCardAdapter(this, cardModelArrayList,selectedPosition);
         binding.rcv.setAdapter(adapter);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
         linearLayoutManager.setStackFromEnd(true);
         binding.rcv.setLayoutManager(linearLayoutManager);
     }
+
 }

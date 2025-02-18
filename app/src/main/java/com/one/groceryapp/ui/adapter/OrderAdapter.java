@@ -1,10 +1,7 @@
 package com.one.groceryapp.ui.adapter;
 
 import android.content.Context;
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -25,6 +22,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
     List<TimeLineModel> timeLineModelList = new ArrayList<>();
 
+    private static final int UNSELECTED = -1;
+    public static int selectedItem = UNSELECTED;
+
     public OrderAdapter(List<MyOrderModel> myOrderModelList, Context context) {
         this.myOrderModelList = myOrderModelList;
         this.context = context;
@@ -38,11 +38,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     }
 
     private List<TimeLineModel> myOrderModelList() {
-        timeLineModelList.add(new TimeLineModel("Order placed", "Oct 19 2021", R.drawable.timelineview_bg,R.color.color_primary_dark,R.color.color_primary_dark));
-        timeLineModelList.add(new TimeLineModel("Order confirmed", "Oct 20 2021", R.drawable.timelineview_bg,R.color.color_primary_dark,R.color.color_primary_dark));
-        timeLineModelList.add(new TimeLineModel("Order shipped", "Oct 20 2021", R.drawable.timelineview_bg,R.color.grey,R.color.color_primary_dark));
-        timeLineModelList.add(new TimeLineModel("Out for delivery", "pending", R.drawable.timelineview_grey,R.color.grey,R.color.grey));
-        timeLineModelList.add(new TimeLineModel("Order delivered", "pending", R.drawable.timelineview_grey,R.color.grey,R.color.grey));
+        timeLineModelList.add(new TimeLineModel("Order placed", "Oct 19 2021", R.drawable.timelineview_bg, R.color.color_primary_dark, R.color.color_primary_dark));
+        timeLineModelList.add(new TimeLineModel("Order confirmed", "Oct 20 2021", R.drawable.timelineview_bg, R.color.color_primary_dark, R.color.color_primary_dark));
+        timeLineModelList.add(new TimeLineModel("Order shipped", "Oct 20 2021", R.drawable.timelineview_bg, R.color.grey, R.color.color_primary_dark));
+        timeLineModelList.add(new TimeLineModel("Out for delivery", "pending", R.drawable.timelineview_grey, R.color.grey, R.color.grey));
+        timeLineModelList.add(new TimeLineModel("Order delivered", "pending", R.drawable.timelineview_grey, R.color.grey, R.color.grey));
         return timeLineModelList;
     }
 
@@ -56,15 +56,23 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         holder.binding.date.setText(orderModel.getDate());
 
         holder.binding.rcv.setAdapter(adapter);
-        holder.binding.dropUp.setOnClickListener(v -> {
-            if (holder.binding.rcv.getVisibility() == View.VISIBLE) {
-                TransitionManager.beginDelayedTransition(holder.binding.main, new AutoTransition());
-                holder.binding.rcv.setVisibility(View.GONE);
-                holder.binding.dropUp.setImageResource(R.drawable.dropup);
+        boolean isSelected = position == selectedItem;
+        holder.binding.dropUp.setSelected(isSelected);
+        holder.binding.expandableLayout.setExpanded(isSelected, false);
+
+        holder.binding.mainLayout.setOnClickListener(v -> {
+
+            holder.binding.dropUp.setSelected(false);
+            holder.binding.dropUp.setImageResource(R.drawable.dropup);
+            holder.binding.expandableLayout.collapse();
+
+            if (position == selectedItem) {
+                selectedItem = UNSELECTED;
             } else {
-                TransitionManager.beginDelayedTransition(holder.binding.main, new AutoTransition());
-                holder.binding.rcv.setVisibility(View.VISIBLE);
+                holder.binding.dropUp.setSelected(true);
+                holder.binding.expandableLayout.expand();
                 holder.binding.dropUp.setImageResource(R.drawable.dropdown);
+                selectedItem = position;
             }
         });
     }
@@ -76,7 +84,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         DemoMyorderBinding binding;
-
         public ViewHolder(@NonNull DemoMyorderBinding binding) {
             super(binding.getRoot());
             this.binding = binding;

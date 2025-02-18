@@ -1,11 +1,13 @@
 package com.one.groceryapp.ui.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -23,18 +25,25 @@ import java.util.List;
 public class AddAddressActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     ActivityAddAddressBinding binding;
+    private long pressedTime;
 
     List<AddressModel> addressModelList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = ActivityAddAddressBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         binding.back.setOnClickListener(v -> {
-            startActivity(new Intent(this, MyAddressActivity.class));
-            finish();
+            if (pressedTime + 2000 > System.currentTimeMillis()) {
+                startActivity(new Intent(this, MyAddressActivity.class));
+                finish();
+            } else {
+                hideKeyboard(AddAddressActivity.this);
+            }
+            pressedTime = System.currentTimeMillis();
         });
 
         final Spinner spinner = binding.spinner;
@@ -49,7 +58,6 @@ public class AddAddressActivity extends AppCompatActivity implements AdapterView
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
 
-
         binding.addAddressBtn.setOnClickListener(v -> {
             String name = binding.nameEdt.getText().toString();
             String email = binding.email.getText().toString();
@@ -59,8 +67,8 @@ public class AddAddressActivity extends AppCompatActivity implements AdapterView
             String country = binding.spinner.getSelectedItem().toString();
             String phone = binding.phone.getText().toString();
 
-            if(binding.switchView.isChecked()){
-                SharedPreferences sf = getSharedPreferences("saveaddress",Context.MODE_PRIVATE);
+            if (binding.switchView.isChecked()) {
+                SharedPreferences sf = getSharedPreferences("saveaddress", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sf.edit();
                 editor.putString("name", name);
                 editor.putString("email", email);
@@ -71,11 +79,8 @@ public class AddAddressActivity extends AppCompatActivity implements AdapterView
                 editor.putString("city", city);
                 editor.apply();
             }
-
             if (name.isEmpty() || email.isEmpty() || address.isEmpty() || zip.isEmpty() || city.isEmpty() || phone.isEmpty()) {
                 Toast.makeText(this, "Please fill all the detail", Toast.LENGTH_SHORT).show();
-            } else if (!name.matches("^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}")) {
-                Toast.makeText(this, "Enter valid name", Toast.LENGTH_SHORT).show();
             } else if (!email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
                 Toast.makeText(this, "Enter a valid email address", Toast.LENGTH_SHORT).show();
             } else if (phone.length() != 10) {
@@ -105,5 +110,16 @@ public class AddAddressActivity extends AppCompatActivity implements AdapterView
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

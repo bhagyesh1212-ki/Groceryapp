@@ -1,9 +1,9 @@
 package com.one.groceryapp.ui.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +26,11 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder
     AppDatabase appDatabase;
     UserDao userDao;
     private int selectedposition;
+    private static final int UNSELECTED = -1;
+    public static int selectedItem = UNSELECTED;
+
+    private SparseBooleanArray expandedPositions = new SparseBooleanArray();
+
 
     public MyCardAdapter(Context context, List<CardModel> cardModelList, int selectedposition) {
         this.context = context;
@@ -35,7 +40,7 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder
 
     @NonNull
     @Override
-    public MyCardAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         DemoCardBinding binding = DemoCardBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         appDatabase = AppDatabase.getInstance(parent.getContext());
         userDao = appDatabase.userDao();
@@ -43,7 +48,7 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyCardAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         CardModel cardModel = cardModelList.get(position);
         holder.binding.lastFourDigit.setText(cardModel.getCardnumber());
         holder.binding.date.setText(cardModel.getCarddate());
@@ -56,17 +61,63 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder
             holder.binding.nameEdt.setText(cardModel.getCardholder());
         }
 
-        holder.binding.dropUp.setOnClickListener(v -> {
-            if (holder.binding.personalDetail.getVisibility() == View.VISIBLE) {
-                TransitionManager.beginDelayedTransition(holder.binding.mainLayout, new AutoTransition());
-                holder.binding.personalDetail.setVisibility(View.GONE);
-                holder.binding.dropUp.setImageResource(R.drawable.dropup);
-            } else {
-                TransitionManager.beginDelayedTransition(holder.binding.mainLayout, new AutoTransition());
-                holder.binding.personalDetail.setVisibility(View.VISIBLE);
-                holder.binding.dropUp.setImageResource(R.drawable.dropdown);
-            }
+//        boolean isSelected = position == selectedItem;
+//        holder.binding.dropUp.setSelected(isSelected);
+//        holder.binding.expandableLayout.setExpanded(isSelected, false);
+//
+//        holder.binding.mainLayout.setOnClickListener(v -> {
+//
+//            holder.binding.dropUp.setSelected(false);
+//            holder.binding.expandableLayout.collapse();
+//            holder.binding.dropUp.setImageResource(R.drawable.dropup);
+//
+//            if (position == selectedItem) {
+//                selectedItem = UNSELECTED;
+//            } else {
+//                holder.binding.dropUp.setSelected(true);
+//                holder.binding.expandableLayout.expand();
+//                selectedItem = position;
+//                holder.binding.dropUp.setImageResource(R.drawable.dropdown);
+//            }
+//        });
+//
+//        holder.binding.switchView.setOnCheckedChangeListener(null);
+//        holder.binding.switchView.setChecked(position == selectedposition);
+//
+//        if (holder.binding.switchView.isChecked()) {
+//            holder.binding.default12.setVisibility(View.VISIBLE);
+//        } else {
+//            holder.binding.default12.setVisibility(View.GONE);
+//        }
+//
+//        holder.binding.switchView.setOnCheckedChangeListener((buttonView, isChecked) -> {
+//            if (isChecked) {
+//                selectedposition = position;
+//                cardModel.setSwitched(true);
+//                selectedPosition(selectedposition);
+//                notifyDataSetChanged();
+//            } else {
+//                cardModel.setSwitched(false);
+//            }
+//        });
+
+
+        // Restore the expanded state
+        boolean isExpanded = expandedPositions.get(position, false);
+        holder.binding.dropUp.setSelected(isExpanded);
+        holder.binding.expandableLayout.setExpanded(isExpanded, false);
+
+        holder.binding.mainLayout.setOnClickListener(v -> {
+            boolean isSelected = expandedPositions.get(position, false);
+            expandedPositions.put(position, !isSelected);
+            notifyItemChanged(position);
         });
+
+        if (isExpanded) {
+            holder.binding.dropUp.setImageResource(R.drawable.dropdown);
+        } else {
+            holder.binding.dropUp.setImageResource(R.drawable.dropup);
+        }
 
         holder.binding.switchView.setOnCheckedChangeListener(null);
         holder.binding.switchView.setChecked(position == selectedposition);
@@ -79,10 +130,10 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder
 
         holder.binding.switchView.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                selectedposition = holder.getAdapterPosition();
+                selectedposition = position;
                 cardModel.setSwitched(true);
-                notifyDataSetChanged();
                 selectedPosition(selectedposition);
+                notifyDataSetChanged();
             } else {
                 cardModel.setSwitched(false);
             }
@@ -132,7 +183,6 @@ public class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         DemoCardBinding binding;
 
         public ViewHolder(@NonNull DemoCardBinding binding) {

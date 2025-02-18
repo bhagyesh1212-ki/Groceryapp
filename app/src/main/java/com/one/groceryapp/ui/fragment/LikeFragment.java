@@ -1,6 +1,5 @@
 package com.one.groceryapp.ui.fragment;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -21,11 +20,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.one.groceryapp.R;
 import com.one.groceryapp.databinding.FragmentLikeBinding;
 import com.one.groceryapp.model.FeatureProductModel;
-import com.one.groceryapp.ui.activity.MainActivity;
 import com.one.groceryapp.ui.adapter.AddToCartAdapter;
 import com.one.groceryapp.utils.Constants;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +53,7 @@ public class LikeFragment extends Fragment implements AddToCartAdapter.OnPriceCh
             }
         }
 
-        if(featureProductModelList.isEmpty()) {
+        if (featureProductModelList.isEmpty()) {
             binding.rlEmptyLike.setVisibility(View.VISIBLE);
             binding.rcv.setVisibility(View.GONE);
         }
@@ -82,7 +79,8 @@ public class LikeFragment extends Fragment implements AddToCartAdapter.OnPriceCh
             int position = viewHolder.getAdapterPosition();
             featureProductModelList.remove(position);
             adapter.notifyItemRemoved(position);
-            if(adapter.getItemCount() == 0){
+
+            if (adapter.getItemCount() == 0) {
                 binding.rlEmptyLike.setVisibility(View.VISIBLE);
                 binding.rcv.setVisibility(View.GONE);
             }

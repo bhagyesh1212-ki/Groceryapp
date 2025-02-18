@@ -1,17 +1,13 @@
 package com.one.groceryapp.ui.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,7 +19,6 @@ import com.one.groceryapp.model.AddressModel;
 import com.one.groceryapp.roomdb.AppDatabase;
 import com.one.groceryapp.roomdb.UserDao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.ViewHolder> implements AdapterView.OnItemSelectedListener {
@@ -34,6 +29,11 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
     AppDatabase appDatabase;
     UserDao userDao;
     private int selectedposition = 0;
+    private static final int UNSELECTED = -1;
+    public static int selectedItem = UNSELECTED;
+
+    private static SparseBooleanArray expandedPositions = new SparseBooleanArray();
+
 
     public MyAddressAdapter(List<AddressModel> addressModelList, Context context, int selectedposition) {
         this.addressModelList = addressModelList;
@@ -51,7 +51,7 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyAddressAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull MyAddressAdapter.ViewHolder holder, int position) {
         AddressModel addressModel = addressModelList.get(position);
         holder.binding.name.setText(addressModel.getName());
         holder.binding.address.setText(addressModel.getAddress() + "." + addressModel.getCity() + "," + addressModel.getCountry() + " " + addressModel.getZip());
@@ -67,27 +67,23 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
             holder.binding.spinner.setText(addressModel.getCountry());
         }
 
-//        final Spinner spinner = holder.binding.spinner;
-//        spinner.setOnItemSelectedListener(this);
-//        List<String> categories = new ArrayList<String>();
-//        categories.add("India");
-//        categories.add("USA");
-//        categories.add("China");
-//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, categories);
-//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinner.setAdapter(dataAdapter);
 
-        holder.binding.dropUp.setOnClickListener(v -> {
-            if (holder.binding.personalDetail.getVisibility() == View.VISIBLE) {
-                TransitionManager.beginDelayedTransition(holder.binding.mainLayout, new AutoTransition());
-                holder.binding.personalDetail.setVisibility(View.GONE);
-                holder.binding.dropUp.setImageResource(R.drawable.dropup);
-            } else {
-                TransitionManager.beginDelayedTransition(holder.binding.mainLayout, new AutoTransition());
-                holder.binding.personalDetail.setVisibility(View.VISIBLE);
-                holder.binding.dropUp.setImageResource(R.drawable.dropdown);
-            }
+        // Restore the expanded state
+        boolean isExpanded = expandedPositions.get(position, false);
+        holder.binding.dropUp.setSelected(isExpanded);
+        holder.binding.expandableLayout.setExpanded(isExpanded, false);
+
+        holder.binding.mainLayout.setOnClickListener(v -> {
+            boolean isSelected = expandedPositions.get(position, false);
+            expandedPositions.put(position, !isSelected);
+            notifyItemChanged(position);
         });
+
+        if (isExpanded) {
+            holder.binding.dropUp.setImageResource(R.drawable.dropdown);
+        } else {
+            holder.binding.dropUp.setImageResource(R.drawable.dropup);
+        }
 
         holder.binding.switchview.setOnCheckedChangeListener(null);
         holder.binding.switchview.setChecked(position == selectedposition);
@@ -100,19 +96,59 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
 
         holder.binding.switchview.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                selectedposition = holder.getAdapterPosition();
-                notifyDataSetChanged();
+                selectedposition = position;
                 addressModel.setIsswitched(true);
                 selectedPosition(selectedposition);
+                notifyDataSetChanged();
             } else {
-                if (selectedposition == holder.getAdapterPosition()) {
-                    selectedposition = -1;
-                    addressModel.setIsswitched(false);
-                }
+                addressModel.setIsswitched(false);
             }
         });
 
-        if(getItemCount() == 1){
+//        boolean isSelected = position == selectedItem;
+//        holder.binding.dropUp.setSelected(isSelected);
+//        holder.binding.expandableLayout.setExpanded(isSelected, false);
+//
+//        holder.binding.dropUp.setOnClickListener(v -> {
+//
+//            holder.binding.dropUp.setSelected(false);
+//            holder.binding.dropUp.setImageResource(R.drawable.dropup);
+//            holder.binding.expandableLayout.collapse();
+//
+//            if (position == selectedItem) {
+//                selectedItem = UNSELECTED;
+//            } else {
+//                holder.binding.dropUp.setSelected(true);
+//                holder.binding.expandableLayout.expand();
+//                holder.binding.dropUp.setImageResource(R.drawable.dropdown);
+//                selectedItem = position;
+//            }
+//        });
+//
+//        holder.binding.switchview.setOnCheckedChangeListener(null);
+//        holder.binding.switchview.setChecked(position == selectedposition);
+//
+//        if (holder.binding.switchview.isChecked()) {
+//            holder.binding.default12.setVisibility(View.VISIBLE);
+//        } else {
+//            holder.binding.default12.setVisibility(View.GONE);
+//        }
+//
+//        holder.binding.switchview.setOnCheckedChangeListener((buttonView, isChecked) -> {
+//            if (isChecked) {
+//                selectedposition = holder.getAdapterPosition();
+//                notifyDataSetChanged();
+//                addressModel.setIsswitched(true);
+//                selectedPosition(selectedposition);
+//            } else {
+//                if (selectedposition == holder.getAdapterPosition()) {
+//                    selectedposition = -1;
+//                    addressModel.setIsswitched(false);
+//                }
+//            }
+//        });
+
+        if (getItemCount() == 1) {
             holder.binding.switchview.setChecked(true);
             holder.binding.default12.setVisibility(View.VISIBLE);
             String name = addressModelList.get(selectedposition).getName();
@@ -122,7 +158,7 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
             String zip = addressModelList.get(selectedposition).getZip();
             String city = addressModelList.get(selectedposition).getCity();
             String country = addressModelList.get(selectedposition).getCountry();
-            SharedPreferences sf = context.getSharedPreferences("saveaddress",Context.MODE_PRIVATE);
+            SharedPreferences sf = context.getSharedPreferences("saveaddress", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sf.edit();
             editor.putString("name", name);
             editor.putString("email", email);
@@ -134,8 +170,7 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
             editor.apply();
         }
 
-
-        if(addressModel.getIsswitched()) {
+        if (addressModel.getIsswitched()) {
             String name = addressModelList.get(selectedposition).getName();
             String email = addressModelList.get(selectedposition).getEmail();
             String phone = addressModelList.get(selectedposition).getMobile_number();
@@ -143,7 +178,7 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
             String zip = addressModelList.get(selectedposition).getZip();
             String country = addressModelList.get(selectedposition).getCountry();
             String city = addressModelList.get(selectedposition).getCity();
-            SharedPreferences sf = context.getSharedPreferences("saveaddress",Context.MODE_PRIVATE);
+            SharedPreferences sf = context.getSharedPreferences("saveaddress", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sf.edit();
             editor.putString("name", name);
             editor.putString("email", email);
@@ -178,11 +213,13 @@ public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.View
         editor.apply();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         DemoAddressBinding binding;
+
         public ViewHolder(@NonNull DemoAddressBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+
         }
     }
 }

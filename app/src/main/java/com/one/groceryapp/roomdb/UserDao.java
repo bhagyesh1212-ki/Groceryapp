@@ -14,7 +14,6 @@ import java.util.List;
 
 @Dao
 public interface UserDao {
-
     @Insert
     void insertdata(UserModel user);
 
@@ -50,8 +49,4 @@ public interface UserDao {
 
     @Query("SELECT * FROM myorder_table")
     List<MyOrderModel> getallmyorder();
-
-//    @Query("UPDATE cards_table SET isSwitched =:isSwitched WHERE id=:id")
-//    void updateSwitch(Boolean isSwitched,int id);
-
 }
